@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Riset</string>
+
+    <!--bottom nav-->
+    <string name="home">Home</string>
+    <string name="donasi">Donasi</string>
+    <string name="Riwayat">Riwayat</string>
+    <string name="Saya">Saya</string>
+</resources>
