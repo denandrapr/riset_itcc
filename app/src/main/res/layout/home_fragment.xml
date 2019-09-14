@@ -1,94 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="161dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Halo, Farouq"
-        android:textSize="26sp" />
-
-    <TextView
-        android:id="@+id/textView2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Mau bantu siapa"
-        android:textSize="26sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="159dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Hari ini?"
-        android:textSize="26sp" />
-
-    <LinearLayout
-        android:id="@+id/liear1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="9dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/cari"
-            android:layout_width="260dp"
-            android:layout_height="70dp"
-            android:background="@drawable/cari"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="161dp"
             android:fontFamily="@font/nunito_bold"
-            android:hint="Cari mereka"
-            android:paddingLeft="24dp" />
+            android:text="Halo, Farouq"
+            android:textSize="26sp" />
 
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/tombol_cari" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Mau bantu siapa"
+            android:textSize="26sp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="159dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Hari ini?"
+            android:textSize="26sp" />
 
-    <TextView
-        android:id="@+id/txt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/liear1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="159dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Butuh kamu segera"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/liear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler"
-        android:layout_below="@id/txt2"/>
-</RelativeLayout>
+            <EditText
+                android:id="@+id/cari"
+                android:layout_width="260dp"
+                android:layout_height="70dp"
+                android:background="@drawable/cari"
+                android:fontFamily="@font/nunito_bold"
+                android:hint="Cari mereka"
+                android:paddingLeft="24dp" />
+
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/tombol_cari" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear2"
+            android:layout_below="@id/liear1">
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Butuh kamu segera"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/nunito_bold"
+                android:layout_marginLeft="70dp"
+                android:text="Lihat Semua >"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler"
+            android:layout_below="@id/linear2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear3"
+            android:layout_below="@id/recycler">
+
+            <TextView
+                android:id="@+id/txt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Jadilah tutor mereka"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:layout_marginLeft="70dp"
+                android:text="Lihat Semua >"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler2"
+            android:layout_below="@id/linear3"/>
+
+    </RelativeLayout>
+
+</ScrollView>
