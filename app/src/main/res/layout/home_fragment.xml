@@ -71,4 +71,24 @@
             android:background="@drawable/tombol_cari" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/liear1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="159dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Butuh kamu segera"
+        android:textSize="18sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler"
+        android:layout_below="@id/txt2"/>
 </RelativeLayout>

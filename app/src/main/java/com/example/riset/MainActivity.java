@@ -3,16 +3,24 @@ package com.example.riset;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.riset.Donasi.DonasiFragment;
+import com.example.riset.Home.Adapter.ButuhSegeraAdapter;
 import com.example.riset.Home.HomeFragment;
 import com.example.riset.Profile.ProfileFragment;
 import com.example.riset.Riwayat.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
