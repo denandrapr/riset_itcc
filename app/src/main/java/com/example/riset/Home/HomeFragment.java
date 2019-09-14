@@ -10,11 +10,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.riset.Home.Adapter.ButuhSegeraAdapter;
 import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
+import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.MainActivity;
 import com.example.riset.R;
 
@@ -30,9 +32,12 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
     RecyclerView recyclerView;
     @BindView(R.id.recycler2)
     RecyclerView recyclerView2;
+    @BindView(R.id.recycler3)
+    RecyclerView recyclerView3;
 
     ButuhSegeraAdapter adapterButuhSegera;
     JadiTutorMerekaAdapter jadiTutorMerekaAdapter;
+    TerdekatKamuAdapter terdekatKamuAdapter;
 
     @Nullable
     @Override
@@ -59,6 +64,17 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
         jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), animalNames);
         jadiTutorMerekaAdapter.setClickListener(this);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
+
+//        LinearLayoutManager horizontalLayout3 = new LinearLayoutManager(getActivity());
+//        recyclerView3.setLayoutManager(horizontalLayout3);
+//        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
+//        recyclerView3.setAdapter(terdekatKamuAdapter);
+
+        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView3.setItemAnimator(new DefaultItemAnimator());
+        recyclerView3.setLayoutManager(mLayoutManager);
+        recyclerView3.setAdapter(terdekatKamuAdapter);
 
         return view;
     }

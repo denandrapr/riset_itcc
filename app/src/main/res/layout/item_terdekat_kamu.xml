@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="24dp"
+    android:paddingTop="24dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="24dp">
+
+    <ImageView
+        android:id="@+id/imgTerdekat"
+        android:src="@drawable/item_terdekat_kamu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvAnimalName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/imgTerdekat"
+        android:fontFamily="@font/nunito_bold"/>
+
+</RelativeLayout>
