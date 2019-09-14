@@ -4,26 +4,27 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.riset.R;
 
 import java.util.List;
 
 public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.ViewHolder> {
 
-    private List<Integer> mViewColors;
     private List<String> mAnimals;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    Context context;
 
     // data is passed into the constructor
-    public ButuhSegeraAdapter(Context context, List<Integer> colors, List<String> animals) {
+    public ButuhSegeraAdapter(Context context, List<String> animals) {
         this.mInflater = LayoutInflater.from(context);
-        this.mViewColors = colors;
         this.mAnimals = animals;
     }
 
@@ -38,9 +39,12 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     // binds the data to the view and textview in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int color = mViewColors.get(position);
         String animal = mAnimals.get(position);
-        holder.myView.setBackgroundColor(color);
+        Glide
+                .with(holder.myView.getContext())
+                .load(R.drawable.img_butuh_segera)
+                .placeholder(R.drawable.img_butuh_segera)
+                .into(holder.myView);
         holder.myTextView.setText(animal);
     }
 
@@ -52,12 +56,12 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        View myView;
+        ImageView myView;
         TextView myTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myView = itemView.findViewById(R.id.colorView);
+            myView = itemView.findViewById(R.id.imgSegera);
             myTextView = itemView.findViewById(R.id.tvAnimalName);
             itemView.setOnClickListener(this);
         }

@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="72dp">
 
         <TextView
             android:id="@+id/textView"
@@ -111,10 +112,18 @@
             android:id="@+id/recycler"
             android:layout_below="@id/linear2"/>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/full_line"
+            android:id="@+id/full_line1"
+            android:layout_below="@id/recycler"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="14dp"
             android:id="@+id/linear3"
             android:layout_below="@id/recycler">
 
@@ -142,6 +151,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/recycler2"
+            android:layout_below="@id/linear3"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/full_line"
+            android:id="@+id/full_line2"
+            android:layout_below="@id/recycler2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            android:id="@+id/linear4"
+            android:layout_below="@id/full_line2">
+
+            <TextView
+                android:id="@+id/txt6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Terdekat dengan kamu"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:layout_marginLeft="70dp"
+                android:text="Lihat Semua >"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler3"
             android:layout_below="@id/linear3"/>
 
     </RelativeLayout>

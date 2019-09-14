@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.riset.Home.Adapter.ButuhSegeraAdapter;
+import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.MainActivity;
 import com.example.riset.R;
 
@@ -27,8 +28,11 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
+    @BindView(R.id.recycler2)
+    RecyclerView recyclerView2;
 
     ButuhSegeraAdapter adapterButuhSegera;
+    JadiTutorMerekaAdapter jadiTutorMerekaAdapter;
 
     @Nullable
     @Override
@@ -36,14 +40,6 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
         View view = inflater.inflate(R.layout.home_fragment, container, false);
 
         ButterKnife.bind(this, view);
-
-        // data to populate the RecyclerView with
-        ArrayList<Integer> viewColors = new ArrayList<>();
-        viewColors.add(Color.BLUE);
-        viewColors.add(Color.YELLOW);
-        viewColors.add(Color.MAGENTA);
-        viewColors.add(Color.RED);
-        viewColors.add(Color.BLACK);
 
         ArrayList<String> animalNames = new ArrayList<>();
         animalNames.add("Horse");
@@ -54,9 +50,15 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
 
         LinearLayoutManager horizontalLayout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayout);
-        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), viewColors, animalNames);
+        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), animalNames);
         adapterButuhSegera.setClickListener(this);
         recyclerView.setAdapter(adapterButuhSegera);
+
+        LinearLayoutManager horizontalLayout2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(horizontalLayout2);
+        jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), animalNames);
+        jadiTutorMerekaAdapter.setClickListener(this);
+        recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
         return view;
     }
