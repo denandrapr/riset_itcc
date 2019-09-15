@@ -19,7 +19,6 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
 
     private List<String> mAnimals;
     private LayoutInflater mInflater;
-    Context context;
 
     public TerdekatKamuAdapter(Context context, List<String> animals) {
         this.mInflater = LayoutInflater.from(context);
