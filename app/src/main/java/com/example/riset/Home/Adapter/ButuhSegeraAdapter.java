@@ -13,19 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.riset.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.ViewHolder> {
 
     private List<String> mAnimals;
+    private List<String> mDuit;
+    private List<String> mInfo;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     Context context;
 
     // data is passed into the constructor
-    public ButuhSegeraAdapter(Context context, List<String> animals) {
+    public ButuhSegeraAdapter(Context context, List<String> animals, List<String> mDuit, List<String> mInfo) {
         this.mInflater = LayoutInflater.from(context);
         this.mAnimals = animals;
+        this.mDuit = mDuit;
+        this.mInfo = mInfo;
     }
 
     // inflates the row layout from xml when needed
@@ -40,12 +46,17 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String animal = mAnimals.get(position);
-        Glide
+        String info = mInfo.get(position);
+        String duit = mDuit.get(position);
+            Glide
                 .with(holder.myView.getContext())
                 .load(R.drawable.img_butuh_segera)
                 .placeholder(R.drawable.img_butuh_segera)
                 .into(holder.myView);
         holder.myTextView.setText(animal);
+        holder.txtInfo.setText(info);
+        holder.txtDuit.setText(duit);
+
     }
 
     // total number of rows
@@ -58,11 +69,15 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView myView;
         TextView myTextView;
+        TextView txtInfo;
+        TextView txtDuit;
 
         ViewHolder(View itemView) {
             super(itemView);
             myView = itemView.findViewById(R.id.imgSegera);
             myTextView = itemView.findViewById(R.id.tvAnimalName);
+            txtInfo = itemView.findViewById(R.id.txtInfo);
+            txtDuit = itemView.findViewById(R.id.txtDuit);
             itemView.setOnClickListener(this);
         }
 

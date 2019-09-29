@@ -47,15 +47,34 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
         ButterKnife.bind(this, view);
 
         ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
+        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
+                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
+                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
+                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
+                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
+                "lagi untuk meraih mimpinya");
+
+        ArrayList<String> duit = new ArrayList<>();
+        duit.add("Rp 1.500.000");
+        duit.add("Rp 1.500.000");
+        duit.add("Rp 1.500.000");
+        duit.add("Rp 1.500.000");
+        duit.add("Rp 1.500.000");
+
+        ArrayList<String> info = new ArrayList<>();
+        info.add("terkumpul dari Rp 20.000.000");
+        info.add("terkumpul dari Rp 20.000.000");
+        info.add("terkumpul dari Rp 20.000.000");
+        info.add("terkumpul dari Rp 20.000.000");
+        info.add("terkumpul dari Rp 20.000.000");
 
         LinearLayoutManager horizontalLayout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayout);
-        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), animalNames);
+        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), animalNames, duit, info);
         adapterButuhSegera.setClickListener(this);
         recyclerView.setAdapter(adapterButuhSegera);
 
