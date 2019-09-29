@@ -84,11 +84,6 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
         jadiTutorMerekaAdapter.setClickListener(this);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
-//        LinearLayoutManager horizontalLayout3 = new LinearLayoutManager(getActivity());
-//        recyclerView3.setLayoutManager(horizontalLayout3);
-//        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
-//        recyclerView3.setAdapter(terdekatKamuAdapter);
-
         terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView3.setItemAnimator(new DefaultItemAnimator());

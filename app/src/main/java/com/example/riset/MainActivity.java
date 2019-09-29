@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         loadFragment(new HomeFragment());
         btm_nv.setOnNavigationItemSelectedListener(this);
+
     }
 
     private boolean loadFragment(Fragment fragment){

@@ -23,6 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:elevation="6dp"
         android:background="@android:color/white"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
