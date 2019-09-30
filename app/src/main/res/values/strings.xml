@@ -6,4 +6,9 @@
     <string name="donasi">Donasi</string>
     <string name="Riwayat">Riwayat</string>
     <string name="Saya">Saya</string>
+
+    <!--text welcome sign in activity-->
+    <string name="selamat_datang">Selamat Datang\nRelawan</string>
+    <string name="mulai_deskripsi">Mulailah untuk membantu sesama\nUluran tangan kita membawa kebahagiaan\nUntuk mereka</string>
+    <string name="signin_with_google">Sign in with Google</string>
 </resources>

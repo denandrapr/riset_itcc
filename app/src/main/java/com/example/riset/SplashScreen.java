@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.riset.RegistSignIn.WelcomeSignInActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -21,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, WelcomeSignInActivity.class);
                 startActivity(i);
                 finish();
             }
