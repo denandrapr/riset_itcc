@@ -1,4 +1,4 @@
-package com.example.riset.Riwayat;
+package com.example.riset.Dokumentasi;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.riset.R;
 
-public class RiwayatFragment  extends Fragment {
+public class DokumentasiFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.riwayat_fragment, container, false);
+        View view = inflater.inflate(R.layout.dokumentasi_fragment, container, false);
         return view;
     }
+
 }

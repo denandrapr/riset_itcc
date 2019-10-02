@@ -20,7 +20,6 @@ public class JadiTutorMerekaAdapter extends RecyclerView.Adapter<JadiTutorMereka
 
     private List<String> mAnimals;
     private LayoutInflater mInflater;
-    private ButuhSegeraAdapter.ItemClickListener mClickListener;
     Context context;
 
     // data is passed into the constructor
@@ -69,22 +68,7 @@ public class JadiTutorMerekaAdapter extends RecyclerView.Adapter<JadiTutorMereka
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
-    }
-
-    // convenience method for getting data at click position
-    public String getItem(int id) {
-        return mAnimals.get(id);
-    }
-
-    // allows clicks events to be caught
-    public void setClickListener(ButuhSegeraAdapter.ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }

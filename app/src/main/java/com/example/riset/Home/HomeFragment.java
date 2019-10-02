@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemClickListener{
+public class HomeFragment extends Fragment{
 
 
     @BindView(R.id.recycler)
@@ -75,13 +75,13 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
         LinearLayoutManager horizontalLayout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayout);
         adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), animalNames, duit, info);
-        adapterButuhSegera.setClickListener(this);
+//        adapterButuhSegera.setClickListener(this);
         recyclerView.setAdapter(adapterButuhSegera);
 
         LinearLayoutManager horizontalLayout2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(horizontalLayout2);
         jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), animalNames);
-        jadiTutorMerekaAdapter.setClickListener(this);
+//        jadiTutorMerekaAdapter.setClickListener(this);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
         terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
@@ -93,8 +93,4 @@ public class HomeFragment extends Fragment implements ButuhSegeraAdapter.ItemCli
         return view;
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(getActivity(), "You clicked " + adapterButuhSegera.getItem(position) + " on item position " + position, Toast.LENGTH_SHORT).show();
-    }
 }

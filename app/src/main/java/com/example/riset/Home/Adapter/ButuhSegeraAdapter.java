@@ -1,16 +1,19 @@
 package com.example.riset.Home.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.riset.Home.DonasiDetailActivity;
 import com.example.riset.R;
 
 import org.w3c.dom.Text;
@@ -23,7 +26,6 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     private List<String> mDuit;
     private List<String> mInfo;
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
     Context context;
 
     // data is passed into the constructor
@@ -83,22 +85,8 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            Intent i = new Intent(view.getContext(), DonasiDetailActivity.class);
+            view.getContext().startActivity(i);
         }
-    }
-
-    // convenience method for getting data at click position
-    public String getItem(int id) {
-        return mAnimals.get(id);
-    }
-
-    // allows clicks events to be caught
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }
