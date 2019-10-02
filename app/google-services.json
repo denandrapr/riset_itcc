@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "82512903772",
+    "firebase_url": "https://itcc-project.firebaseio.com",
+    "project_id": "itcc-project",
+    "storage_bucket": "itcc-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82512903772:android:7525708b916273b8be3099",
+        "android_client_info": {
+          "package_name": "com.example.riset"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82512903772-atug95v65msv2lhbas6v50sk1e6st2nu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD78TVPgT9Wuyfodq9Qd7MHTU5On829CQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82512903772-atug95v65msv2lhbas6v50sk1e6st2nu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

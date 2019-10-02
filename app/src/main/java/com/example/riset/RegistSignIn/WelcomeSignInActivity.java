@@ -29,4 +29,10 @@ public class WelcomeSignInActivity extends AppCompatActivity {
         Intent i = new Intent(WelcomeSignInActivity.this, SignInActivity.class);
         startActivity(i);
     }
+
+    @OnClick(R.id.btn_daftar)
+    void fungsi_daftar(){
+        Intent i = new Intent(WelcomeSignInActivity.this, RegisterSatuActivity.class);
+        startActivity(i);
+    }
 }

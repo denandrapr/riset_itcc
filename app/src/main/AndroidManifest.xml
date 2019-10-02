@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistSignIn.WelcomeSignInActivity"></activity>
-        <activity android:name=".RegistSignIn.SignInActivity" />
+        <activity android:name=".Home.DonasiDetailActivity"></activity>
+        <activity android:name=".RegistSignIn.RegisterDuaActivity" />
+        <activity android:name=".RegistSignIn.RegisterSatuActivity" />
+        <activity android:name=".RegistSignIn.WelcomeSignInActivity" />
+        <activity
+            android:name=".RegistSignIn.SignInActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden" />
 
         <meta-data
             android:name="preloaded_fonts"

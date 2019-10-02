@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistSignIn.RegisterDuaActivity"
+    android:orientation="vertical"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="40dp">
+
+    <EditText
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="#C7C7C7"
+        android:fontFamily="@font/nunito"
+        android:layout_width="match_parent"
+        android:hint="Alamat"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="0"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="#C7C7C7"
+        android:fontFamily="@font/nunito"
+        android:layout_width="match_parent"
+        android:hint="Tanggal Lahir"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="0"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="#C7C7C7"
+        android:fontFamily="@font/nunito"
+        android:layout_width="match_parent"
+        android:hint="Nomor Telepon"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="0"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="#C7C7C7"
+        android:fontFamily="@font/nunito"
+        android:layout_width="match_parent"
+        android:hint="Pekerjaan"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="0"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:paddingBottom="24dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:text="Sebelumnya"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_outline_white"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:textColor="#F76301"
+            android:text="Selesai"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:background="@drawable/rounded_corner"/>
+
+    </LinearLayout>
+
+</LinearLayout>
