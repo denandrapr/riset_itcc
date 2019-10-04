@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:hint="Alamat"
         android:layout_marginBottom="16dp"
+        android:textColor="@android:color/white"
         android:layout_weight="0"
         android:layout_height="wrap_content"/>
 
@@ -28,6 +29,7 @@
         android:hint="Tanggal Lahir"
         android:layout_marginBottom="16dp"
         android:layout_weight="0"
+        android:id="@+id/txtCalendar"
         android:layout_height="wrap_content"/>
 
     <EditText
@@ -37,6 +39,7 @@
         android:layout_width="match_parent"
         android:hint="Nomor Telepon"
         android:layout_marginBottom="16dp"
+        android:textColor="@android:color/white"
         android:layout_weight="0"
         android:layout_height="wrap_content"/>
 
@@ -48,6 +51,7 @@
         android:hint="Pekerjaan"
         android:layout_marginBottom="16dp"
         android:layout_weight="0"
+        android:textColor="@android:color/white"
         android:layout_height="wrap_content"/>
 
     <LinearLayout

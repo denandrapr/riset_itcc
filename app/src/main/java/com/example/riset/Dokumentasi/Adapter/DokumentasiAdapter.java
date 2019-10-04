@@ -1,6 +1,7 @@
 package com.example.riset.Dokumentasi.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
+import com.example.riset.Dokumentasi.DokumentasiDetailActivity;
 import com.example.riset.R;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class DokumentasiAdapter extends RecyclerView.Adapter<DokumentasiAdapter.
     @Override
     @NonNull
     public DokumentasiAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_terdekat_kamu, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_dokumentasi, parent, false);
         DokumentasiAdapter.ViewHolder holder = new DokumentasiAdapter.ViewHolder(view);
         return holder;
     }
@@ -37,11 +38,31 @@ public class DokumentasiAdapter extends RecyclerView.Adapter<DokumentasiAdapter.
     @Override
     public void onBindViewHolder(@NonNull DokumentasiAdapter.ViewHolder holder, int position) {
         String result = mAnimals.get(position);
-        Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.item_terdekat_kamu)
-                .placeholder(R.drawable.item_terdekat_kamu)
-                .into(holder.myView);
+        if (position == 0){
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.dokumentasi_foto_temp)
+                    .placeholder(R.drawable.dokumentasi_foto_temp)
+                    .into(holder.myView);
+        }else if(position == 1){
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.dokumentasi_foto_temp1)
+                    .placeholder(R.drawable.dokumentasi_foto_temp1)
+                    .into(holder.myView);
+        }else if(position == 2){
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.dokumentasi_foto_temp3)
+                    .placeholder(R.drawable.dokumentasi_foto_temp3)
+                    .into(holder.myView);
+        }else{
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.dokumentasi_foto_temp)
+                    .placeholder(R.drawable.dokumentasi_foto_temp)
+                    .into(holder.myView);
+        }
         holder.myTextView.setText(result);
     }
 
@@ -50,14 +71,21 @@ public class DokumentasiAdapter extends RecyclerView.Adapter<DokumentasiAdapter.
         return mAnimals.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView myView;
         TextView myTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myView = itemView.findViewById(R.id.imgTerdekat);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
+            myView = itemView.findViewById(R.id.imgDoc);
+            myTextView = itemView.findViewById(R.id.txtJudul);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(view.getContext(), DokumentasiDetailActivity.class);
+            view.getContext().startActivity(i);
         }
     }
 }

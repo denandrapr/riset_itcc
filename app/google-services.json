@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "82512903772-v5os1l18ht5h5515ifa94hf5v9gagc61.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.riset",
+            "certificate_hash": "43fbd3e187237a3c2387904f562c2f30b77d68c9"
+          }
+        },
+        {
           "client_id": "82512903772-atug95v65msv2lhbas6v50sk1e6st2nu.apps.googleusercontent.com",
           "client_type": 3
         }

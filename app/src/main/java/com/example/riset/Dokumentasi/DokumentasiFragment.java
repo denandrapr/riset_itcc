@@ -35,16 +35,11 @@ public class DokumentasiFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
+        animalNames.add("Farouq mendapatkan donasi\nBuku bacaan dari Mas Imam");
+        animalNames.add("Dwik mendapat beasiswa sekolah\nselama satu semester");
+        animalNames.add("Farouq mendapatkan donasi\nMie instan dari Mas Imam");
+        animalNames.add("Farouq mendapatkan donasi\nMie instan dari Mas Imam");
+        animalNames.add("Farouq mendapatkan donasi\nMie instan dari Mas Imam");
 
         dokumentasiAdapter = new DokumentasiAdapter(getActivity(), animalNames);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());

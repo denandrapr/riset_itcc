@@ -19,6 +19,8 @@ import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.MainActivity;
 import com.example.riset.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -39,12 +41,21 @@ public class HomeFragment extends Fragment{
     JadiTutorMerekaAdapter jadiTutorMerekaAdapter;
     TerdekatKamuAdapter terdekatKamuAdapter;
 
+    private FirebaseAuth mAuth;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
 
         ButterKnife.bind(this, view);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+        if (user != null){
+            String uid = user.getEmail();
+        }
 
         ArrayList<String> animalNames = new ArrayList<>();
         animalNames.add("Bantu Bella agar dapat bersekolah \n" +

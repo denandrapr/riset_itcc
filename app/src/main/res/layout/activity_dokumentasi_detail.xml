@@ -31,7 +31,7 @@
             app:layout_constraintHorizontal_bias="0.538"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/foto_detail_temp" />
+            app:srcCompat="@drawable/foto_detail_dokumentasi" />
 
         <TextView
             android:id="@+id/textView8"
@@ -40,33 +40,11 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_bold"
-            android:text="@string/judul"
+            android:text="Farouq mendapatkan donasi\nMie instan dari Mas Imam"
             android:textColor="@android:color/black"
             android:textSize="21sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/uang"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
-            android:fontFamily="@font/nunito"
-            android:textColor="#FF751B"/>
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/nunito"
-            android:text="@string/terkumpul"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -76,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
             app:srcCompat="@drawable/line_grey" />
 
         <ImageView
@@ -130,7 +108,7 @@
             android:layout_marginTop="19dp"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            app:srcCompat="@drawable/ic_time" />
+            app:srcCompat="@drawable/ic_event_calendar_black" />
 
         <TextView
             android:id="@+id/textView13"
@@ -139,7 +117,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="22dp"
             android:fontFamily="@font/nunito"
-            android:text="Tersisa 17 hari"
+            android:text="10 Okt 2019"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -218,20 +196,21 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/btn_filled_orange"
             android:text="Donasi Sekarang"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_filled_orange"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler"
-            app:layout_constraintVertical_bias="0.636" />
+            app:layout_constraintVertical_bias="0.627"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="32dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
