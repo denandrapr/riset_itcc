@@ -2,12 +2,16 @@ package com.example.riset.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.riset.Donasi.BerdonasiStep1Activity;
 import com.example.riset.Home.Adapter.DonaturDetailDonasiAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.R;
@@ -16,6 +20,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DonasiDetailActivity extends AppCompatActivity {
 
@@ -56,5 +61,11 @@ public class DonasiDetailActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @OnClick(R.id.btn_donasi)
+    void btn_donasi_action(){
+        Intent i = new Intent(DonasiDetailActivity.this, BerdonasiStep1Activity.class);
+        startActivity(i);
     }
 }

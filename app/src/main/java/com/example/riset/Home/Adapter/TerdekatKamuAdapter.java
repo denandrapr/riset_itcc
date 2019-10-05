@@ -36,11 +36,25 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
     @Override
     public void onBindViewHolder(@NonNull TerdekatKamuAdapter.ViewHolder holder, int position) {
         String result = mAnimals.get(position);
-        Glide
-            .with(holder.myView.getContext())
-            .load(R.drawable.item_terdekat_kamu)
-            .placeholder(R.drawable.item_terdekat_kamu)
-            .into(holder.myView);
+        if (position == 0){
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.terdekat_kamu_temp1)
+                    .placeholder(R.drawable.terdekat_kamu_temp1)
+                    .into(holder.myView);
+        }else if(position == 2){
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.terdekat_kamu_temp2)
+                    .placeholder(R.drawable.terdekat_kamu_temp2)
+                    .into(holder.myView);
+        }else{
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(R.drawable.item_terdekat_kamu)
+                    .placeholder(R.drawable.item_terdekat_kamu)
+                    .into(holder.myView);
+        }
         holder.myTextView.setText(result);
     }
 

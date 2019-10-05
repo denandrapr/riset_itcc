@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Donasi.BerdonasiStep1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/edit_text_filled_grey"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rp"
+                android:paddingLeft="24dp"
+                android:layout_weight="5"
+                android:layout_gravity="center_vertical"
+                android:textSize="24sp"/>
+
+            <EditText
+                android:id="@+id/txtNominal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:inputType="number"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pilihMetodeBayar"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Pilih metode pembayaran"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_outline_orange"
+            android:textColor="#FF7419"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line_grey"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keterangan"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:hint="Tulis dukungan atau doa"
+            android:paddingLeft="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/edit_text_outline_grey"/>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donasi sebagai anonim"
+        android:fontFamily="@font/nunito"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@id/lanjutkan_pembayaran"/>
+
+    <Button
+        android:id="@+id/lanjutkan_pembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_filled_orange"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Lanjutkan pembayaran"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>

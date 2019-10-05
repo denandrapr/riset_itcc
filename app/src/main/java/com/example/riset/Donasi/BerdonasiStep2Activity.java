@@ -1,4 +1,4 @@
-package com.example.riset.Dokumentasi;
+package com.example.riset.Donasi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,12 +8,12 @@ import com.example.riset.R;
 
 import butterknife.ButterKnife;
 
-public class DokumentasiDetailActivity extends AppCompatActivity {
+public class BerdonasiStep2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dokumentasi_detail);
+        setContentView(R.layout.activity_berdonasi_step2);
         ButterKnife.bind(this);
     }
 }
