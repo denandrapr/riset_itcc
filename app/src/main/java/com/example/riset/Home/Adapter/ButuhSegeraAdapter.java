@@ -52,22 +52,22 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         String duit = mDuit.get(position);
         if (position == 0){
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp)
-                    .placeholder(R.drawable.dokumentasi_foto_temp)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.dokumentasi_foto_temp)
+                .placeholder(R.drawable.dokumentasi_foto_temp)
+                .into(holder.myView);
         }else if(position == 1){
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp1)
-                    .placeholder(R.drawable.dokumentasi_foto_temp1)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.dokumentasi_foto_temp1)
+                .placeholder(R.drawable.dokumentasi_foto_temp1)
+                .into(holder.myView);
         }else if(position == 2){
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp3)
-                    .placeholder(R.drawable.dokumentasi_foto_temp3)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.dokumentasi_foto_temp2)
+                .placeholder(R.drawable.dokumentasi_foto_temp2)
+                .into(holder.myView);
         }else if(position == 3){
             Glide
                     .with(holder.myView.getContext())

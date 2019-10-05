@@ -33,10 +33,10 @@ public class ProfileFragment  extends Fragment {
         ButterKnife.bind(this, view);
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getInstance().getCurrentUser();
-        if (user != null){
-            String uid = user.getEmail();
-        }
+//        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+//        if (user != null){
+//            String uid = user.getEmail();
+//        }
 
         return view;
     }

@@ -52,22 +52,29 @@ public class HomeFragment extends Fragment{
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseUser user = mAuth.getInstance().getCurrentUser();
-        if (user != null){
-            String uid = user.getEmail();
-        }
+//        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+//        if (user != null){
+//            String uid = user.getEmail();
+//        }
 
         ArrayList<String> animalNames = new ArrayList<>();
         animalNames.add("Bantu Bella agar dapat bersekolah \n" +
                 "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Alex mendapatkan buku \n" +
+                "Untuk bacaan");
         animalNames.add("Bantu Bella agar dapat bersekolah \n" +
                 "lagi untuk meraih mimpinya");
         animalNames.add("Bantu Bella agar dapat bersekolah \n" +
                 "lagi untuk meraih mimpinya");
         animalNames.add("Bantu Bella agar dapat bersekolah \n" +
                 "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
+
+        ArrayList<String> tutorMereka = new ArrayList<>();
+        tutorMereka.add("Pengajar di rumah belajar Laksma Putra");
+        tutorMereka.add("Pemateri pada kegiatan belajar Street childern surabaya");
+        tutorMereka.add("Pengajar di rumah les bella");
+        tutorMereka.add("Pengajar di rumah les bella");
+        tutorMereka.add("Pengajar di rumah les bella");
 
         ArrayList<String> duit = new ArrayList<>();
         duit.add("Rp 1.500.000");
@@ -91,7 +98,7 @@ public class HomeFragment extends Fragment{
 
         LinearLayoutManager horizontalLayout2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(horizontalLayout2);
-        jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), animalNames);
+        jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), tutorMereka);
 //        jadiTutorMerekaAdapter.setClickListener(this);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:background="#F6F6F6"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/fotoDonatur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/foto_donatur1" />
+
+    <TextView
+        android:id="@+id/nama_donatur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fotoDonatur"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Donatur"
+        android:textColor="#FF751B"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textDonasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama_donatur"
+        android:layout_toRightOf="@id/fotoDonatur"
+        android:text="Donasi"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/jumlahDonasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama_donatur"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/textDonasi"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Rp 15.000"
+        android:textSize="13sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textDonasi"
+        android:layout_toRightOf="@id/fotoDonatur"
+        android:text="16 September 2019, 20.30" />
+
+</RelativeLayout>

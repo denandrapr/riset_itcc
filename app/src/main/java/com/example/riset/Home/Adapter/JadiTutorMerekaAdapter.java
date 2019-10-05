@@ -40,11 +40,37 @@ public class JadiTutorMerekaAdapter extends RecyclerView.Adapter<JadiTutorMereka
     @Override
     public void onBindViewHolder(@NonNull JadiTutorMerekaAdapter.ViewHolder holder, int position) {
         String animal = mAnimals.get(position);
-        Glide
-         .with(holder.myView.getContext())
-         .load(R.drawable.img_tutor_mereka)
-         .placeholder(R.drawable.img_tutor_mereka)
-         .into(holder.myView);
+        if (position == 0){
+            Glide
+                .with(holder.myView.getContext())
+                .load(R.drawable.foto_tutor_1)
+                .placeholder(R.drawable.dokumentasi_foto_temp)
+                .into(holder.myView);
+        }else if(position == 1){
+            Glide
+                .with(holder.myView.getContext())
+                .load(R.drawable.foto_tutor_2)
+                .placeholder(R.drawable.dokumentasi_foto_temp1)
+                .into(holder.myView);
+        }else if(position == 2){
+            Glide
+                .with(holder.myView.getContext())
+                .load(R.drawable.foto_tutor_1)
+                .placeholder(R.drawable.dokumentasi_foto_temp3)
+                .into(holder.myView);
+        }else if(position == 3){
+            Glide
+                .with(holder.myView.getContext())
+                .load(R.drawable.foto_tutor_2)
+                .placeholder(R.drawable.dokumentasi_foto_temp)
+                .into(holder.myView);
+        }else{
+            Glide
+                .with(holder.myView.getContext())
+                .load(R.drawable.foto_tutor_1)
+                .placeholder(R.drawable.dokumentasi_foto_temp)
+                .into(holder.myView);
+        }
         holder.myTextView.setText(animal);
     }
 

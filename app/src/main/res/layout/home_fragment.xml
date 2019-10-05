@@ -121,6 +121,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Butuh kamu segera"
+                android:textColor="#2A2A2A"
                 android:textSize="18sp" />
 
             <TextView
@@ -163,6 +164,7 @@
                 android:layout_marginStart="24dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Jadilah tutor mereka"
+                android:textColor="#2A2A2A"
                 android:textSize="18sp" />
 
             <TextView
@@ -205,6 +207,7 @@
                 android:layout_marginStart="24dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Terdekat dengan kamu"
+                android:textColor="#2A2A2A"
                 android:textSize="18sp" />
 
             <TextView
