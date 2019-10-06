@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Donasi.BerdonasiStep2Activity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#707070"
+        android:textSize="16sp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Segera selesaikan pembayaran"
+        android:id="@+id/segeraSelesaikan"/>
 
+    <TextView
+        android:layout_below="@id/segeraSelesaikan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transfer sesuai nominal di bawah ini:"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:fontFamily="@font/nunito"
+        android:layout_marginTop="16dp"
+        android:id="@+id/transferSesuai"/>
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 40.000"
+        android:layout_below="@id/transferSesuai"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/nunito_bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtNominal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/txtNominal"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_filled_grey"
+        android:paddingLeft="24dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bca_logo"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="106462109"
+            android:layout_gravity="center_vertical"
+            android:gravity="end"
+            android:paddingRight="16dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_bold"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

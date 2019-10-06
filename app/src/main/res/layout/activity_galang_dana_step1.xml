@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Berdonasi.GalangDanaStep1Activity"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isi data dibawah ini"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="16sp"
+        android:textColor="#FF7419"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Judul Kegiatan"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_text_outline_grey"
+        android:hint="Contoh : bantu farouq untuk..."
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama penerima donasi"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_text_outline_grey"
+        android:hint="Contoh : farouq"
+        android:padding="8dp"/>
+
+</LinearLayout>

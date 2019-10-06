@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Donasi.BerdonasiStep2Activity"></activity>
+        <activity android:name=".Berdonasi.GalangDanaStep1Activity"></activity>
+        <activity android:name=".Donasi.MetodePembayaranActivity" />
+        <activity android:name=".Donasi.BerdonasiStep2Activity" />
         <activity android:name=".Donasi.BerdonasiStep1Activity" />
         <activity android:name=".Dokumentasi.DokumentasiDetailActivity" />
         <activity android:name=".Home.DonasiDetailActivity" />
