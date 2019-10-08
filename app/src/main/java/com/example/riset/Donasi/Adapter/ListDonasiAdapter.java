@@ -29,7 +29,7 @@ public class ListDonasiAdapter  extends RecyclerView.Adapter<ListDonasiAdapter.V
     @Override
     @NonNull
     public ListDonasiAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_dokumentasi, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_terdekat_kamu, parent, false);
         ListDonasiAdapter.ViewHolder holder = new ListDonasiAdapter.ViewHolder(view);
         return holder;
     }
@@ -39,27 +39,21 @@ public class ListDonasiAdapter  extends RecyclerView.Adapter<ListDonasiAdapter.V
         String result = mAnimals.get(position);
         if (position == 0){
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp)
-                    .placeholder(R.drawable.dokumentasi_foto_temp)
-                    .into(holder.myView);
-        }else if(position == 1){
-            Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp1)
-                    .placeholder(R.drawable.dokumentasi_foto_temp1)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.terdekat_kamu_temp1)
+                .placeholder(R.drawable.terdekat_kamu_temp1)
+                .into(holder.myView);
         }else if(position == 2){
             Glide
                     .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp3)
-                    .placeholder(R.drawable.dokumentasi_foto_temp3)
+                    .load(R.drawable.terdekat_kamu_temp2)
+                    .placeholder(R.drawable.terdekat_kamu_temp2)
                     .into(holder.myView);
         }else{
             Glide
                     .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp)
-                    .placeholder(R.drawable.dokumentasi_foto_temp)
+                    .load(R.drawable.item_terdekat_kamu)
+                    .placeholder(R.drawable.item_terdekat_kamu)
                     .into(holder.myView);
         }
         holder.myTextView.setText(result);
@@ -76,8 +70,8 @@ public class ListDonasiAdapter  extends RecyclerView.Adapter<ListDonasiAdapter.V
 
         ViewHolder(View itemView) {
             super(itemView);
-            myView = itemView.findViewById(R.id.imgDoc);
-            myTextView = itemView.findViewById(R.id.txtJudul);
+            myView = itemView.findViewById(R.id.imgTerdekat);
+            myTextView = itemView.findViewById(R.id.tvAnimalName);
             itemView.setOnClickListener(this);
         }
 

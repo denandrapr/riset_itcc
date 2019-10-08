@@ -198,7 +198,7 @@
             android:layout_marginTop="14dp"
             android:id="@+id/linear4"
             android:layout_below="@id/full_line2"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/txt6"
