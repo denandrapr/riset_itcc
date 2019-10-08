@@ -24,4 +24,10 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         Intent i = new Intent(BerdonasiStep1Activity.this, BerdonasiStep2Activity.class);
         startActivity(i);
     }
+
+    @OnClick(R.id.pilihMetodeBayar)
+    void pilihMetodeBayar(){
+        Intent i = new Intent(BerdonasiStep1Activity.this, MetodePembayaranActivity.class);
+        startActivity(i);
+    }
 }

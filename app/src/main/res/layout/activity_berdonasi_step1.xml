@@ -35,6 +35,8 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:inputType="number"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="18sp"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"/>
 

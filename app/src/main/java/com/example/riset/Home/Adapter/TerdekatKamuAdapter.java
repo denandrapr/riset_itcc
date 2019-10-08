@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.riset.R;
 
 import java.util.List;
@@ -38,22 +40,22 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         String result = mAnimals.get(position);
         if (position == 0){
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.terdekat_kamu_temp1)
-                    .placeholder(R.drawable.terdekat_kamu_temp1)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.terdekat_kamu_temp1)
+                .placeholder(R.drawable.terdekat_kamu_temp1)
+                .into(holder.myView);
         }else if(position == 2){
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.terdekat_kamu_temp2)
-                    .placeholder(R.drawable.terdekat_kamu_temp2)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.terdekat_kamu_temp2)
+                .placeholder(R.drawable.terdekat_kamu_temp2)
+                .into(holder.myView);
         }else{
             Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.item_terdekat_kamu)
-                    .placeholder(R.drawable.item_terdekat_kamu)
-                    .into(holder.myView);
+                .with(holder.myView.getContext())
+                .load(R.drawable.item_terdekat_kamu)
+                .placeholder(R.drawable.item_terdekat_kamu)
+                .into(holder.myView);
         }
         holder.myTextView.setText(result);
     }
