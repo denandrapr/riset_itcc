@@ -17,6 +17,8 @@ import com.example.riset.Berdonasi.BuatKegiatanActivity;
 import com.example.riset.Donasi.Adapter.ListDonasiAdapter;
 import com.example.riset.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -28,7 +30,12 @@ public class DonasiFragment  extends Fragment {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
+    @BindView(R.id.fab_add)
+    FloatingActionButton fab;
+
     ListDonasiAdapter listDonasiAdapter;
+
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -57,6 +64,14 @@ public class DonasiFragment  extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listDonasiAdapter);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+        if (user != null){
+            fab.show();
+        }else{
+            fab.hide();
+        }
 
         return view;
     }
