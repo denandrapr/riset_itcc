@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,12 +22,18 @@ import com.example.riset.RegistSignIn.WelcomeSignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ProfileFragment  extends Fragment {
 
     private FirebaseAuth mAuth;
+
+    @BindView(R.id.relative1)
+    RelativeLayout relativeLayout;
+    @BindView(R.id.linear1)
+    LinearLayout linearLayout;
 
     @Nullable
     @Override
@@ -33,10 +42,15 @@ public class ProfileFragment  extends Fragment {
         ButterKnife.bind(this, view);
 
         mAuth = FirebaseAuth.getInstance();
-//        FirebaseUser user = mAuth.getInstance().getCurrentUser();
-//        if (user != null){
+        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+        if (user != null){
 //            String uid = user.getEmail();
-//        }
+            linearLayout.setVisibility(View.VISIBLE);
+            relativeLayout.setVisibility(View.GONE);
+        }else{
+            linearLayout.setVisibility(View.GONE);
+            relativeLayout.setVisibility(View.VISIBLE);
+        }
 
         return view;
     }
@@ -55,5 +69,11 @@ public class ProfileFragment  extends Fragment {
                         startActivity(p);
                     }
                 }).setNegativeButton("No", null).show();
+    }
+
+    @OnClick(R.id.sign_btn)
+    void sign_button(){
+        Intent i = new Intent(getActivity(), WelcomeSignInActivity.class);
+        startActivity(i);
     }
 }

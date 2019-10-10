@@ -37,7 +37,46 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <ImageView
+            android:id="@+id/img_tree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_tree"
+            android:layout_marginTop="125dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/text_peringatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_tree"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Login terlebih dahulu\nUntuk mengakses fitur ini"/>
+
+        <Button
+            android:id="@+id/sign_btn"
+            android:layout_below="@id/text_peringatan"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_centerHorizontal="true"
+            android:text="Sign in"
+            android:textAllCaps="false"
+            android:layout_marginTop="24dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_filled_orange"/>
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -45,7 +84,8 @@
         android:background="#fff"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingTop="24dp">
+        android:paddingTop="24dp"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
