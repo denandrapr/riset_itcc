@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Berdonasi.activity_donasibarang"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:padding="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isi data dibawah ini"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="16sp"
+        android:textColor="#FF7419"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Judul Kegiatan"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/edit_text_outline_grey"
+        android:hint="Contoh : Bantu Farouq untuk Sekolah"
+        android:padding="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jenis Barang yang Dibutuhkan"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp" />
+    <EditText
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/edit_text_outline_grey"
+        android:padding="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jumlah Barang yang Dibutuhkan"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp" />
+    <EditText
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/edit_text_outline_grey"
+        android:hint="0"
+        android:padding="8dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batas Waktu Donasi Barang"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp" />
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/edit_text_outline_grey"
+        android:layout_weight="0"
+        android:hint="Pilih Tanggal"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="16dp"
+        android:textColorHint="#C7C7C7"
+        android:padding="8dp" />
+    <Button
+        android:id="@+id/btnglaangbarang1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_filled_orange"
+        android:text="Selanjutnya"
+        android:textAllCaps="false"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
