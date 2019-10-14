@@ -4,9 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Donasi.BerdonasiStep1Activity">
+    tools:context=".Donasi.BerdonasiStep1Activity"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Berdonasi"
+            android:textSize="16sp"
+            android:textColor="@android:color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -36,7 +62,8 @@
                 android:paddingLeft="8dp"
                 android:inputType="number"
                 android:fontFamily="@font/nunito_bold"
-                android:textSize="18sp"
+                android:textSize="24sp"
+                android:textColor="#5F5F5F"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"/>
 
@@ -52,6 +79,89 @@
             android:textAllCaps="false"
             android:background="@drawable/btn_outline_orange"
             android:textColor="#FF7419"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="5dp"
+            android:layout_marginBottom="24dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="8dp">
+
+                <TextView
+                    android:id="@+id/metodeBayarJudul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Metode Pembayaran"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/metodenya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bank BCA"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/metodeBayarJudul"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/nunito"/>
+
+                <ImageView
+                    android:id="@+id/bca_logo"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bca_logo"
+                    android:visibility="gone"
+                    android:layout_toLeftOf="@id/arrow"/>
+
+                <ImageView
+                    android:id="@+id/bri_logo"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bri_logo"
+                    android:visibility="gone"
+                    android:layout_toLeftOf="@id/arrow"/>
+
+                <ImageView
+                    android:id="@+id/mandiri_logo"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mandiri_logo"
+                    android:visibility="gone"
+                    android:layout_toLeftOf="@id/arrow"/>
+
+                <ImageView
+                    android:id="@+id/alfa_logo"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/alfa_logo"
+                    android:visibility="gone"
+                    android:layout_toLeftOf="@id/arrow"/>
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_chevron_right_black_24dp"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:layout_width="match_parent"
