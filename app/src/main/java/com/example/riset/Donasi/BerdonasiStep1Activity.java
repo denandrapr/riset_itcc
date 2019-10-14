@@ -40,6 +40,8 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
     CardView cardView;
     @BindView(R.id.txtNominal)
     EditText txtNominal;
+    @BindView(R.id.keterangan)
+    EditText txtKeterangan;
     @BindView(R.id.metodenya)
     TextView metodenya;
     @BindView(R.id.bca_logo)
@@ -58,7 +60,6 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_berdonasi_step1);
         ButterKnife.bind(this);
-        BerdonasiStep1Activity.this.getSharedPreferences("Settings", 0).edit().clear().commit();
         mSettings = BerdonasiStep1Activity.this.getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         txtNominal.addTextChangedListener(onTextChangedListener());
@@ -145,8 +146,16 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
 
     @OnClick(R.id.lanjutkan_pembayaran)
     void lanjut_pembayaran(){
-        Intent i = new Intent(BerdonasiStep1Activity.this, BerdonasiStep2Activity.class);
-        startActivity(i);
+        if (txtNominal.getText().toString().equals("")){
+            Toast.makeText(this, "Silahkan mengisi nominal", Toast.LENGTH_SHORT).show();
+        }else{
+            Intent i = new Intent(BerdonasiStep1Activity.this, BerdonasiStep2Activity.class);
+            SharedPreferences.Editor editor = mSettings.edit();
+            editor.putString("nominal_donasi", txtNominal.getText().toString());
+            editor.putString("keterangan", txtKeterangan.getText().toString());
+            editor.apply();
+            startActivity(i);
+        }
     }
 
     @OnClick(R.id.pilihMetodeBayar)
