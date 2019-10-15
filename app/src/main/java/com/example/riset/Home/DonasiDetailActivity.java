@@ -11,10 +11,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.Donasi.BerdonasiStep1Activity;
 import com.example.riset.Home.Adapter.DonaturDetailDonasiAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.R;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
@@ -28,6 +34,11 @@ public class DonasiDetailActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference donaturRef = db.collection("Posting")
+            .document("0IwGCiXsMiTPYTdPsmq6")
+            .collection("berdonasi");
 
     DonaturDetailDonasiAdapter donaturDetailDonasiAdapter;
 
@@ -55,6 +66,14 @@ public class DonasiDetailActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(donaturDetailDonasiAdapter);
+    }
+
+    private void get_data_donatur(){
+        Query q = donaturRef;
+
+        FirestoreRecyclerOptions<BerdonasiUangModel> options = new FirestoreRecyclerOptions.Builder<BerdonasiUangModel>()
+                .setQuery(q, BerdonasiUangModel.class)
+                .build();
     }
 
     @Override

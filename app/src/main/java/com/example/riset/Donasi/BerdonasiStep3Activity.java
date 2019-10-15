@@ -24,6 +24,7 @@ public class BerdonasiStep3Activity extends AppCompatActivity {
     void btn_selesai(){
         BerdonasiStep3Activity.this.getSharedPreferences("Settings", 0).edit().clear().commit();
         Intent i = new Intent(BerdonasiStep3Activity.this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
 }
