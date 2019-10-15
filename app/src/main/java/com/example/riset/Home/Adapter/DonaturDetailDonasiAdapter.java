@@ -1,9 +1,12 @@
 package com.example.riset.Home.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,53 +14,66 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.R;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.List;
 
-public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDetailDonasiAdapter.ViewHolder> {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private List<String> mAnimals;
-    private LayoutInflater mInflater;
+public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDetailDonasiAdapter.ViewHolder>{
+    private Context context;
+    private List<BerdonasiUangModel> data;
 
-    public DonaturDetailDonasiAdapter(Context context, List<String> animals) {
-        this.mInflater = LayoutInflater.from(context);
-        this.mAnimals = animals;
+    public DonaturDetailDonasiAdapter(Context context, List<BerdonasiUangModel> data) {
+        this.context = context;
+        this.data = data;
     }
 
     @Override
-    @NonNull
-    public DonaturDetailDonasiAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_donatur_detail_donasi, parent, false);
-        DonaturDetailDonasiAdapter.ViewHolder holder = new DonaturDetailDonasiAdapter.ViewHolder(view);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_donatur_detail_donasi, parent, false);
+        ViewHolder holder = new ViewHolder(v);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DonaturDetailDonasiAdapter.ViewHolder holder, int position) {
-        String result = mAnimals.get(position);
-//        Glide
-//                .with(holder.myView.getContext())
-//                .load(R.drawable.item_terdekat_kamu)
-//                .placeholder(R.drawable.item_terdekat_kamu)
-//                .into(holder.myView);
-//        holder.myTextView.setText(result);
+    public void onBindViewHolder(ViewHolder holder, int position){
+        BerdonasiUangModel results = data.get(position);
+        holder.txtNamaDonatur.setText(results.getNama());
     }
 
     @Override
-    public int getItemCount() {
-        return mAnimals.size();
+    public int getItemCount(){
+        return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView myView;
-        TextView myTextView;
+    public class ViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener*/{
 
-        ViewHolder(View itemView) {
+        @BindView(R.id.fotoDonatur)
+        ImageView foto_donatur;
+        @BindView(R.id.nama_donatur)
+        TextView txtNamaDonatur;
+        @BindView(R.id.jumlahDonasi)
+        TextView txtJumlahDonasi;
+
+        public ViewHolder(View itemView){
             super(itemView);
-//            myView = itemView.findViewById(R.id.imgTerdekat);
-//            myTextView = itemView.findViewById(R.id.tvAnimalName);
+            ButterKnife.bind(this, itemView);
+//            itemView.setOnClickListener(this);
         }
+
+//        @Override
+//        public void onClick(View view) {
+//            String ii = isi.getText().toString();
+//            Intent i = new Intent(view.getContext(), Detail.class);
+//            i.putExtra("isi", ii);
+//            view.getContext().startActivity(i);
+////            Toast.makeText(context, ii, Toast.LENGTH_SHORT).show();
+//        }
     }
 }
-
