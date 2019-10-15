@@ -172,13 +172,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Keterangan"
+            android:text="Keterangan (opsional)"
             android:layout_marginBottom="16dp"/>
 
         <EditText
+            android:id="@+id/keterangan"
             android:hint="Tulis dukungan atau doa"
             android:paddingLeft="12dp"
             android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
             android:layout_height="88dp"
             android:background="@drawable/edit_text_outline_grey"/>
 

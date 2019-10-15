@@ -6,7 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Donasi.BerdonasiStep2Activity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Berdonasi"
+            android:textSize="16sp"
+            android:textColor="@android:color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
+        android:layout_below="@id/toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -40,21 +65,51 @@
         android:id="@+id/txtNominal"/>
 
     <LinearLayout
+        android:id="@+id/layout_bank"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/txtNominal"
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_filled_grey"
         android:paddingLeft="24dp"
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/bca_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/bca_logo"
             android:layout_weight="5"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/bri_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bri_logo"
+            android:layout_weight="5"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/mandiri_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mandiri_logo"
+            android:layout_weight="5"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/alfa_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alfa_logo"
+            android:layout_weight="5"
+            android:visibility="gone"
             android:layout_gravity="center_vertical"/>
 
         <TextView
@@ -69,5 +124,200 @@
             android:fontFamily="@font/nunito_bold"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_peringatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_below="@id/layout_bank"
+        android:layout_marginTop="24dp"
+        android:text="Transfer sebelum 16 Sep 2019 1:38 WIB atau donasi kamu
+otomatis dibatalkan oleh sistem."
+        android:fontFamily="@font/nunito"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/id_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line_grey"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_below="@id/text_peringatan"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/panduan_judul"
+        android:layout_below="@id/id_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Panduan Pembayaran"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/panduan_judul"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:background="@drawable/edit_text_outline_grey">
+
+        <com.github.florent37.expansionpanel.ExpansionHeader
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:expansion_headerIndicator="@id/headerIndicator"
+            app:expansion_layout="@id/expansionLayout"
+            app:expansion_toggleOnClick="true">
+
+            <!-- HEADER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ATM BCA"
+                android:fontFamily="@font/nunito_bold"/>
+            <!-- HEADER INDICATOR -->
+            <ImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_gravity="center_vertical|right"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+        </com.github.florent37.expansionpanel.ExpansionHeader>
+
+        <com.github.florent37.expansionpanel.ExpansionLayout
+            android:id="@+id/expansionLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Halooo"/>
+
+        </com.github.florent37.expansionpanel.ExpansionLayout>
+
+        <com.github.florent37.expansionpanel.ExpansionHeader
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:expansion_headerIndicator="@id/headerIndicator"
+            app:expansion_layout="@id/expansionLayout2"
+            app:expansion_toggleOnClick="true">
+
+            <!-- HEADER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="m-BCA (BCA Mobile)"
+                android:fontFamily="@font/nunito_bold"/>
+            <!-- HEADER INDICATOR -->
+            <ImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_gravity="center_vertical|right"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+        </com.github.florent37.expansionpanel.ExpansionHeader>
+
+        <com.github.florent37.expansionpanel.ExpansionLayout
+            android:id="@+id/expansionLayout2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Halooo"/>
+
+        </com.github.florent37.expansionpanel.ExpansionLayout>
+
+        <com.github.florent37.expansionpanel.ExpansionHeader
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:expansion_headerIndicator="@id/headerIndicator"
+            app:expansion_layout="@id/expansionLayout3"
+            app:expansion_toggleOnClick="true">
+
+            <!-- HEADER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Internet Banking BCA"
+                android:fontFamily="@font/nunito_bold"/>
+            <!-- HEADER INDICATOR -->
+            <ImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_gravity="center_vertical|right"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+        </com.github.florent37.expansionpanel.ExpansionHeader>
+
+        <com.github.florent37.expansionpanel.ExpansionLayout
+            android:id="@+id/expansionLayout3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Halooo"/>
+
+        </com.github.florent37.expansionpanel.ExpansionLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_selesai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_filled_orange"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="Selesai"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:id="@+id/relative2">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            android:indeterminateTint="@color/colorPrimary"
+            style="@style/SpinKitView.Large.FoldingCube"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorAccent" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

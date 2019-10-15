@@ -27,7 +27,7 @@ public class MetodePembayaranActivity extends AppCompatActivity {
     ArrayList<String> list;
     ArrayAdapter adapter;
     String metodeDiPilih;
-String[] bank = {"BCA", "Mandiri", "BRI", "Alfamart"};
+    String[] bank = {"BCA", "Mandiri", "BRI", "Alfamart"};
 
     @BindView(R.id.listView)
     ListView mListView;
