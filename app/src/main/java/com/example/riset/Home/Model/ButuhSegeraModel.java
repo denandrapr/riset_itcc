@@ -6,12 +6,14 @@ public class ButuhSegeraModel {
     private String img;
     private String judul;
     private String target;
+    private String targetTanggal;
 
-    public ButuhSegeraModel(String deskripsi, String img, String judul, String target) {
+    public ButuhSegeraModel(String deskripsi, String img, String judul, String target, String targetTanggal) {
         this.deskripsi = deskripsi;
         this.img = img;
         this.judul = judul;
         this.target = target;
+        this.targetTanggal = targetTanggal;
     }
 
     public String getDeskripsi() {
@@ -28,5 +30,9 @@ public class ButuhSegeraModel {
 
     public String getTarget() {
         return target;
+    }
+
+    public String getTargetTanggal() {
+        return targetTanggal;
     }
 }

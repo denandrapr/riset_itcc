@@ -14,10 +14,9 @@
         android:layout_height="174dp" />
 
     <TextView
-        android:id="@+id/tvAnimalName"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtJudul"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="@font/nunito_bold"
         android:textSize="16sp" />
 
@@ -41,6 +40,32 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtSisa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txtInfoSisa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:text="Hari tersisa"
             android:fontFamily="@font/nunito"
             android:textSize="12sp" />
 

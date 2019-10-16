@@ -44,7 +44,18 @@ public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDeta
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         BerdonasiUangModel results = data.get(position);
-        holder.txtNamaDonatur.setText(results.getNama());
+        if (results.isAnonim()){
+            holder.txtNamaDonatur.setText("Anonim");
+        }else{
+            holder.txtNamaDonatur.setText(results.getNama());
+        }
+        holder.txtJumlahDonasi.setText(Integer.toString(results.getNominal()));
+        holder.txtDonasiDate.setText(results.getTanggal());
+        Glide.with(holder.foto_donatur.getContext())
+                .load(R.drawable.placeholder)
+                .circleCrop()
+                .placeholder(R.drawable.placeholder)
+                .into(holder.foto_donatur);
     }
 
     @Override
@@ -60,6 +71,8 @@ public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDeta
         TextView txtNamaDonatur;
         @BindView(R.id.jumlahDonasi)
         TextView txtJumlahDonasi;
+        @BindView(R.id.donasi_date)
+        TextView txtDonasiDate;
 
         public ViewHolder(View itemView){
             super(itemView);

@@ -25,7 +25,13 @@ import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -129,12 +135,25 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
         btn_selesai.setVisibility(View.GONE);
         relativeLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
-        BerdonasiUangModel bum = new BerdonasiUangModel(get_keterangan, metode, nominal, true, "15-9-2019","Bob");
+//        BerdonasiUangModel bum = new BerdonasiUangModel(get_keterangan, metode, nominal, true, "15-9-2019","Bob");
+        //get date
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy HH:mm");
+        String strDate = formatter.format(date);
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("keterangan", get_keterangan);
+        updates.put("metode", metode);
+        updates.put("nominal", nominal);
+        updates.put("anonim", true);
+        updates.put("tanggal", strDate);
+        updates.put("nama", "bob");
+        updates.put("created_date", FieldValue.serverTimestamp());
         db.collection("Posting")
                 .document("0IwGCiXsMiTPYTdPsmq6")
                 .collection("berdonasi")
                 .document()
-                .set(bum)
+                .set(updates)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

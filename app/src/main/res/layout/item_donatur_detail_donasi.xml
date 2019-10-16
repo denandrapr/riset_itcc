@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/fotoDonatur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/foto_donatur1" />
 
@@ -40,12 +40,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nama_donatur"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="-1dp"
         android:layout_toRightOf="@id/textDonasi"
         android:fontFamily="@font/nunito_bold"
         android:text="Rp 15.000"
         android:textSize="13sp" />
 
     <TextView
+        android:id="@+id/donasi_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textDonasi"

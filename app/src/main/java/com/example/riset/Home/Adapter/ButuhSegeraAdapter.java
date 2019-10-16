@@ -2,6 +2,8 @@ package com.example.riset.Home.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,26 +16,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.riset.Home.DonasiDetailActivity;
+import com.example.riset.Home.Model.ButuhSegeraModel;
 import com.example.riset.R;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.ViewHolder> {
 
-    private List<String> mAnimals;
-    private List<String> mDuit;
-    private List<String> mInfo;
     private LayoutInflater mInflater;
+    private List<ButuhSegeraModel> butuhSegeraModels;
     Context context;
 
     // data is passed into the constructor
-    public ButuhSegeraAdapter(Context context, List<String> animals, List<String> mDuit, List<String> mInfo) {
+    public ButuhSegeraAdapter(Context context, List<ButuhSegeraModel> data) {
         this.mInflater = LayoutInflater.from(context);
-        this.mAnimals = animals;
-        this.mDuit = mDuit;
-        this.mInfo = mInfo;
+        this.butuhSegeraModels = data;
     }
 
     // inflates the row layout from xml when needed
@@ -47,71 +56,66 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     // binds the data to the view and textview in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String animal = mAnimals.get(position);
-        String info = mInfo.get(position);
-        String duit = mDuit.get(position);
-        if (position == 0){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.dokumentasi_foto_temp)
-                .placeholder(R.drawable.dokumentasi_foto_temp)
-                .into(holder.myView);
-        }else if(position == 1){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.dokumentasi_foto_temp1)
-                .placeholder(R.drawable.dokumentasi_foto_temp1)
-                .into(holder.myView);
-        }else if(position == 2){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.dokumentasi_foto_temp2)
-                .placeholder(R.drawable.dokumentasi_foto_temp2)
-                .into(holder.myView);
-        }else if(position == 3){
-            Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.foto3)
-                    .placeholder(R.drawable.dokumentasi_foto_temp)
-                    .into(holder.myView);
-        }else{
-            Glide
-                    .with(holder.myView.getContext())
-                    .load(R.drawable.dokumentasi_foto_temp)
-                    .placeholder(R.drawable.dokumentasi_foto_temp)
-                    .into(holder.myView);
-        }
-        holder.myTextView.setText(animal);
-        holder.txtInfo.setText(info);
-        holder.txtDuit.setText(duit);
+        ButuhSegeraModel result = butuhSegeraModels.get(position);
+        Glide
+            .with(holder.imageSegera.getContext())
+            .load(result.getImg())
+            .placeholder(R.drawable.dokumentasi_foto_temp)
+            .into(holder.imageSegera);
+        holder.textJudul.setText(result.getJudul());
+        holder.textInfo.setText("Terkumpul dari Rp "+result.getTarget());
+        holder.textDuit.setText("0");
+        holder.textSisa.setText(result.getTargetTanggal());
+
+        String getDate = result.getTargetTanggal();
+        CurrentDateTimeExample1();
+    }
+
+
+    public void CurrentDateTimeExample1() {
+
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+
+        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = new Date("25-November-2019");
+
+        Log.d("date", "CurrentDateTimeExample1: " + formatter.format(date));
+        Log.d("date", formatter1.format(date1));
 
     }
+
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return mAnimals.size();
+        return butuhSegeraModels.size();
     }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView myView;
-        TextView myTextView;
-        TextView txtInfo;
-        TextView txtDuit;
+
+        @BindView(R.id.txtJudul)
+        TextView textJudul;
+        @BindView(R.id.txtDuit)
+        TextView textDuit;
+        @BindView(R.id.imgSegera)
+        ImageView imageSegera;
+        @BindView(R.id.txtInfo)
+        TextView textInfo;
+        @BindView(R.id.txtSisa)
+        TextView textSisa;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myView = itemView.findViewById(R.id.imgSegera);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
-            txtInfo = itemView.findViewById(R.id.txtInfo);
-            txtDuit = itemView.findViewById(R.id.txtDuit);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             Intent i = new Intent(view.getContext(), DonasiDetailActivity.class);
+            i.putExtra("id", "0IwGCiXsMiTPYTdPsmq6");
             view.getContext().startActivity(i);
         }
     }
