@@ -2,6 +2,7 @@ package com.example.riset.Home;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +15,26 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.Home.Adapter.ButuhSegeraAdapter;
+import com.example.riset.Home.Adapter.DonaturDetailDonasiAdapter;
 import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
+import com.example.riset.Home.Model.ButuhSegeraModel;
 import com.example.riset.MainActivity;
 import com.example.riset.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +53,11 @@ public class HomeFragment extends Fragment{
     JadiTutorMerekaAdapter jadiTutorMerekaAdapter;
     TerdekatKamuAdapter terdekatKamuAdapter;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
+
+    private List<ButuhSegeraModel> listButuhSegera = new ArrayList<>();
+    ButuhSegeraModel butuhSegeraModel;
 
     @Nullable
     @Override
@@ -92,14 +108,12 @@ public class HomeFragment extends Fragment{
 
         LinearLayoutManager horizontalLayout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayout);
-        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), animalNames, duit, info);
-//        adapterButuhSegera.setClickListener(this);
+        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), listButuhSegera);
         recyclerView.setAdapter(adapterButuhSegera);
 
         LinearLayoutManager horizontalLayout2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(horizontalLayout2);
         jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), tutorMereka);
-//        jadiTutorMerekaAdapter.setClickListener(this);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
         terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
@@ -108,7 +122,27 @@ public class HomeFragment extends Fragment{
         recyclerView3.setLayoutManager(mLayoutManager);
         recyclerView3.setAdapter(terdekatKamuAdapter);
 
+        ambilButuhKamuSegera();
+
         return view;
+    }
+
+    private void ambilButuhKamuSegera() {
+        db.collection("Posting")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+//                            Log.d("TAG ", "Hasil = > "+doc.getData());
+                            Gson gson = new Gson();
+                            JsonElement jsonElement =gson.toJsonTree(doc.getData());
+                            listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
+                        }
+                        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), listButuhSegera);
+                        recyclerView.setAdapter(adapterButuhSegera);
+                    }
+                });
     }
 
 }

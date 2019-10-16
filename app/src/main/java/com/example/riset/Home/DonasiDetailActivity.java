@@ -47,17 +47,19 @@ public class DonasiDetailActivity extends AppCompatActivity {
 
     private List<BerdonasiUangModel> list = new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference donaturRef = db.collection("Posting")
-            .document("0IwGCiXsMiTPYTdPsmq6")
-            .collection("berdonasi");
 
     DonaturDetailDonasiAdapter donaturDetailDonasiAdapter;
+    String id = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donasi_detail);
         ButterKnife.bind(this);
+
+        Intent i = getIntent();
+        id = i.getStringExtra("id");
+        Log.d("idnya", "Id adalah => "+id);
 
         ArrayList<String> tutorMereka = new ArrayList<>();
         tutorMereka.add("Anonim");
@@ -81,6 +83,10 @@ public class DonasiDetailActivity extends AppCompatActivity {
         get_data_donatur();
     }
 
+    private void get_data_detail_donasi(){
+        
+    }
+
     private void get_data_donatur(){
 
         db.collection("Posting")
@@ -91,7 +97,7 @@ public class DonasiDetailActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot doc : task.getResult()){
-//                            Log.d("TAG ", "Hasil = > "+doc.getData());
+                            Log.d("TAG ", "Hasil = > "+doc.getData());
                             Gson gson = new Gson();
                             JsonElement jsonElement =gson.toJsonTree(doc.getData());
                             list.add(gson.fromJson(jsonElement, BerdonasiUangModel.class));
