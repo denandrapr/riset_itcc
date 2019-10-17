@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistSignIn.SignInActivity"
+    android:background="@drawable/bg_all">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingRight="32dp"
+        android:paddingLeft="32dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_big"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="140dp"/>
+
+            <TextView
+                android:layout_marginTop="110dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@android:color/white"/>
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/white"
+                android:textColorHint="#C7C7C7"
+                android:backgroundTint="@android:color/white"/>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@android:color/white"/>
+
+            <EditText
+                android:id="@+id/txtPasswd"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textColor="@android:color/white"
+                android:textColorHint="#C7C7C7"
+                android:backgroundTint="@android:color/white"/>
+
+            <Button
+                android:id="@+id/btnSignIn"
+                android:layout_marginTop="42dp"
+                android:layout_width="230dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textAllCaps="false"
+                android:textColor="#F76301"
+                android:background="@drawable/rounded_corner"/>
+
+    </LinearLayout>
+
+</LinearLayout>
