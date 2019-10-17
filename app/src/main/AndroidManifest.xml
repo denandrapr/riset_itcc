@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Donasi.BerdonasiStep3Activity"></activity>
+        <activity android:name=".Berdonasi.GalangDanaStep4Activity"></activity>
+        <activity android:name=".Berdonasi.GalangDanaStep3Activity" />
+        <activity android:name=".Berdonasi.GalangDanaStep2Activity" />
+        <activity android:name=".Berdonasi.DonasiBarangStep3Activity" />
+        <activity android:name=".Berdonasi.DonasiBarangStep2Activity" />
+        <activity android:name=".Berdonasi.DonasiBarangStep1Activity" />
+        <activity android:name=".Berdonasi.DonasiRuanganStep3Activity" />
+        <activity android:name=".Berdonasi.DonasiRuanganStep2Activity" />
+        <activity android:name=".Berdonasi.DonasiRuanganStep1Activity" />
+        <activity android:name=".Donasi.BerdonasiStep3Activity" />
         <activity android:name=".Berdonasi.activity_donasibarangstep2" />
         <activity android:name=".Berdonasi.activity_donasibarang" />
         <activity android:name=".Berdonasi.BuatKegiatanActivity" />

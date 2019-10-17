@@ -113,6 +113,7 @@
                     android:layout_gravity="center_horizontal"/>
 
                 <Button
+                    android:id="@+id/donasi_barang"
                     android:layout_width="105dp"
                     android:layout_height="26dp"
                     android:text="Donasi Barang"
@@ -156,6 +157,7 @@
                     android:layout_gravity="center_horizontal"/>
 
                 <Button
+                    android:id="@+id/donasiRuangan"
                     android:layout_width="105dp"
                     android:layout_height="26dp"
                     android:text="Donasi Ruangan"

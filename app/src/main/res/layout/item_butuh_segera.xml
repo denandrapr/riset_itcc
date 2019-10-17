@@ -69,6 +69,16 @@
             android:fontFamily="@font/nunito"
             android:textSize="12sp" />
 
+        <TextView
+            android:id="@+id/txtId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:fontFamily="@font/nunito"
+            android:textSize="12sp" />
+
     </LinearLayout>
 
 </LinearLayout>

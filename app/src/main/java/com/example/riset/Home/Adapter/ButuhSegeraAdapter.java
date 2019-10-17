@@ -38,6 +38,7 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     private LayoutInflater mInflater;
     private List<ButuhSegeraModel> butuhSegeraModels;
     Context context;
+    String id = null;
 
     // data is passed into the constructor
     public ButuhSegeraAdapter(Context context, List<ButuhSegeraModel> data) {
@@ -69,6 +70,7 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
 
         String getDate = result.getTargetTanggal();
         CurrentDateTimeExample1();
+        holder.textId.setText(result.getId());
     }
 
 
@@ -105,6 +107,8 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         TextView textInfo;
         @BindView(R.id.txtSisa)
         TextView textSisa;
+        @BindView(R.id.txtId)
+        TextView textId;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -115,7 +119,8 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         @Override
         public void onClick(View view) {
             Intent i = new Intent(view.getContext(), DonasiDetailActivity.class);
-            i.putExtra("id", "0IwGCiXsMiTPYTdPsmq6");
+            String idnya = textId.getText().toString();
+            i.putExtra("id", idnya);
             view.getContext().startActivity(i);
         }
     }
