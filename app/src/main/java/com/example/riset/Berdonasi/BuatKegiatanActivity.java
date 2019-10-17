@@ -3,12 +3,15 @@ package com.example.riset.Berdonasi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.riset.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class BuatKegiatanActivity extends AppCompatActivity {
 
@@ -30,5 +33,18 @@ public class BuatKegiatanActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @OnClick(R.id.donasiRuangan)
+    void donasiRuangan(){
+//        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(BuatKegiatanActivity.this, DonasiRuanganStep1Activity.class);
+        startActivity(i);
+    }
+
+    @OnClick(R.id.donasi_barang)
+    void donasiBarang(){
+        Intent i = new Intent(BuatKegiatanActivity.this, DonasiBarangStep1Activity.class);
+        startActivity(i);
     }
 }
