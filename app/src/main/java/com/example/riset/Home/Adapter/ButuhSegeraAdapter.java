@@ -18,10 +18,17 @@ import com.bumptech.glide.Glide;
 import com.example.riset.Home.DonasiDetailActivity;
 import com.example.riset.Home.Model.ButuhSegeraModel;
 import com.example.riset.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -37,9 +44,9 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
 
     private LayoutInflater mInflater;
     private List<ButuhSegeraModel> butuhSegeraModels;
-    Context context;
     String id = null;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    double total;
     // data is passed into the constructor
     public ButuhSegeraAdapter(Context context, List<ButuhSegeraModel> data) {
         this.mInflater = LayoutInflater.from(context);
@@ -57,6 +64,7 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     // binds the data to the view and textview in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        total = 0;
         ButuhSegeraModel result = butuhSegeraModels.get(position);
         Glide
             .with(holder.imageSegera.getContext())
@@ -64,13 +72,45 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
             .placeholder(R.drawable.dokumentasi_foto_temp)
             .into(holder.imageSegera);
         holder.textJudul.setText(result.getJudul());
-        holder.textInfo.setText("Terkumpul dari Rp "+result.getTarget());
-        holder.textDuit.setText("0");
+        holder.textInfo.setText("Terkumpul dari Rp "+decimalFormat(Double.parseDouble(result.getTarget())));
         holder.textSisa.setText(result.getTargetTanggal());
 
         String getDate = result.getTargetTanggal();
         CurrentDateTimeExample1();
         holder.textId.setText(result.getId());
+        id = result.getId();
+        holder.textDuit.setText("0");
+        get_count_dana(result.getId());
+    }
+
+    private void get_count_dana(String ide){
+        db.collection("Posting")
+                .document(ide)
+                .collection("berdonasi")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+                            total = total + doc.getDouble("nominal");
+//                            Log.d("TAG", "count => "+id+" "+doc.getDouble("nominal"));
+                        }
+                    }
+                });
+        Log.d("TAG", "totale => "+total);
+    }
+
+    private String decimalFormat(Double total){
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+
+        return kursIndonesia.format(total);
     }
 
 

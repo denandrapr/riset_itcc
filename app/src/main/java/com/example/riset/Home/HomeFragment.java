@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +52,10 @@ public class HomeFragment extends Fragment{
     RecyclerView recyclerView2;
     @BindView(R.id.recycler3)
     RecyclerView recyclerView3;
+    @BindView(R.id.scrollAll)
+    ScrollView scrollView1;
+    @BindView(R.id.relativeProgress)
+    RelativeLayout relativeLayout1;
 
     ButuhSegeraAdapter adapterButuhSegera;
     JadiTutorMerekaAdapter jadiTutorMerekaAdapter;
@@ -128,7 +136,10 @@ public class HomeFragment extends Fragment{
     }
 
     private void ambilButuhKamuSegera() {
+        relativeLayout1.setVisibility(View.VISIBLE);
+        scrollView1.setVisibility(View.GONE);
         db.collection("Posting")
+                .limit(5)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -141,8 +152,9 @@ public class HomeFragment extends Fragment{
                         }
                         adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), listButuhSegera);
                         recyclerView.setAdapter(adapterButuhSegera);
+                        relativeLayout1.setVisibility(View.GONE);
+                        scrollView1.setVisibility(View.VISIBLE);
                     }
                 });
     }
-
 }

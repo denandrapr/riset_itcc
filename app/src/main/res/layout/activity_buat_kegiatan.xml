@@ -34,7 +34,7 @@
         android:text="Kebaikan apa yang ingin kamu buat?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:fontFamily="@font/nunito_bold"
         android:layout_marginLeft="32dp"/>
 
@@ -42,7 +42,7 @@
         android:text="Pilih metode yang ingin ada lakukan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:layout_marginTop="8sp"
         android:textColor="@color/colorPrimary"
         android:fontFamily="@font/nunito_bold"
@@ -76,9 +76,11 @@
                     android:layout_gravity="center_horizontal"/>
 
                 <Button
+                    android:id="@+id/galang_dana"
                     android:layout_width="105dp"
                     android:layout_height="26dp"
                     android:text="Galang Dana"
+                    android:textSize="12sp"
                     android:background="@drawable/btn_filled_orange"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
@@ -117,6 +119,7 @@
                     android:layout_width="105dp"
                     android:layout_height="26dp"
                     android:text="Donasi Barang"
+                    android:textSize="12sp"
                     android:background="@drawable/btn_filled_orange"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
@@ -158,8 +161,9 @@
 
                 <Button
                     android:id="@+id/donasiRuangan"
-                    android:layout_width="105dp"
+                    android:layout_width="115dp"
                     android:layout_height="26dp"
+                    android:textSize="12sp"
                     android:text="Donasi Ruangan"
                     android:background="@drawable/btn_filled_orange"
                     android:textAllCaps="false"
@@ -200,6 +204,7 @@
                     android:text="Cari Relawan"
                     android:background="@drawable/btn_filled_orange"
                     android:textAllCaps="false"
+                    android:textSize="12sp"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="32dp"
                     android:layout_gravity="center_horizontal"

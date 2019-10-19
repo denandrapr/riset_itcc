@@ -23,7 +23,7 @@
         android:fontFamily="@font/nunito_bold"
         android:text="Donatur"
         android:textColor="#FF751B"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/textDonasi"
@@ -32,7 +32,7 @@
         android:layout_below="@id/nama_donatur"
         android:layout_toRightOf="@id/fotoDonatur"
         android:text="Donasi"
-        android:textSize="13sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/jumlahDonasi"
@@ -44,7 +44,7 @@
         android:layout_toRightOf="@id/textDonasi"
         android:fontFamily="@font/nunito_bold"
         android:text="Rp 15.000"
-        android:textSize="13sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/donasi_date"
@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textDonasi"
         android:layout_toRightOf="@id/fotoDonatur"
+        android:textSize="12sp"
         android:text="16 September 2019, 20.30" />
 
 </RelativeLayout>
