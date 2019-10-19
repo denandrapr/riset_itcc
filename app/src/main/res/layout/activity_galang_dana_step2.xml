@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/permata_logo"
+                android:src="@drawable/cimb_logo"
                 android:visibility="invisible" />
 
             <ImageView
@@ -227,6 +227,24 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/arrow"
                 android:src="@drawable/permata_logo"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/maybank_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/arrow"
+                android:src="@drawable/maybank_logo"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/mega_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/arrow"
+                android:src="@drawable/mega_logo"
                 android:visibility="invisible" />
 
             <ImageView

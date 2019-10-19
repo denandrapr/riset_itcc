@@ -51,6 +51,10 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
     ImageView cimb_logo;
     @BindView(R.id.permata_logo)
     ImageView permata_logo;
+    @BindView(R.id.maybank_logo)
+    ImageView maybank_logo;
+    @BindView(R.id.mega_logo)
+    ImageView mega_logo;
     @BindView(R.id.cardView)
     CardView cardView;
     @BindView(R.id.metodenya)
@@ -156,6 +160,9 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             bni_logo.setVisibility(View.GONE);
             mandiri_logo.setVisibility(View.GONE);
             permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.GONE);
         }else if (metode.equals("BRI")){
             metodenya.setText(metode);
             btnPilihBank.setVisibility(View.GONE);
@@ -164,6 +171,9 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             bni_logo.setVisibility(View.GONE);
             mandiri_logo.setVisibility(View.GONE);
             permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.GONE);
         }else if (metode.equals("Mandiri")){
             metodenya.setText(metode);
             btnPilihBank.setVisibility(View.GONE);
@@ -172,6 +182,9 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             bni_logo.setVisibility(View.GONE);
             mandiri_logo.setVisibility(View.VISIBLE);
             permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.GONE);
         }else if (metode.equals("BNI")){
             metodenya.setText(metode);
             btnPilihBank.setVisibility(View.GONE);
@@ -180,6 +193,9 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             bni_logo.setVisibility(View.VISIBLE);
             mandiri_logo.setVisibility(View.GONE);
             permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.GONE);
         }else if (metode.equals("CIMB Niaga")) {
             metodenya.setText(metode);
             btnPilihBank.setVisibility(View.GONE);
@@ -188,6 +204,9 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             bni_logo.setVisibility(View.GONE);
             mandiri_logo.setVisibility(View.GONE);
             permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.VISIBLE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.GONE);
         }else if (metode.equals("Permata Bank")) {
             metodenya.setText(metode);
             btnPilihBank.setVisibility(View.GONE);
@@ -196,6 +215,31 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             bni_logo.setVisibility(View.GONE);
             mandiri_logo.setVisibility(View.GONE);
             permata_logo.setVisibility(View.VISIBLE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.GONE);
+        }else if (metode.equals("Maybank")) {
+            metodenya.setText(metode);
+            btnPilihBank.setVisibility(View.GONE);
+            bca_logo.setVisibility(View.GONE);
+            bri_logo.setVisibility(View.GONE);
+            bni_logo.setVisibility(View.GONE);
+            mandiri_logo.setVisibility(View.GONE);
+            permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.VISIBLE);
+            mega_logo.setVisibility(View.GONE);
+        }else if (metode.equals("Bank Mega")) {
+            metodenya.setText(metode);
+            btnPilihBank.setVisibility(View.GONE);
+            bca_logo.setVisibility(View.GONE);
+            bri_logo.setVisibility(View.GONE);
+            bni_logo.setVisibility(View.GONE);
+            mandiri_logo.setVisibility(View.GONE);
+            permata_logo.setVisibility(View.GONE);
+            cimb_logo.setVisibility(View.GONE);
+            maybank_logo.setVisibility(View.GONE);
+            mega_logo.setVisibility(View.VISIBLE);
         }else{
             btnPilihBank.setVisibility(View.VISIBLE);
             cardView.setVisibility(View.GONE);
