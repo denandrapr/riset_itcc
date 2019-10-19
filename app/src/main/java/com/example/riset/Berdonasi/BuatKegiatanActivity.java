@@ -47,4 +47,10 @@ public class BuatKegiatanActivity extends AppCompatActivity {
         Intent i = new Intent(BuatKegiatanActivity.this, DonasiBarangStep1Activity.class);
         startActivity(i);
     }
+
+    @OnClick(R.id.galang_dana)
+    void galangDana(){
+        Intent i = new Intent(BuatKegiatanActivity.this, GalangDanaStep1Activity.class);
+        startActivity(i);
+    }
 }

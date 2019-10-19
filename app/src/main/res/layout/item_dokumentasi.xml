@@ -46,11 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="108dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Farouq mendapatkan donasi\nMie instan dari Mas Imam"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/imgDoc"
         app:layout_constraintTop_toTopOf="@+id/imgDoc" />
 

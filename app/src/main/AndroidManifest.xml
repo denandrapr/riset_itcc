@@ -2,14 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.riset">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Berdonasi.GalangDanaStep4Activity"></activity>
+        <activity android:name=".Donasi.MenjadiRelawanStep1"></activity>
+        <activity android:name=".Home.RelawanDetail" />
+        <activity android:name=".Berdonasi.GalangDanaStep4Activity" />
         <activity android:name=".Berdonasi.GalangDanaStep3Activity" />
         <activity android:name=".Berdonasi.GalangDanaStep2Activity" />
         <activity android:name=".Berdonasi.DonasiBarangStep3Activity" />

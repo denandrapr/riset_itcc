@@ -1,36 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    tools:context=".Home.DonasiDetailActivity">
-
-    <RelativeLayout
-        android:id="@+id/relative2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff"
-        android:visibility="gone">
-
-        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/spin_kit"
-            style="@style/SpinKitView.Large.FoldingCube"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/colorPrimary"
-            app:SpinKit_Color="@color/colorAccent" />
-
-    </RelativeLayout>
+    tools:context=".Home.RelawanDetail">
 
     <ScrollView
+        android:id="@+id/scroll1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scroll1">
+        tools:layout_editor_absoluteX="-66dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint"
@@ -62,12 +43,12 @@
 
             <TextView
                 android:id="@+id/textJudul"
-                android:layout_width="240dp"
+                android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="@string/judul"
+                android:text="Bantu anak di semampir untuk mendapatkan pendidikan yang layak"
                 android:textColor="@android:color/black"
                 android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +61,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito"
-                android:text="@string/uang"
+                android:text="5"
                 android:textColor="#FF751B"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/nunito"
+                android:text="dari 10 orang telah berpartisipasi"
                 android:textSize="12sp"
-                android:text="@string/terkumpul"
                 app:layout_constraintStart_toEndOf="@+id/textTerkumpul"
                 app:layout_constraintTop_toTopOf="@+id/textTerkumpul" />
 
@@ -138,8 +119,8 @@
                 android:layout_marginTop="22dp"
                 android:fontFamily="@font/nunito"
                 android:text="Denandra P"
-                android:textSize="12sp"
                 android:textColor="#FF751B"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -204,9 +185,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:paddingLeft="32dp"
-                android:textSize="12sp"
                 android:paddingRight="32dp"
                 android:text="@string/deskripsi_donasi"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.097"
                 app:layout_constraintStart_toStartOf="parent"
@@ -230,20 +211,20 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="Donasi"
+                android:text="Keahlian yang dibutuhkan"
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/textlist"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp"
+                android:layout_marginTop="16dp"
+                android:text="1. Guru Matematika"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.163"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -254,7 +235,6 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_filled_orange"
                 android:text="Donasi Sekarang"
                 android:textAllCaps="false"
@@ -262,13 +242,13 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler"
+                app:layout_constraintTop_toBottomOf="@+id/textlist"
                 app:layout_constraintVertical_bias="0.636" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

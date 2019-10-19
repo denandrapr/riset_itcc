@@ -3,7 +3,9 @@ package com.example.riset.Home;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.Donasi.BerdonasiStep1Activity;
+import com.example.riset.Donasi.MetodePembayaranActivity;
 import com.example.riset.Home.Adapter.DonaturDetailDonasiAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.Home.Model.ButuhSegeraModel;
@@ -39,6 +42,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,12 +82,17 @@ public class DonasiDetailActivity extends AppCompatActivity {
     DonaturDetailDonasiAdapter donaturDetailDonasiAdapter;
     String id = null;
     String judul = null;
+    double total = 0;
+    double target_keterangan = 0;
+    SharedPreferences mSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donasi_detail);
         ButterKnife.bind(this);
+
+        mSettings = DonasiDetailActivity.this.getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         Intent i = getIntent();
         id = i.getStringExtra("id");
@@ -97,6 +107,7 @@ public class DonasiDetailActivity extends AppCompatActivity {
 
         get_data_donatur();
         get_data_detail_donasi();
+        countNominal();
         Log.d("TAG", "id diterima => "+id);
     }
 
@@ -119,6 +130,8 @@ public class DonasiDetailActivity extends AppCompatActivity {
                         model = documentSnapshot.toObject(ButuhSegeraModel.class);
                         txtJudul.setText(model.getJudul());
                         txtDeskripsi.setText(model.getDeskripsi());
+                        target_keterangan = Double.parseDouble(model.getTarget());
+                        txtKetTerkumpul.setText("terkumpul dari "+decimalFormat(target_keterangan));
                     }
                 });
     }
@@ -129,14 +142,13 @@ public class DonasiDetailActivity extends AppCompatActivity {
         db.collection("Posting")
                 .document(id)
                 .collection("berdonasi")
-                .limit(3)
+                .limit(5)
                 .orderBy("created_date", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot doc : task.getResult()){
-//                            Log.d("TAG ", "Hasil = > "+doc.getData());
                             Gson gson = new Gson();
                             JsonElement jsonElement =gson.toJsonTree(doc.getData());
                             list.add(gson.fromJson(jsonElement, BerdonasiUangModel.class));
@@ -149,6 +161,35 @@ public class DonasiDetailActivity extends AppCompatActivity {
                 });
     }
 
+    private void countNominal(){
+        db.collection("Posting")
+                .document(id)
+                .collection("berdonasi")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+                            total = total + doc.getDouble("nominal");
+                        }
+                        txtTerkumpul.setText(decimalFormat(total));
+                    }
+                });
+    }
+
+    private String decimalFormat(Double total){
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+
+        return kursIndonesia.format(total);
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -157,6 +198,9 @@ public class DonasiDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_donasi)
     void btn_donasi_action(){
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putString("idDetailDonasi", id);
+        editor.apply();
         Intent i = new Intent(DonasiDetailActivity.this, BerdonasiStep1Activity.class);
         startActivity(i);
     }

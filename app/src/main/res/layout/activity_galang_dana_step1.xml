@@ -28,10 +28,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/edit_text_outline_grey"
         android:hint="Contoh : bantu farouq untuk..."
         android:padding="8dp"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="12sp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -45,6 +46,44 @@
         android:layout_height="40dp"
         android:background="@drawable/edit_text_outline_grey"
         android:hint="Contoh : farouq"
+        android:padding="8dp"
+        android:textSize="12sp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Target Bantuan"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_text_outline_grey"
+        android:hint=""
+        android:gravity="left"
         android:padding="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="center|bottom">
+
+        <Button
+            android:id="@+id/btn_selanjutnya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:textColor="@android:color/white"
+            android:text="Selanjutnya"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_filled_orange"/>
+
+    </LinearLayout>
 
 </LinearLayout>

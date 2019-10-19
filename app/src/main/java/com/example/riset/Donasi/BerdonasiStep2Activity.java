@@ -67,6 +67,7 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
     String get_keterangan = "";
     String metode = "";
     int nominal = 0;
+    String idDonasi = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,8 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
         get_nominal_donasi = mSettings.getString("nominal_donasi", "missing");
         get_keterangan = mSettings.getString("keterangan", "missing");
         metode = mSettings.getString("pilihMetode", "missing");
+        idDonasi = mSettings.getString("idDetailDonasi", "missing");
+//        Log.d("TAG", "id donasi => "+idDonasi);
         nominal = Integer.parseInt(get_nominal_donasi.replace(",", ""));
 
         if (metode.equals("BCA")){
@@ -150,7 +153,7 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
         updates.put("nama", "bob");
         updates.put("created_date", FieldValue.serverTimestamp());
         db.collection("Posting")
-                .document("0IwGCiXsMiTPYTdPsmq6")
+                .document(idDonasi)
                 .collection("berdonasi")
                 .document()
                 .set(updates)

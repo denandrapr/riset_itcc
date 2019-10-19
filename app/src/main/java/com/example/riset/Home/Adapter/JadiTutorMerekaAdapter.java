@@ -1,7 +1,7 @@
 package com.example.riset.Home.Adapter;
 
 import android.content.Context;
-import android.media.Image;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.riset.Home.RelawanDetail;
 import com.example.riset.R;
 
 import java.util.List;
@@ -94,7 +95,8 @@ public class JadiTutorMerekaAdapter extends RecyclerView.Adapter<JadiTutorMereka
 
         @Override
         public void onClick(View view) {
-//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            Intent i = new Intent(view.getContext(), RelawanDetail.class);
+            view.getContext().startActivity(i);
         }
     }
 }
