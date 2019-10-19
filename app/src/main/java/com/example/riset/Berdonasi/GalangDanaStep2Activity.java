@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.riset.Donasi.BerdonasiStep2Activity;
 import com.example.riset.Donasi.MetodePembayaranActivity;
@@ -59,18 +60,27 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
     CardView cardView;
     @BindView(R.id.metodenya)
     TextView metodenya;
-
+    @BindView(R.id.no_rek)
+    TextView no_rek1;
     String namaMetode = "";
     String metode = "";
 
     private DatePickerDialog datePickerDialog;
     private SharedPreferences mSettings;
+    String target;
+    String penerima;
+    String targetKegiatan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galang_dana_step2);
         ButterKnife.bind(this);
+
+        Intent i = getIntent();
+        target = i.getStringExtra("targetBantuan");
+        penerima = i.getStringExtra("penerimaBantuan");
+        targetKegiatan = i.getStringExtra("targetKegiatan");
 
 //        cardView.setVisibility(View.GONE);
 
@@ -81,7 +91,19 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
     @OnClick(R.id.btn_selanjutnya)
     void selanjutnya(){
         Intent i = new Intent(GalangDanaStep2Activity.this, GalangDanaStep3Activity.class);
-        startActivity(i);
+        if (mTargetDonasi.getText().toString().equals("") ||mBtnBatasWaktu.getText().toString().equals("")){
+            Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
+        }else {
+            i.putExtra("TargetDonasi", mTargetDonasi.getText().toString());
+            i.putExtra("bataswaktu", mBtnBatasWaktu.getText().toString());
+            i.putExtra("NoRek", no_rek1.getText().toString());
+            i.putExtra("target_bantuan",target);
+            i.putExtra("penerima_bantuan",penerima);
+            i.putExtra("target_kegiatan",targetKegiatan);
+
+            startActivity(i);
+//            startActivity(i);
+        }
     }
 
     @OnClick(R.id.btn_batas_waktu)
