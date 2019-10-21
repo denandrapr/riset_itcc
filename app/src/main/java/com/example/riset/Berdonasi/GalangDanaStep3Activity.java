@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.riset.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +33,7 @@ import butterknife.OnClick;
 public class GalangDanaStep3Activity extends AppCompatActivity {
 
     private static final int GALLERY_INTENT = 1;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     String mCurrentPhotoPath;
     String imageUrl;
     Uri photoURI;
@@ -42,26 +44,33 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     Button button_selesai;
     @BindView(R.id.textDeskripsi)
     TextView mdeskripsi;
+
+    String targetNominalDonasi;
+    String batasWaktu;
+    String noRek;
+    String targetPenerima;
+    String namaPenerimaDonasi;
+    String judulKegiatan;
+    String bankPilihan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galang_dana_step3);
         ButterKnife.bind(this);
-    }
 
-//    private File createImageFile() throws IOException {
-//        // Create an image file name
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-//        String imageFileName = "JPEG_" + timeStamp + "_";
-//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//        File image = File.createTempFile(
-//                imageFileName,  /* prefix */
-//                ".jpg",         /* suffix */
-//                storageDir      /* directory */
-//        );
-//        mCurrentPhotoPath = image.getAbsolutePath();
-//        return image;
-//    }
+        Intent i = getIntent();
+        targetNominalDonasi = i.getStringExtra("targetNominalDonasi");
+        batasWaktu = i.getStringExtra("batasWaktu");
+        noRek = i.getStringExtra("noRek");
+        targetPenerima = i.getStringExtra("targetPenerima");
+        namaPenerimaDonasi =  i.getStringExtra("namaPenerimaDonasi");
+        judulKegiatan = i.getStringExtra("judulKegiatan");
+        bankPilihan = i.getStringExtra("bankPilihan");
+
+        Log.d("TAG", "Last activity result => "+targetNominalDonasi+" "+batasWaktu+" "+
+                noRek+" "+targetPenerima+" "+namaPenerimaDonasi+" "+judulKegiatan+" "+bankPilihan);
+    }
 
     @OnClick(R.id.pilihFoto)
     void pilihFoto(){
@@ -80,31 +89,23 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
             Glide.with(this)
                 .load(photoURI)
                 .into(fotoPilihan);
-//            try{
-//                final InputStream imageStream = getContentResolver().openInputStream(photoURI);
-//                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-//                fotoPilihan.setImageBitmap(selectedImage);
-////                Glide.with(this)
-////                        .load(selectedImage)
-////                        .circleCrop()
-////                        .placeholder(R.drawable.placeholder)
-////                        .into(fotoPilihan);
-//            }catch (Exception e){
-//
-//            }
         }
     }
     @OnClick (R.id.btnSelesai)
     void selanjutnya(){
-        Intent i = new Intent(GalangDanaStep3Activity.this, GalangDanaStep4Activity.class);
+
         if (mdeskripsi.getText().toString().equals("") ){
             Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
         }else {
-            i.putExtra("deskripsidonasi", mdeskripsi.getText().toString());
-
-
-            startActivity(i);
+            uploadData();
         }
     }
+
+    private void uploadData() {
+        db.collection("Posting")
+                .document()
+                
+    }
+
 
 }

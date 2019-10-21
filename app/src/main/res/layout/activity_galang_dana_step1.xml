@@ -74,7 +74,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:gravity="center|bottom">
+        android:gravity="center|bottom"
+        android:paddingBottom="8dp">
 
         <Button
             android:id="@+id/btn_selanjutnya"

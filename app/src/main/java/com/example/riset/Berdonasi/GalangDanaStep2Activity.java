@@ -67,9 +67,10 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private SharedPreferences mSettings;
-    String target;
+    String targetPenerima;
     String penerima;
-    String targetKegiatan;
+    String targetBantuan;
+    String judulKegiatan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +79,9 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent i = getIntent();
-        target = i.getStringExtra("targetBantuan");
-        penerima = i.getStringExtra("penerimaBantuan");
-        targetKegiatan = i.getStringExtra("targetKegiatan");
+        targetPenerima = i.getStringExtra("targetPenerima");
+        penerima = i.getStringExtra("namaPenerimaDonasi");
+        judulKegiatan = i.getStringExtra("judulKegiatan");
 
 //        cardView.setVisibility(View.GONE);
 
@@ -91,18 +92,19 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
     @OnClick(R.id.btn_selanjutnya)
     void selanjutnya(){
         Intent i = new Intent(GalangDanaStep2Activity.this, GalangDanaStep3Activity.class);
-        if (mTargetDonasi.getText().toString().equals("") ||mBtnBatasWaktu.getText().toString().equals("")){
+        if (mTargetDonasi.getText().toString().equals("")
+                || mBtnBatasWaktu.getText().toString().equals("")
+                || no_rek1.getText().toString().equals("")){
             Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
         }else {
-            i.putExtra("TargetDonasi", mTargetDonasi.getText().toString());
-            i.putExtra("bataswaktu", mBtnBatasWaktu.getText().toString());
-            i.putExtra("NoRek", no_rek1.getText().toString());
-            i.putExtra("target_bantuan",target);
-            i.putExtra("penerima_bantuan",penerima);
-            i.putExtra("target_kegiatan",targetKegiatan);
-
+            i.putExtra("targetNominalDonasi", mTargetDonasi.getText().toString());
+            i.putExtra("batasWaktu", mBtnBatasWaktu.getText().toString());
+            i.putExtra("noRek", no_rek1.getText().toString());
+            i.putExtra("targetPenerima",targetPenerima);
+            i.putExtra("namaPenerimaDonasi", penerima);
+            i.putExtra("judulKegiatan", judulKegiatan);
+            i.putExtra("bankPilihan", metode);
             startActivity(i);
-//            startActivity(i);
         }
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,295 +7,306 @@
     tools:context=".Berdonasi.GalangDanaStep2Activity"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/textView25"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Isi data dibawah ini"
-        android:textColor="#FF7419"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".Berdonasi.GalangDanaStep2Activity"
+        android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/nunito"
-        android:text="Target Donasi"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito"
-        android:text="Batas waktu penggalangan dana"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTargetDonasi" />
-
-    <Button
-        android:id="@+id/btn_batas_waktu"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="left|center_vertical"
-        android:background="@drawable/edit_text_outline_grey"
-        android:fontFamily="@font/nunito"
-        android:hint="pilih tanggal"
-        android:paddingLeft="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito"
-        android:text="No rekening penerima"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_batas_waktu" />
-
-    <EditText
-        android:id="@+id/no_rek"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edit_text_outline_grey"
-        android:fontFamily="@font/nunito"
-        android:inputType="number"
-        android:paddingLeft="14dp"
-        android:textSize="13sp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-    <EditText
-        android:id="@+id/txtTargetDonasi"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edit_text_outline_grey"
-        android:fontFamily="@font/nunito"
-        android:paddingLeft="14dp"
-        android:textSize="13sp"
-        android:layout_marginTop="8dp"
-        android:inputType="number"
-        android:hint="contoh : 1000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/bank"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito"
-        android:text="Pilih bank"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/no_rek" />
-
-    <Button
-        android:id="@+id/btn_pilih_bank"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="left|center_vertical"
-        android:background="@drawable/edit_text_outline_grey"
-        android:fontFamily="@font/nunito"
-        android:paddingLeft="14dp"
-        android:hint="pilih"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bank" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintTop_toTopOf="@+id/btn_pilih_bank">
-
-        <RelativeLayout
+        <TextView
+            android:id="@+id/textView25"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="16dp">
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Isi data dibawah ini"
+            android:textColor="#FF7419"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/metodeBayarJudul"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Metode Pembayaran"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/nunito"
+            android:text="Target Donasi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
-            <TextView
-                android:id="@+id/metodenya"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/metodeBayarJudul"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/nunito"
-                android:text="Bank BCA"
-                android:textColor="@android:color/black"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:id="@+id/bca_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/bca_logo"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/bri_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/bri_logo"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/mandiri_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/mandiri_logo"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/bni_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/bni_logo"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/cimb_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/cimb_logo"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/permata_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/permata_logo"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/maybank_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/maybank_logo"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/mega_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/arrow"
-                android:src="@drawable/mega_logo"
-                android:visibility="invisible" />
-
-            <ImageView
-                android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_chevron_right_black_24dp" />
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:orientation="horizontal"
-        android:paddingBottom="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito"
+            android:text="Batas waktu penggalangan dana"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTargetDonasi" />
 
         <Button
+            android:id="@+id/btn_batas_waktu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="left|center_vertical"
             android:background="@drawable/edit_text_outline_grey"
-            android:text="Sebelumnya"
-            android:textAllCaps="false"
-            android:textColor="#949494"
-            android:layout_marginRight="8dp"
             android:fontFamily="@font/nunito"
-            android:textSize="16sp" />
+            android:hint="pilih tanggal"
+            android:paddingLeft="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito"
+            android:text="No rekening penerima"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_batas_waktu" />
+
+        <EditText
+            android:id="@+id/no_rek"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_outline_grey"
+            android:fontFamily="@font/nunito"
+            android:inputType="number"
+            android:paddingLeft="14dp"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+        <EditText
+            android:id="@+id/txtTargetDonasi"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_outline_grey"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp"
+            android:inputType="number"
+            android:hint="contoh : 1000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <TextView
+            android:id="@+id/bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito"
+            android:text="Pilih bank"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/no_rek" />
 
         <Button
-            android:id="@+id/btn_selanjutnya"
+            android:id="@+id/btn_pilih_bank"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/edit_text_outline_grey"
+            android:fontFamily="@font/nunito"
+            android:paddingLeft="14dp"
+            android:hint="pilih"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bank" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            android:layout_marginTop="8dp"
+            app:cardElevation="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintTop_toTopOf="@+id/btn_pilih_bank">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/metodeBayarJudul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Metode Pembayaran"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/metodenya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/metodeBayarJudul"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Bank BCA"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/bca_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/bca_logo"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/bri_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/bri_logo"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/mandiri_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/mandiri_logo"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/bni_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/bni_logo"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/cimb_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/cimb_logo"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/permata_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/permata_logo"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/maybank_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/maybank_logo"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/mega_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/arrow"
+                    android:src="@drawable/mega_logo"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_chevron_right_black_24dp" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_filled_orange"
-            android:text="Selanjutnya"
-            android:textAllCaps="false"
-            android:fontFamily="@font/nunito"
-            android:layout_marginLeft="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:gravity="center|bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="72dp"
+            app:layout_constraintTop_toBottomOf="@id/cardView">
 
-    </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_outline_grey"
+                android:text="Sebelumnya"
+                android:textAllCaps="false"
+                android:textColor="#949494"
+                android:layout_marginRight="8dp"
+                android:fontFamily="@font/nunito"
+                android:textSize="16sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_selanjutnya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_filled_orange"
+                android:text="Selanjutnya"
+                android:textAllCaps="false"
+                android:fontFamily="@font/nunito"
+                android:layout_marginLeft="8dp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

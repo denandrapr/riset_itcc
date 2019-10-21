@@ -50,9 +50,9 @@ public class GalangDanaStep1Activity extends AppCompatActivity {
             Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
         }else{
             Intent i = new Intent(GalangDanaStep1Activity.this, GalangDanaStep2Activity.class);
-            i.putExtra("targetBantuan", buttonTargetBantuan.getText().toString());
-            i.putExtra("penerimaBantuan", penerimaDonasi.getText().toString());
-            i.putExtra("targetKegiatan", judulKegiatan.getText().toString());
+            i.putExtra("targetPenerima", buttonTargetBantuan.getText().toString());
+            i.putExtra("namaPenerimaDonasi", penerimaDonasi.getText().toString());
+            i.putExtra("judulKegiatan", judulKegiatan.getText().toString());
             startActivity(i);
         }
     }
