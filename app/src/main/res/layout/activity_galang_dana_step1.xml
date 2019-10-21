@@ -26,6 +26,7 @@
         android:layout_marginBottom="8dp"/>
 
     <EditText
+        android:id="@+id/judulKegiatan"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginBottom="16dp"
@@ -42,6 +43,7 @@
         android:layout_marginBottom="8dp"/>
 
     <EditText
+        android:id="@+id/penerimaDonasi"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/edit_text_outline_grey"
@@ -58,19 +60,22 @@
         android:layout_marginBottom="8dp"/>
 
     <Button
+        android:id="@+id/target_bantuan"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/edit_text_outline_grey"
-        android:hint=""
+        android:hint="pilih target bantuan"
         android:gravity="left"
-        android:padding="8dp"/>
+        android:padding="12dp"
+        android:textSize="12sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:gravity="center|bottom">
+        android:gravity="center|bottom"
+        android:paddingBottom="8dp">
 
         <Button
             android:id="@+id/btn_selanjutnya"

@@ -6,8 +6,10 @@ import android.os.Bundle;
 
 import com.example.riset.R;
 
-public class GalangDanaStep4Activity extends AppCompatActivity {
+import butterknife.BindView;
 
+public class GalangDanaStep4Activity extends AppCompatActivity {
+//@BindView(R.id.)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

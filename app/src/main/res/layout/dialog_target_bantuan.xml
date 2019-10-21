@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+<!--    <EditText-->
+<!--        android:id="@+id/pilihTarget"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Pilih target"/>-->
+
+    <RadioGroup
+        android:id="@+id/radioGroupTarget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:id="@+id/individu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Individu"
+            android:fontFamily="@font/nunito"/>
+
+        <RadioButton
+            android:id="@+id/instansi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instansi / Sekolah"
+            android:fontFamily="@font/nunito"/>
+
+        <RadioButton
+            android:id="@+id/organisasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisasi"
+            android:fontFamily="@font/nunito"/>
+
+    </RadioGroup>
+
+</LinearLayout>
