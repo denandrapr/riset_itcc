@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.riset.R;
 
@@ -12,11 +13,21 @@ import butterknife.OnClick;
 
 public class DonasiRuanganStep2Activity extends AppCompatActivity {
 
+    String judulKegiatan;
+    String batasWaktu;
+    String jadwalKegiatan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donasi_ruangan_step2);
         ButterKnife.bind(this);
+
+        Intent i = getIntent();
+        jadwalKegiatan = i.getStringExtra("jadwalKegiatan");
+        batasWaktu = i.getStringExtra("batasWaktu");
+        judulKegiatan = i.getStringExtra("judulKegiatan");
+        Log.d("TAG", "Hasil => "+jadwalKegiatan+" "+batasWaktu+" "+judulKegiatan);
     }
 
     @OnClick(R.id.btnSelesai)
