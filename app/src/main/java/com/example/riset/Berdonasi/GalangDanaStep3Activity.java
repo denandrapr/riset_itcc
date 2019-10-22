@@ -160,6 +160,7 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
         updates.put("bankPilihan", bankPilihan);
         updates.put("linkFotoUtama", downloadUrl.toString());
         updates.put("created_date", FieldValue.serverTimestamp());
+        updates.put("tipe", 1);
 
         db.collection("Posting")
                 .document()
