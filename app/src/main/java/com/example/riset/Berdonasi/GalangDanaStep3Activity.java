@@ -1,8 +1,10 @@
 package com.example.riset.Berdonasi;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,13 +20,23 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.riset.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,9 +46,11 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
 
     private static final int GALLERY_INTENT = 1;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String mCurrentPhotoPath;
-    String imageUrl;
+    StorageReference mStoreRef = FirebaseStorage.getInstance().getReference();
+
     Uri photoURI;
+    ProgressDialog progressDialog;
+    Uri downloadUrl;
 
     @BindView(R.id.pilihFoto)
     ImageView fotoPilihan;
@@ -94,7 +108,7 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     @OnClick (R.id.btnSelesai)
     void selanjutnya(){
 
-        if (mdeskripsi.getText().toString().equals("") ){
+        if (mdeskripsi.getText().toString().equals("") && photoURI != null){
             Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
         }else {
             uploadData();
@@ -102,10 +116,74 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     }
 
     private void uploadData() {
-        db.collection("Posting")
-                .document()
-                
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Prosessing...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        if (photoURI != null){
+            StorageReference ref = mStoreRef.child("foto_post/"+System.currentTimeMillis());
+            UploadTask uploadTask = ref.putFile(photoURI);
+            Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()){
+                        throw task.getException();
+                    }
+                    return ref.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()){
+                        downloadUrl = task.getResult();
+                        dataUpload();
+                    }else{
+                        progressDialog.dismiss();
+                        Toast.makeText(GalangDanaStep3Activity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
+    private void dataUpload() {
 
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("targetNominalDonasi", targetNominalDonasi);
+        updates.put("batasWaktu", batasWaktu);
+        updates.put("noRek", noRek);
+        updates.put("targetPenerima", targetPenerima);
+        updates.put("namaPenerimaDonasi", namaPenerimaDonasi);
+        updates.put("judulKegiatan", judulKegiatan);
+        updates.put("bankPilihan", bankPilihan);
+        updates.put("linkFotoUtama", downloadUrl.toString());
+        updates.put("created_date", FieldValue.serverTimestamp());
+
+        db.collection("Posting")
+                .document()
+                .set(updates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            progressDialog.dismiss();
+                            Intent i = new Intent(GalangDanaStep3Activity.this, GalangDanaStep4Activity.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                        }else{
+                            progressDialog.dismiss();
+                            Toast.makeText(GalangDanaStep3Activity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(GalangDanaStep3Activity.this, "Gagal Cok", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }
