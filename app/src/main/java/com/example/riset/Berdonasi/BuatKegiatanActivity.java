@@ -38,7 +38,7 @@ public class BuatKegiatanActivity extends AppCompatActivity {
     @OnClick(R.id.donasiRuangan)
     void donasiRuangan(){
 //        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(BuatKegiatanActivity.this, DonasiRuanganStep1Activity.class);
+        Intent i = new Intent(BuatKegiatanActivity.this, DonasiRuanganStep0Activity.class);
         startActivity(i);
     }
 
@@ -50,7 +50,7 @@ public class BuatKegiatanActivity extends AppCompatActivity {
 
     @OnClick(R.id.galang_dana)
     void galangDana(){
-        Intent i = new Intent(BuatKegiatanActivity.this, GalangDanaStep1Activity.class);
+        Intent i = new Intent(BuatKegiatanActivity.this, GalangDanaStep0Activity.class);
         startActivity(i);
     }
 }
