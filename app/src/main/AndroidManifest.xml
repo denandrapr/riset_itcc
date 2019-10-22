@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.riset">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -13,7 +13,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Donasi.MenjadiRelawanStep1"></activity>
+        <activity android:name=".Berdonasi.DonasiRuanganStep0Activity"></activity>
+        <activity android:name=".Berdonasi.GalangDanaStep0Activity" />
+        <activity android:name=".Donasi.MenjadiRelawanStep1" />
         <activity android:name=".Home.RelawanDetail" />
         <activity android:name=".Berdonasi.GalangDanaStep4Activity" />
         <activity android:name=".Berdonasi.GalangDanaStep3Activity" />
