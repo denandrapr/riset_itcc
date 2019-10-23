@@ -68,19 +68,21 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         ButuhSegeraModel result = butuhSegeraModels.get(position);
         Glide
             .with(holder.imageSegera.getContext())
-            .load(result.getImg())
+            .load(result.getLinkFotoUtama())
             .placeholder(R.drawable.dokumentasi_foto_temp)
             .into(holder.imageSegera);
-        holder.textJudul.setText(result.getJudul());
-        holder.textInfo.setText("Terkumpul dari Rp "+decimalFormat(Double.parseDouble(result.getTarget())));
-        holder.textSisa.setText(result.getTargetTanggal());
+        holder.textJudul.setText(result.getJudulKegiatan());
+        String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
+        holder.textInfo.setText("Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal)));
+        holder.textInfo.setText("Terkumpul dari Rp "+result.getTargetNominalDonasi());
+        holder.textSisa.setText(result.getBatasWaktu());
 
-        String getDate = result.getTargetTanggal();
+        String getDate = result.getBatasWaktu();
         CurrentDateTimeExample1();
         holder.textId.setText(result.getId());
         id = result.getId();
         holder.textDuit.setText("0");
-        get_count_dana(result.getId());
+//        get_count_dana(result.getId());
     }
 
     private void get_count_dana(String ide){

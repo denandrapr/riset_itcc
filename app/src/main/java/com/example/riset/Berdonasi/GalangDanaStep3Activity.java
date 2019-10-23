@@ -149,8 +149,9 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     }
 
     private void dataUpload() {
-
+        String idGenerator = "u"+System.currentTimeMillis();
         Map<String, Object> updates = new HashMap<>();
+        updates.put("id", idGenerator);
         updates.put("targetNominalDonasi", targetNominalDonasi);
         updates.put("batasWaktu", batasWaktu);
         updates.put("noRek", noRek);
@@ -160,10 +161,11 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
         updates.put("bankPilihan", bankPilihan);
         updates.put("linkFotoUtama", downloadUrl.toString());
         updates.put("created_date", FieldValue.serverTimestamp());
+        updates.put("deskripsi", mdeskripsi.getText().toString());
         updates.put("tipe", 1);
 
         db.collection("Posting")
-                .document()
+                .document(idGenerator)
                 .set(updates)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -130,8 +130,10 @@ public class DonasiRuanganStep2Activity extends AppCompatActivity {
         lokasiRuangan = txtLokasiRuangan.getText().toString();
         kapasitasRuangan = txtkapasitasRuangan.getText().toString();
         dekripsi = txtdeskripsi.getText().toString();
+        String idGenerator = "r"+System.currentTimeMillis();
 
         Map<String, Object> updates = new HashMap<>();
+        updates.put("id", idGenerator);
         updates.put("judulKegiatan", judulKegiatan);
         updates.put("batasWaktu", batasWaktu);
         updates.put("jadwalKegiatan", jadwalKegiatan);
@@ -144,7 +146,7 @@ public class DonasiRuanganStep2Activity extends AppCompatActivity {
         updates.put("tipe", 2);
 
         db.collection("Posting")
-                .document()
+                .document(idGenerator)
                 .set(updates)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
