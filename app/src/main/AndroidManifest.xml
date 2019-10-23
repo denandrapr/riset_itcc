@@ -13,7 +13,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Berdonasi.DonasiRuanganStep0Activity"></activity>
+        <activity android:name=".Berdonasi.DonasiBarangStep0Activity"></activity>
+        <activity android:name=".Berdonasi.DonasiRuanganStep0Activity" />
         <activity android:name=".Berdonasi.GalangDanaStep0Activity" />
         <activity android:name=".Donasi.MenjadiRelawanStep1" />
         <activity android:name=".Home.RelawanDetail" />

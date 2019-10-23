@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,8 +31,10 @@ public class DonasiFragment  extends Fragment {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.fab_add)
-    FloatingActionButton fab;
+    @BindView(R.id.tambahKegiatan)
+    TextView tambahKegiatan;
+//    @BindView(R.id.fab_add)
+//    FloatingActionButton fab;
 
     ListDonasiAdapter listDonasiAdapter;
 
@@ -68,18 +71,23 @@ public class DonasiFragment  extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getInstance().getCurrentUser();
         if (user != null){
-            fab.show();
+            tambahKegiatan.setVisibility(View.VISIBLE);
         }else{
-            fab.hide();
+            tambahKegiatan.setVisibility(View.GONE);
         }
 
         return view;
     }
 
-    @OnClick(R.id.fab_add)
-    void action_fab(){
+//    @OnClick(R.id.fab_add)
+//    void action_fab(){
+//        Intent i = new Intent(getActivity(), BuatKegiatanActivity.class);
+//        startActivity(i);
+//    }
+
+    @OnClick(R.id.tambahKegiatan)
+    void tambahKegiatan(){
         Intent i = new Intent(getActivity(), BuatKegiatanActivity.class);
         startActivity(i);
     }
-
 }

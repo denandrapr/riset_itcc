@@ -27,6 +27,17 @@
             android:textSize="16sp"
             android:textColor="@android:color/white" />
 
+        <TextView
+            android:id="@+id/tambahKegiatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="16sp"
+            android:text="Tambah Kegiatan"
+            android:layout_marginRight="12dp"
+            android:textColor="@android:color/white"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -35,14 +46,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white"
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="36dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_filter"
         android:layout_marginBottom="72dp"
-        android:layout_marginRight="16dp"/>
+        android:textColor="@android:color/white"
+        android:text="Filter"
+        android:textSize="12sp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:drawableLeft="@drawable/ic_ke_metode"/>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab_add"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ic_add_white"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginBottom="72dp"-->
+<!--        android:layout_marginRight="16dp"/>-->
 
 </RelativeLayout>

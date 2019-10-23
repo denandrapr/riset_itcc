@@ -44,7 +44,7 @@ public class BuatKegiatanActivity extends AppCompatActivity {
 
     @OnClick(R.id.donasi_barang)
     void donasiBarang(){
-        Intent i = new Intent(BuatKegiatanActivity.this, DonasiBarangStep1Activity.class);
+        Intent i = new Intent(BuatKegiatanActivity.this, DonasiBarangStep0Activity.class);
         startActivity(i);
     }
 

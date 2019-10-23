@@ -128,9 +128,10 @@ public class DonasiDetailActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         ButuhSegeraModel model = null;
                         model = documentSnapshot.toObject(ButuhSegeraModel.class);
-                        txtJudul.setText(model.getJudul());
+                        txtJudul.setText(model.getJudulKegiatan());
                         txtDeskripsi.setText(model.getDeskripsi());
-                        target_keterangan = Double.parseDouble(model.getTarget());
+                        String sTargetNonimal = model.getTargetNominalDonasi().replace(",","");
+                        target_keterangan = Double.parseDouble(sTargetNonimal);
                         txtKetTerkumpul.setText("terkumpul dari "+decimalFormat(target_keterangan));
                     }
                 });
