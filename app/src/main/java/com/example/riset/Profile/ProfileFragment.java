@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,10 +31,12 @@ public class ProfileFragment  extends Fragment {
 
     private FirebaseAuth mAuth;
 
-    @BindView(R.id.relative1)
+    @BindView(R.id.relative2)
     RelativeLayout relativeLayout;
     @BindView(R.id.linear1)
     LinearLayout linearLayout;
+    @BindView(R.id.txtEmail)
+    TextView textEmail;
 
     @Nullable
     @Override
@@ -44,7 +47,7 @@ public class ProfileFragment  extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getInstance().getCurrentUser();
         if (user != null){
-//            String uid = user.getEmail();
+            textEmail.setText(user.getEmail());
             linearLayout.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.GONE);
         }else{
@@ -71,7 +74,7 @@ public class ProfileFragment  extends Fragment {
                 }).setNegativeButton("No", null).show();
     }
 
-    @OnClick(R.id.sign_btn)
+    @OnClick(R.id.signin_btn)
     void sign_button(){
         Intent i = new Intent(getActivity(), WelcomeSignInActivity.class);
         startActivity(i);

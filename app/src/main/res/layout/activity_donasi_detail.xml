@@ -50,15 +50,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="424dp"
-                android:layout_height="296dp"
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView3"-->
+<!--                android:layout_width="424dp"-->
+<!--                android:layout_height="296dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.538"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/foto_detail_temp" />-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imgCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.538"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/foto_detail_temp" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgSegera"
+                    android:layout_width="424dp"
+                    android:layout_height="296dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/foto_detail_temp"/>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/textJudul"
@@ -71,7 +91,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                app:layout_constraintTop_toBottomOf="@+id/imgCard" />
 
             <TextView
                 android:id="@+id/textTerkumpul"
@@ -161,7 +181,7 @@
                 android:layout_marginTop="19dp"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                app:srcCompat="@drawable/ic_time" />
+                android:src="@drawable/ic_time" />
 
             <TextView
                 android:id="@+id/textSisaHari"

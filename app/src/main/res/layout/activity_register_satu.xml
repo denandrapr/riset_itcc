@@ -17,29 +17,31 @@
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@android:color/white"
             android:ems="10"
             android:hint="Nama lengkap"
-            android:textColor="@android:color/white"
             android:inputType="textPersonName"
             android:textColorHint="#C7C7C7"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/edit_text_white"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             android:fontFamily="@font/nunito"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <EditText
             android:id="@+id/editText2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/white"
+            android:background="@drawable/edit_text_white"
             android:ems="10"
             android:hint="Email"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
             android:inputType="textEmailAddress"
-            android:textColor="@android:color/white"
             android:textColorHint="#C7C7C7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +51,12 @@
         <EditText
             android:id="@+id/editText3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/white"
+            android:background="@drawable/edit_text_white"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
             android:ems="10"
-            android:textColor="@android:color/white"
             android:hint="Passsword"
             android:inputType="textPassword"
             android:textColorHint="#C7C7C7"
@@ -65,11 +68,12 @@
         <EditText
             android:id="@+id/editText4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/white"
+            android:background="@drawable/edit_text_white"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
             android:ems="10"
-            android:textColor="@android:color/white"
             android:fontFamily="@font/nunito"
             android:hint="Masukkan kembali Password"
             android:inputType="textPassword"
@@ -78,15 +82,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="148dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/upload_img_daftar" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="148dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:srcCompat="@drawable/upload_img_daftar" />-->
 
         <TextView
             android:id="@+id/textView7"
@@ -120,7 +124,7 @@
             android:id="@+id/btn_selanjutnya"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="80dp"
             android:text="Selanjutnya"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/rounded_corner"
@@ -128,7 +132,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:textAllCaps="false"
             android:textColor="#F76301"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

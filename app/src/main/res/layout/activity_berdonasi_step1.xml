@@ -69,16 +69,16 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/pilihMetodeBayar"
-            android:layout_marginBottom="24dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Pilih metode pembayaran"
-            android:textAllCaps="false"
-            android:background="@drawable/btn_outline_orange"
-            android:textColor="#FF7419"/>
+<!--        <Button-->
+<!--            android:id="@+id/pilihMetodeBayar"-->
+<!--            android:layout_marginBottom="24dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="16sp"-->
+<!--            android:text="Pilih metode pembayaran"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:background="@drawable/btn_outline_orange"-->
+<!--            android:textColor="#FF7419"/>-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/bca_logo"
                     android:visibility="gone"
-                    android:layout_toLeftOf="@id/arrow"/>
+                    android:layout_alignParentRight="true"/>
 
                 <ImageView
                     android:id="@+id/bri_logo"
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/bri_logo"
                     android:visibility="gone"
-                    android:layout_toLeftOf="@id/arrow"/>
+                    android:layout_alignParentRight="true"/>
 
                 <ImageView
                     android:id="@+id/mandiri_logo"
@@ -141,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/mandiri_logo"
                     android:visibility="gone"
-                    android:layout_toLeftOf="@id/arrow"/>
+                    android:layout_alignParentRight="true"/>
 
                 <ImageView
                     android:id="@+id/alfa_logo"
@@ -150,15 +150,15 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/alfa_logo"
                     android:visibility="gone"
-                    android:layout_toLeftOf="@id/arrow"/>
-
-                <ImageView
-                    android:id="@+id/arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
                     android:layout_alignParentRight="true"/>
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/arrow"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:src="@drawable/ic_chevron_right_black_24dp"-->
+<!--                    android:layout_alignParentRight="true"/>-->
 
             </RelativeLayout>
 
@@ -179,9 +179,11 @@
         <EditText
             android:id="@+id/keterangan"
             android:hint="Tulis dukungan atau doa"
-            android:paddingLeft="12dp"
+            android:paddingStart="12dp"
             android:layout_width="match_parent"
             android:textSize="14sp"
+            android:gravity="left|top"
+            android:paddingTop="8dp"
             android:fontFamily="@font/nunito"
             android:layout_height="88dp"
             android:background="@drawable/edit_text_outline_grey"/>

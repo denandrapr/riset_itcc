@@ -34,8 +34,8 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
     private Dialog customDialog;
     private SharedPreferences mSettings;
 
-    @BindView(R.id.pilihMetodeBayar)
-    Button pilihMetodeBayar;
+//    @BindView(R.id.pilihMetodeBayar)
+//    Button pilihMetodeBayar;
     @BindView(R.id.cardView)
     CardView cardView;
     @BindView(R.id.txtNominal)
@@ -79,7 +79,7 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         String getSharedPreferences = mSettings.getString("pilihMetode", "missing");
         if (getSharedPreferences.equals("missing")){
             cardView.setVisibility(View.GONE);
-            pilihMetodeBayar.setVisibility(View.VISIBLE);
+//            pilihMetodeBayar.setVisibility(View.VISIBLE);
         }else{
             if (getSharedPreferences.equals("Alfamart")){
                 metodenya.setText(getSharedPreferences);
@@ -106,7 +106,7 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
                 mandiri_logo.setVisibility(View.VISIBLE);
                 metodenya.setText("Bank "+getSharedPreferences);
             }
-            pilihMetodeBayar.setVisibility(View.GONE);
+//            pilihMetodeBayar.setVisibility(View.GONE);
             cardView.setVisibility(View.VISIBLE);
         }
     }
@@ -127,21 +127,21 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         customDialog.setContentView(R.layout.dialog_custom);
         customDialog.setCancelable(true);
 
-        pilihMetodeBayar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customDialog.dismiss();
-            }
-        });
+//        pilihMetodeBayar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                customDialog.dismiss();
+//            }
+//        });
     }
 
     private void initViewsComponent(){
-        pilihMetodeBayar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customDialog.show();
-            }
-        });
+//        pilihMetodeBayar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                customDialog.show();
+//            }
+//        });
     }
 
     @OnClick(R.id.lanjutkan_pembayaran)
@@ -158,17 +158,17 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.pilihMetodeBayar)
-    void pilihMetodeBayar(){
-        Intent i = new Intent(BerdonasiStep1Activity.this, MetodePembayaranActivity.class);
-        startActivity(i);
-    }
+//    @OnClick(R.id.pilihMetodeBayar)
+//    void pilihMetodeBayar(){
+//        Intent i = new Intent(BerdonasiStep1Activity.this, MetodePembayaranActivity.class);
+//        startActivity(i);
+//    }
 
-    @OnClick(R.id.cardView)
-    void cardViewClicked(){
-        Intent i = new Intent(BerdonasiStep1Activity.this, MetodePembayaranActivity.class);
-        startActivity(i);
-    }
+//    @OnClick(R.id.cardView)
+//    void cardViewClicked(){
+//        Intent i = new Intent(BerdonasiStep1Activity.this, MetodePembayaranActivity.class);
+//        startActivity(i);
+//    }
 
     private TextWatcher onTextChangedListener() {
         return new TextWatcher() {
