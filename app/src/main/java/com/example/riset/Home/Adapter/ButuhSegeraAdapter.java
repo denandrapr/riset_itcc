@@ -47,13 +47,13 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     String id = null;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     double total;
-    // data is passed into the constructor
+    String dayDifference;
+
     public ButuhSegeraAdapter(Context context, List<ButuhSegeraModel> data) {
         this.mInflater = LayoutInflater.from(context);
         this.butuhSegeraModels = data;
     }
 
-    // inflates the row layout from xml when needed
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -61,28 +61,30 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         return new ViewHolder(view);
     }
 
-    // binds the data to the view and textview in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         total = 0;
+
         ButuhSegeraModel result = butuhSegeraModels.get(position);
+
         Glide
             .with(holder.imageSegera.getContext())
             .load(result.getLinkFotoUtama())
             .placeholder(R.drawable.dokumentasi_foto_temp)
             .into(holder.imageSegera);
+
         holder.textJudul.setText(result.getJudulKegiatan());
         String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
         holder.textInfo.setText("Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal)));
         holder.textInfo.setText("Terkumpul dari Rp "+result.getTargetNominalDonasi());
         holder.textSisa.setText(result.getBatasWaktu());
 
-        String getDate = result.getBatasWaktu();
-        CurrentDateTimeExample1();
+//        String getDate = result.getBatasWaktu();
         holder.textId.setText(result.getId());
         id = result.getId();
         holder.textDuit.setText("0");
-//        get_count_dana(result.getId());
+        holder.textSisa.setText(CurrentDateTimeExample1(result.getBatasWaktu()));
+        get_count_dana(result.getId());
     }
 
     private void get_count_dana(String ide){
@@ -95,11 +97,9 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot doc : task.getResult()){
                             total = total + doc.getDouble("nominal");
-//                            Log.d("TAG", "count => "+id+" "+doc.getDouble("nominal"));
                         }
                     }
                 });
-        Log.d("TAG", "totale => "+total);
     }
 
     private String decimalFormat(Double total){
@@ -115,20 +115,25 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         return kursIndonesia.format(total);
     }
 
+    public String CurrentDateTimeExample1(String batasWaktu) {
+        try {
+            Date date1;
+            Date date = java.util.Calendar.getInstance().getTime();
+            SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
 
-    public void CurrentDateTimeExample1() {
+            date1 = dates.parse(batasWaktu);
 
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date(System.currentTimeMillis());
+            long difference = Math.abs(date1.getTime() - date.getTime());
+            long differenceDate = difference / (24*60*60*1000) + 1;
 
-        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = new Date("25-November-2019");
+            dayDifference = Long.toString(differenceDate);
 
-        Log.d("date", "CurrentDateTimeExample1: " + formatter.format(date));
-        Log.d("date", formatter1.format(date1));
+//            Log.d("TAG", "Date => "+dayDifference);
+        }catch (Exception e){
 
+        }
+        return dayDifference;
     }
-
 
     // total number of rows
     @Override

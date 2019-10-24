@@ -38,13 +38,13 @@
     </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
-        android:id="@+id/relative1"
+        android:id="@+id/relative2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
 
         <ImageView
-            android:id="@+id/img_tree"
+            android:id="@+id/imgTree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/img_tree"
@@ -55,14 +55,14 @@
             android:id="@+id/text_peringatan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img_tree"
+            android:layout_below="@id/imgTree"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:text="Login terlebih dahulu\nUntuk mengakses fitur ini"/>
 
         <Button
-            android:id="@+id/sign_btn"
+            android:id="@+id/signin_btn"
             android:layout_below="@id/text_peringatan"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
@@ -109,6 +109,7 @@
                 android:textSize="18sp"/>
 
             <TextView
+                android:id="@+id/txtEmail"
                 android:layout_toRightOf="@id/photo_profile"
                 android:layout_below="@id/profile_name"
                 android:layout_width="wrap_content"

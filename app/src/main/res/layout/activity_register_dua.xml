@@ -1,93 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistSignIn.RegisterDuaActivity"
+    android:background="@drawable/bg_all"
     android:orientation="vertical"
     android:paddingLeft="32dp"
     android:paddingRight="32dp"
-    android:paddingTop="40dp">
-
-    <EditText
-        android:id="@+id/txtAlamat"
-        android:backgroundTint="@android:color/white"
-        android:textColorHint="#C7C7C7"
-        android:fontFamily="@font/nunito"
-        android:layout_width="match_parent"
-        android:hint="Alamat"
-        android:layout_marginBottom="16dp"
-        android:textColor="@android:color/white"
-        android:layout_weight="0"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:backgroundTint="@android:color/white"
-        android:textColorHint="#C7C7C7"
-        android:fontFamily="@font/nunito"
-        android:layout_width="match_parent"
-        android:hint="Tanggal Lahir"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="0"
-        android:id="@+id/txtCalendar"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/nomorTelepon"
-        android:backgroundTint="@android:color/white"
-        android:textColorHint="#C7C7C7"
-        android:fontFamily="@font/nunito"
-        android:layout_width="match_parent"
-        android:hint="Nomor Telepon"
-        android:layout_marginBottom="16dp"
-        android:textColor="@android:color/white"
-        android:layout_weight="0"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/pekerjaan"
-        android:backgroundTint="@android:color/white"
-        android:textColorHint="#C7C7C7"
-        android:fontFamily="@font/nunito"
-        android:layout_width="match_parent"
-        android:hint="Pekerjaan"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="0"
-        android:textColor="@android:color/white"
-        android:layout_height="wrap_content"/>
+    tools:context=".RegistSignIn.RegisterDuaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:paddingBottom="24dp">
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/txtAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0"
+            android:background="@drawable/edit_text_white"
+            android:fontFamily="@font/nunito"
+            android:hint="Alamat"
+            android:paddingStart="8dp"
+            android:textColorHint="#C7C7C7"
+            android:textSize="13sp" />
 
         <Button
+            android:id="@+id/txtCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0"
+            android:background="@drawable/edit_text_white"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito"
+            android:gravity="left|center_vertical"
+            android:hint="pilih tanggal lahir"
+            android:textColorHint="#C7C7C7" />
+
+        <EditText
+            android:id="@+id/nomorTelepon"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0"
+            android:background="@drawable/edit_text_white"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito"
+            android:hint="Nomor Telepon"
+            android:textColorHint="#C7C7C7" />
+
+        <EditText
+            android:id="@+id/pekerjaan"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0"
+            android:background="@drawable/edit_text_white"
+            android:paddingStart="8dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito"
+            android:hint="Pekerjaan"
+            android:textColorHint="#C7C7C7" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/kembali"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginRight="8dp"
-            android:text="Sebelumnya"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:background="@drawable/btn_outline_white"
+            android:text="Kembali"
             android:textAllCaps="false"
-            android:background="@drawable/btn_outline_white"/>
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btnSelesai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="8dp"
-            android:textColor="#F76301"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
             android:text="Selesai"
-            android:textSize="16sp"
             android:textAllCaps="false"
-            android:background="@drawable/rounded_corner"/>
+            android:textColor="#F76301"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

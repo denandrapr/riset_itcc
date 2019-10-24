@@ -60,7 +60,7 @@ public class RegisterDuaActivity extends AppCompatActivity {
         nama = i.getStringExtra("nama");
         email = i.getStringExtra("email");
         password = i.getStringExtra("passwd");
-        Log.d("TAG", nama + " " + email + " " + password);
+//        Log.d("TAG", nama + " " + email + " " + password);
 
         textCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +84,11 @@ public class RegisterDuaActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    @OnClick(R.id.kembali)
+    void kembali(){
+        onBackPressed();
+    }
+
     @OnClick(R.id.btnSelesai)
     void btnSelesai(){
         Progress = new ProgressDialog(RegisterDuaActivity.this);
@@ -96,7 +101,7 @@ public class RegisterDuaActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Progress.dismiss();
-                            Log.d("TAG", "Register Sukses");
+//                            Log.d("TAG", "Register Sukses");
                             Intent i = new Intent(RegisterDuaActivity.this, MainActivity.class);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);

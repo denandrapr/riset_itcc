@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.Donasi.BerdonasiStep1Activity;
 import com.example.riset.Donasi.MetodePembayaranActivity;
@@ -44,7 +45,9 @@ import com.google.gson.JsonElement;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -75,6 +78,8 @@ public class DonasiDetailActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     @BindView(R.id.scroll1)
     ScrollView scrollView;
+    @BindView(R.id.imgSegera)
+    ImageView imgSegera;
 
     private List<BerdonasiUangModel> list = new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -82,6 +87,7 @@ public class DonasiDetailActivity extends AppCompatActivity {
     DonaturDetailDonasiAdapter donaturDetailDonasiAdapter;
     String id = null;
     String judul = null;
+    String dayDifference;
     double total = 0;
     double target_keterangan = 0;
     SharedPreferences mSettings;
@@ -132,9 +138,35 @@ public class DonasiDetailActivity extends AppCompatActivity {
                         txtDeskripsi.setText(model.getDeskripsi());
                         String sTargetNonimal = model.getTargetNominalDonasi().replace(",","");
                         target_keterangan = Double.parseDouble(sTargetNonimal);
+                        txtSisaHari.setText("Tersisa "+CurrentDateTimeExample(model.getBatasWaktu())+" hari");
                         txtKetTerkumpul.setText("terkumpul dari "+decimalFormat(target_keterangan));
+                        Glide
+                            .with(DonasiDetailActivity.this)
+                            .load(model.getLinkFotoUtama())
+                            .placeholder(R.drawable.dokumentasi_foto_temp)
+                            .into(imgSegera);
                     }
                 });
+    }
+
+    public String CurrentDateTimeExample(String batasWaktu) {
+        try {
+            Date date1;
+            Date date = java.util.Calendar.getInstance().getTime();
+            SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+
+            date1 = dates.parse(batasWaktu);
+
+            long difference = Math.abs(date1.getTime() - date.getTime());
+            long differenceDate = difference / (24*60*60*1000) + 1;
+
+            dayDifference = Long.toString(differenceDate);
+
+//            Log.d("TAG", "Date => "+dayDifference);
+        }catch (Exception e){
+
+        }
+        return dayDifference;
     }
 
     private void get_data_donatur(){

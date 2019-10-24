@@ -86,7 +86,7 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
         get_keterangan = mSettings.getString("keterangan", "missing");
         metode = mSettings.getString("pilihMetode", "missing");
         idDonasi = mSettings.getString("idDetailDonasi", "missing");
-//        Log.d("TAG", "id donasi => "+idDonasi);
+
         nominal = Integer.parseInt(get_nominal_donasi.replace(",", ""));
 
         if (metode.equals("BCA")){

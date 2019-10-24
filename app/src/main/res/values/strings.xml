@@ -21,4 +21,7 @@
     <string name="deskripsi_donasi">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
         labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
         gubergren, no sea takimata sanctus est..</string>
+
+    <string name="isi_data">Isi data dibawah ini</string>
+    <string name="selanjutnya">Selanjutnya</string>
 </resources>
