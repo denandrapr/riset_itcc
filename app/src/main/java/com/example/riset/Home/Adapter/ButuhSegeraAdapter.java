@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +43,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.ViewHolder> {
+public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.ViewHolder>{
 
     private LayoutInflater mInflater;
     private List<ButuhSegeraModel> butuhSegeraModels;
@@ -52,6 +55,7 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     public ButuhSegeraAdapter(Context context, List<ButuhSegeraModel> data) {
         this.mInflater = LayoutInflater.from(context);
         this.butuhSegeraModels = data;
+//        butuhSegeraFiltered = data;
     }
 
     @Override
@@ -76,7 +80,7 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         holder.textJudul.setText(result.getJudulKegiatan());
         String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
         holder.textInfo.setText("Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal)));
-        holder.textInfo.setText("Terkumpul dari Rp "+result.getTargetNominalDonasi());
+//        holder.textInfo.setText("Terkumpul dari Rp "+result.getTargetNominalDonasi());
         holder.textSisa.setText(result.getBatasWaktu());
 
 //        String getDate = result.getBatasWaktu();
@@ -140,6 +144,37 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
     public int getItemCount() {
         return butuhSegeraModels.size();
     }
+
+//    @Override
+//    public Filter getFilter() {
+//        return new Filter() {
+//            @Override
+//            protected FilterResults performFiltering(CharSequence charSequence) {
+//                String charString = charSequence.toString();
+//                if (charString.isEmpty()){
+//                    butuhSegeraFiltered = butuhSegeraModels;
+//                }else{
+//                    List<ButuhSegeraModel> filteredList = new ArrayList<>();
+//                    for (ButuhSegeraModel row : filteredList){
+//                        if (row.getJudulKegiatan().contains(charString.toLowerCase())){
+//                            filteredList.add(row);
+//                        }
+//                    }
+//                    butuhSegeraFiltered = butuhSegeraModels;
+//                }
+//                FilterResults filterResults = new FilterResults();
+//                filterResults.values = butuhSegeraFiltered;
+//                return filterResults;
+//            }
+//
+//            @Override
+//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//                butuhSegeraFiltered = (ArrayList<ButuhSegeraModel>) filterResults.values;
+//                notifyDataSetChanged();
+//            }
+//        };
+//    }
+
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

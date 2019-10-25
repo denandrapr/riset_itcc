@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.riset.Berdonasi.BuatKegiatanActivity;
 import com.example.riset.Donasi.DonasiFragment;
 import com.example.riset.Home.HomeFragment;
 import com.example.riset.Profile.ProfileFragment;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
 
+
         switch (menuItem.getItemId()){
             case R.id.home:
                 fragment = new HomeFragment();
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
             case R.id.saya:
                 fragment = new ProfileFragment();
+                break;
+            case R.id.bantuMereka:
+                fragment = new BuatKegiatanActivity();
                 break;
         }
         return loadFragment(fragment);

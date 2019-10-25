@@ -67,6 +67,8 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     String judulKegiatan;
     String bankPilihan;
 
+    Date date1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,11 +151,19 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     }
 
     private void dataUpload() {
+        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+
+        try{
+            date1 = dates.parse(batasWaktu);
+        }catch (Exception e){
+
+        }
+
         String idGenerator = "u"+System.currentTimeMillis();
         Map<String, Object> updates = new HashMap<>();
         updates.put("id", idGenerator);
         updates.put("targetNominalDonasi", targetNominalDonasi);
-        updates.put("batasWaktu", batasWaktu);
+        updates.put("batasWaktu", date1);
         updates.put("noRek", noRek);
         updates.put("targetPenerima", targetPenerima);
         updates.put("namaPenerimaDonasi", namaPenerimaDonasi);

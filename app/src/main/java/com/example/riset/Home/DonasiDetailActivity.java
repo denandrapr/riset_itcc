@@ -109,6 +109,7 @@ public class DonasiDetailActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(donaturDetailDonasiAdapter);
 
         get_data_donatur();

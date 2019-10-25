@@ -50,7 +50,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="16sp"
         android:fontFamily="@font/nunito"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/transferSesuai"/>
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="Rp 40.000"
         android:layout_below="@id/transferSesuai"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:textSize="24sp"
         android:fontFamily="@font/nunito_bold"
         android:layout_centerHorizontal="true"
@@ -71,48 +71,86 @@
         android:layout_below="@id/txtNominal"
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edit_text_filled_grey"
+        android:layout_marginTop="16dp"
+        android:background="#E6E6E6"
         android:paddingLeft="24dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/bca_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bca_logo"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
             android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/bca_logo"
             android:visibility="gone"
-            android:layout_gravity="center_vertical"/>
+            />
 
         <ImageView
             android:id="@+id/bri_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
             android:src="@drawable/bri_logo"
             android:layout_weight="5"
-            android:visibility="gone"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/mandiri_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
             android:src="@drawable/mandiri_logo"
             android:layout_weight="5"
-            android:visibility="gone"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:visibility="gone" />
 
         <ImageView
-            android:id="@+id/alfa_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/alfa_logo"
+            android:id="@+id/bni_logo"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
             android:layout_weight="5"
-            android:visibility="gone"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/bni_logo"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/cimb_logo"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/cimb_logo"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/permata_logo"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/permata_logo"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/maybank_logo"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/maybank_logo"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/mega_logo"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/mega_logo"
+            android:visibility="gone" />
 
         <TextView
+            android:id="@+id/noRek"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -132,160 +170,48 @@
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
         android:layout_below="@id/layout_bank"
-        android:layout_marginTop="24dp"
-        android:text="Transfer sebelum 16 Sep 2019 1:38 WIB atau donasi kamu
-otomatis dibatalkan oleh sistem."
+        android:layout_marginTop="4dp"
+        android:text="a.n : Denandra"
         android:fontFamily="@font/nunito"
         android:gravity="center"/>
 
     <ImageView
-        android:id="@+id/id_line"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/text_peringatan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/line_grey"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_below="@id/text_peringatan"
-        android:layout_marginTop="16dp"/>
+        android:id="@+id/line"/>
 
     <TextView
-        android:id="@+id/panduan_judul"
-        android:layout_below="@id/id_line"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="36dp"
+        android:id="@+id/uploadFotoJudul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Panduan Pembayaran"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_marginTop="16dp"
-        android:textSize="16sp"/>
+        android:fontFamily="@font/nunito"
+        android:text="Pilih bukti transfer (.png/.jpg)"
+        android:layout_below="@id/line"/>
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageUpload"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="120dp"
+        android:src="@drawable/upload_photo_placeholder"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/uploadFotoJudul"/>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/panduan_judul"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="16dp"
-        android:padding="16dp"
-        android:background="@drawable/edit_text_outline_grey">
-
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            app:expansion_headerIndicator="@id/headerIndicator"
-            app:expansion_layout="@id/expansionLayout"
-            app:expansion_toggleOnClick="true">
-
-            <!-- HEADER -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ATM BCA"
-                android:fontFamily="@font/nunito_bold"/>
-            <!-- HEADER INDICATOR -->
-            <ImageView
-                android:adjustViewBounds="true"
-                android:id="@+id/headerIndicator"
-                android:layout_gravity="center_vertical|right"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-
-        </com.github.florent37.expansionpanel.ExpansionHeader>
-
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Halooo"/>
-
-        </com.github.florent37.expansionpanel.ExpansionLayout>
-
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            app:expansion_headerIndicator="@id/headerIndicator"
-            app:expansion_layout="@id/expansionLayout2"
-            app:expansion_toggleOnClick="true">
-
-            <!-- HEADER -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="m-BCA (BCA Mobile)"
-                android:fontFamily="@font/nunito_bold"/>
-            <!-- HEADER INDICATOR -->
-            <ImageView
-                android:adjustViewBounds="true"
-                android:id="@+id/headerIndicator"
-                android:layout_gravity="center_vertical|right"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-
-        </com.github.florent37.expansionpanel.ExpansionHeader>
-
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout2"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Halooo"/>
-
-        </com.github.florent37.expansionpanel.ExpansionLayout>
-
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            app:expansion_headerIndicator="@id/headerIndicator"
-            app:expansion_layout="@id/expansionLayout3"
-            app:expansion_toggleOnClick="true">
-
-            <!-- HEADER -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Internet Banking BCA"
-                android:fontFamily="@font/nunito_bold"/>
-            <!-- HEADER INDICATOR -->
-            <ImageView
-                android:adjustViewBounds="true"
-                android:id="@+id/headerIndicator"
-                android:layout_gravity="center_vertical|right"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-
-        </com.github.florent37.expansionpanel.ExpansionHeader>
-
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout3"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Halooo"/>
-
-        </com.github.florent37.expansionpanel.ExpansionLayout>
-
-    </LinearLayout>
+        android:textSize="11sp"
+        android:fontFamily="@font/nunito"
+        android:text="*catatan : Kirim foto dengan data yang benar dan jelas agar proses verifikasi mudah dan tidak memakan waktu lama"
+        android:layout_below="@id/imageUpload"/>
 
     <Button
         android:id="@+id/btn_selesai"
@@ -296,7 +222,7 @@ otomatis dibatalkan oleh sistem."
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="24dp"
-        android:text="Selesai"
+        android:text="Kirim bukti transfer"
         android:textAllCaps="false"
         android:textColor="@android:color/white"/>
 
@@ -304,7 +230,8 @@ otomatis dibatalkan oleh sistem."
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
-        android:id="@+id/relative2">
+        android:id="@+id/relative2"
+        android:visibility="gone">
 
         <com.github.ybq.android.spinkit.SpinKitView
             xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -10,7 +10,18 @@
     android:paddingRight="32dp"
     tools:context=".RegistSignIn.RegisterDuaActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isi Biodata"
+        android:layout_above="@id/linear1"
+        android:fontFamily="@font/nunito"
+        android:layout_marginBottom="32dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"/>
+
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

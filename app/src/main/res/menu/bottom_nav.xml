@@ -9,6 +9,10 @@
         android:title="@string/donasi"
         android:icon="@drawable/heart"/>
     <item
+        android:id="@+id/bantuMereka"
+        android:title="@string/bantui"
+        android:icon="@drawable/ic_bantu_mereka"/>
+    <item
         android:id="@+id/riwayat"
         android:title="@string/Dokumentasi"
         android:icon="@drawable/ic_documentation"/>

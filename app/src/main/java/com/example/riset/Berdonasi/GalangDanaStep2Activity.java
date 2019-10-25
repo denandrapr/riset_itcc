@@ -25,7 +25,9 @@ import com.example.riset.R;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -67,6 +69,7 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private SharedPreferences mSettings;
+    Date date1;
     String targetPenerima;
     String penerima;
     String targetBantuan;
@@ -97,6 +100,7 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
                 || no_rek1.getText().toString().equals("")){
             Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
         }else {
+            Toast.makeText(this, date1+"", Toast.LENGTH_SHORT).show();
             i.putExtra("targetNominalDonasi", mTargetDonasi.getText().toString());
             i.putExtra("batasWaktu", mBtnBatasWaktu.getText().toString());
             i.putExtra("noRek", no_rek1.getText().toString());
@@ -117,7 +121,7 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(i,i1, i2);
-                mBtnBatasWaktu.setText(i2+"-"+i1+"-"+i);
+                mBtnBatasWaktu.setText(i2+"-"+(i1+1)+"-"+i);
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
@@ -127,14 +131,10 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
     private TextWatcher onTextChangedListener() {
         return new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -153,7 +153,6 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
                     formatter.applyPattern("#,###,###,###");
                     String formattedString = formatter.format(longval);
 
-                    //setting text after format to EditText
                     mTargetDonasi.setText(formattedString);
                     mTargetDonasi.setSelection(mTargetDonasi.getText().length());
                 } catch (NumberFormatException nfe) {
@@ -175,7 +174,6 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         metode = mSettings.getString("pilihMetode", "missing");
-//        Log.d("TAG", "Metode => "+metode);
         if (metode.equals("BCA")){
             metodenya.setText(metode);
             btnPilihBank.setVisibility(View.GONE);

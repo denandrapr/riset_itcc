@@ -145,7 +145,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/settingImg"
                 android:layout_width="wrap_content"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -174,7 +174,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/kegiatanImg"
                 android:layout_width="wrap_content"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -203,7 +203,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/aboutImg"
                 android:layout_width="wrap_content"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -235,7 +235,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/outImg"
                 android:layout_width="wrap_content"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
