@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:paddingBottom="46dp">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -28,25 +29,38 @@
             android:textSize="16sp"
             android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/tambahKegiatan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:fontFamily="@font/nunito_bold"
-            android:textSize="16sp"
-            android:text="Tambah Kegiatan"
-            android:layout_marginRight="12dp"
-            android:textColor="@android:color/white"/>
-
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/toolbar"
-        android:id="@+id/recycler"
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/judul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bantu siapa hari ini?"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="18dp"
+                android:textSize="18sp"
+                android:textColor="#3D3D3D"
+                android:fontFamily="@font/nunito"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/judul"
+                android:id="@+id/recycler"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     <Button
         android:layout_width="120dp"
@@ -54,22 +68,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/btn_filter"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="32dp"
         android:textColor="@android:color/white"
         android:text="Filter"
         android:textSize="12sp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:drawableLeft="@drawable/ic_ke_metode"/>
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_add"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/ic_add_white"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginBottom="72dp"-->
-<!--        android:layout_marginRight="16dp"/>-->
 
 </RelativeLayout>

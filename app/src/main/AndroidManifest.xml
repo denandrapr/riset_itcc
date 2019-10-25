@@ -52,7 +52,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden" >
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

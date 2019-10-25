@@ -31,8 +31,6 @@ public class DonasiFragment  extends Fragment {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    @BindView(R.id.tambahKegiatan)
-    TextView tambahKegiatan;
 //    @BindView(R.id.fab_add)
 //    FloatingActionButton fab;
 
@@ -47,47 +45,36 @@ public class DonasiFragment  extends Fragment {
         ButterKnife.bind(this, view);
 
         ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
         animalNames.add("Bantu Alex mendapatkan buku \n" +
                 "Untuk bacaan");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
 
         listDonasiAdapter = new ListDonasiAdapter(getActivity(), animalNames);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(listDonasiAdapter);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getInstance().getCurrentUser();
-        if (user != null){
-            tambahKegiatan.setVisibility(View.VISIBLE);
-        }else{
-            tambahKegiatan.setVisibility(View.GONE);
-        }
+//        if (user != null){
+//            tambahKegiatan.setVisibility(View.VISIBLE);
+//        }else{
+//            tambahKegiatan.setVisibility(View.GONE);
+//        }
 
         return view;
     }
 
-//    @OnClick(R.id.fab_add)
-//    void action_fab(){
+//    @OnClick(R.id.tambahKegiatan)
+//    void tambahKegiatan(){
 //        Intent i = new Intent(getActivity(), BuatKegiatanActivity.class);
 //        startActivity(i);
 //    }
-
-    @OnClick(R.id.tambahKegiatan)
-    void tambahKegiatan(){
-        Intent i = new Intent(getActivity(), BuatKegiatanActivity.class);
-        startActivity(i);
-    }
 }

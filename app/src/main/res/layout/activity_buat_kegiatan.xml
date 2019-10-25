@@ -8,18 +8,18 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:elevation="4dp"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
     <TextView
         android:text="Hai, Farouq"
@@ -28,7 +28,7 @@
         android:textSize="24sp"
         android:fontFamily="@font/nunito_bold"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"/>
+        android:layout_marginTop="48dp"/>
 
     <TextView
         android:text="Kebaikan apa yang ingin kamu buat?"
@@ -133,88 +133,88 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:cardElevation="2dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="24dp">
+                android:layout_weight="1"
+                app:cardElevation="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="8dp">
 
-                <ImageView
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:src="@drawable/ic_donasi_ruangan"
-                    android:layout_gravity="center_horizontal"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="24dp">
 
-                <Button
-                    android:id="@+id/donasiRuangan"
-                    android:layout_width="115dp"
-                    android:layout_height="26dp"
-                    android:textSize="12sp"
-                    android:text="Donasi Ruangan"
-                    android:background="@drawable/btn_filled_orange"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="32dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="14dp"/>
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:src="@drawable/ic_donasi_ruangan"
+                        android:layout_gravity="center_horizontal"/>
 
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/donasiRuangan"
+                        android:layout_width="115dp"
+                        android:layout_height="26dp"
+                        android:textSize="12sp"
+                        android:text="Donasi Ruangan"
+                        android:background="@drawable/btn_filled_orange"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="32dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="14dp"/>
 
-        </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:cardElevation="2dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginLeft="8dp">
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="24dp">
+                android:layout_weight="1"
+                app:cardElevation="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="8dp">
 
-                <ImageView
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:src="@drawable/ic_cari_relawan"
-                    android:layout_gravity="center_horizontal"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="24dp">
 
-                <Button
-                    android:layout_width="105dp"
-                    android:layout_height="26dp"
-                    android:text="Cari Relawan"
-                    android:background="@drawable/btn_filled_orange"
-                    android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="32dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="14dp"/>
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:src="@drawable/ic_cari_relawan"
+                        android:layout_gravity="center_horizontal"/>
 
-            </LinearLayout>
+                    <Button
+                        android:layout_width="105dp"
+                        android:layout_height="26dp"
+                        android:text="Cari Relawan"
+                        android:background="@drawable/btn_filled_orange"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="32dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="14dp"/>
 
-        </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
-    </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
 
 </LinearLayout>

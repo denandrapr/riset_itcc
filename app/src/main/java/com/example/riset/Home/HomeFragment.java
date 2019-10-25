@@ -30,6 +30,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
@@ -82,16 +83,12 @@ public class HomeFragment extends Fragment{
 //        }
 
         ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
         animalNames.add("Bantu Alex mendapatkan buku \n" +
                 "Untuk bacaan");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
-        animalNames.add("Bantu Bella agar dapat bersekolah \n" +
-                "lagi untuk meraih mimpinya");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
+        animalNames.add("Bantu Bella agar dapat bersekolah lagi");
 
         ArrayList<String> tutorMereka = new ArrayList<>();
         tutorMereka.add("Pengajar di rumah belajar Laksma Putra");
@@ -124,10 +121,11 @@ public class HomeFragment extends Fragment{
         jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), tutorMereka);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
-        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), animalNames);
+        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listButuhSegera);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView3.setItemAnimator(new DefaultItemAnimator());
         recyclerView3.setLayoutManager(mLayoutManager);
+        recyclerView3.setNestedScrollingEnabled(false);
         recyclerView3.setAdapter(terdekatKamuAdapter);
 
         ambilButuhKamuSegera();
@@ -154,6 +152,25 @@ public class HomeFragment extends Fragment{
                         recyclerView.setAdapter(adapterButuhSegera);
                         relativeLayout1.setVisibility(View.GONE);
                         scrollView1.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    private void ambilTerdekatKamu(){
+        db.collection("Posting")
+                .limit(5)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+//                            Log.d("TAG ", "Hasil = > "+doc.getData());
+                            Gson gson = new Gson();
+                            JsonElement jsonElement =gson.toJsonTree(doc.getData());
+                            listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
+                        }
+                        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listButuhSegera);
+                        recyclerView3.setAdapter(terdekatKamuAdapter);
                     }
                 });
     }
