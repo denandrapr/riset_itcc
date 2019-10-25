@@ -68,10 +68,10 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         mSettings = BerdonasiStep1Activity.this.getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         txtNominal.addTextChangedListener(onTextChangedListener());
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

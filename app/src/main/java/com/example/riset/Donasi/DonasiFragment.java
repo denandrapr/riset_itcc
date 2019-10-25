@@ -16,12 +16,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.riset.Berdonasi.BuatKegiatanActivity;
 import com.example.riset.Donasi.Adapter.ListDonasiAdapter;
+import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
+import com.example.riset.Home.Model.ButuhSegeraModel;
 import com.example.riset.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +44,10 @@ public class DonasiFragment  extends Fragment {
 //    @BindView(R.id.fab_add)
 //    FloatingActionButton fab;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     ListDonasiAdapter listDonasiAdapter;
+    private List<ButuhSegeraModel> listButuhSegera = new ArrayList<>();
 
     private FirebaseAuth mAuth;
 
@@ -54,12 +67,14 @@ public class DonasiFragment  extends Fragment {
         animalNames.add("Bantu Bella agar dapat bersekolah lagi");
         animalNames.add("Bantu Bella agar dapat bersekolah lagi");
 
-        listDonasiAdapter = new ListDonasiAdapter(getActivity(), animalNames);
+        listDonasiAdapter = new ListDonasiAdapter(getActivity(), listButuhSegera);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(listDonasiAdapter);
+
+        ambilTerdekatKamu();
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getInstance().getCurrentUser();
@@ -72,9 +87,22 @@ public class DonasiFragment  extends Fragment {
         return view;
     }
 
-//    @OnClick(R.id.tambahKegiatan)
-//    void tambahKegiatan(){
-//        Intent i = new Intent(getActivity(), BuatKegiatanActivity.class);
-//        startActivity(i);
-//    }
+    private void ambilTerdekatKamu(){
+        db.collection("Posting")
+                .limit(5)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+//                            Log.d("TAG ", "Hasil = > "+doc.getData());
+                            Gson gson = new Gson();
+                            JsonElement jsonElement =gson.toJsonTree(doc.getData());
+                            listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
+                        }
+                        listDonasiAdapter = new ListDonasiAdapter(getActivity(), listButuhSegera);
+                        recyclerView.setAdapter(listDonasiAdapter);
+                    }
+                });
+    }
 }

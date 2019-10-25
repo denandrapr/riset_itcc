@@ -163,7 +163,7 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
         Map<String, Object> updates = new HashMap<>();
         updates.put("id", idGenerator);
         updates.put("targetNominalDonasi", targetNominalDonasi);
-        updates.put("batasWaktu", date1);
+        updates.put("batasWaktu", batasWaktu);
         updates.put("noRek", noRek);
         updates.put("targetPenerima", targetPenerima);
         updates.put("namaPenerimaDonasi", namaPenerimaDonasi);
