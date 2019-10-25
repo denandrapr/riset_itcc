@@ -1,5 +1,6 @@
 package com.example.riset.Home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.Home.Model.ButuhSegeraModel;
 import com.example.riset.MainActivity;
+import com.example.riset.Notifikasi.NotifikasiMainActivity;
 import com.example.riset.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,6 +45,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeFragment extends Fragment{
 
@@ -66,6 +69,7 @@ public class HomeFragment extends Fragment{
     private FirebaseAuth mAuth;
 
     private List<ButuhSegeraModel> listButuhSegera = new ArrayList<>();
+    private List<ButuhSegeraModel> listTerdekat = new ArrayList<>();
     ButuhSegeraModel butuhSegeraModel;
 
     @Nullable
@@ -121,7 +125,7 @@ public class HomeFragment extends Fragment{
         jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), tutorMereka);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
-        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listButuhSegera);
+        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listTerdekat);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView3.setItemAnimator(new DefaultItemAnimator());
         recyclerView3.setLayoutManager(mLayoutManager);
@@ -129,7 +133,7 @@ public class HomeFragment extends Fragment{
         recyclerView3.setAdapter(terdekatKamuAdapter);
 
         ambilButuhKamuSegera();
-
+        ambilTerdekatKamu();
         return view;
     }
 
@@ -143,7 +147,6 @@ public class HomeFragment extends Fragment{
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot doc : task.getResult()){
-//                            Log.d("TAG ", "Hasil = > "+doc.getData());
                             Gson gson = new Gson();
                             JsonElement jsonElement =gson.toJsonTree(doc.getData());
                             listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
@@ -167,11 +170,17 @@ public class HomeFragment extends Fragment{
 //                            Log.d("TAG ", "Hasil = > "+doc.getData());
                             Gson gson = new Gson();
                             JsonElement jsonElement =gson.toJsonTree(doc.getData());
-                            listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
+                            listTerdekat.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
                         }
-                        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listButuhSegera);
+                        terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listTerdekat);
                         recyclerView3.setAdapter(terdekatKamuAdapter);
                     }
                 });
+    }
+
+    @OnClick(R.id.notif)
+    void notifikasi(){
+        Intent i = new Intent(getActivity(), NotifikasiMainActivity.class);
+        startActivity(i);
     }
 }

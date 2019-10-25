@@ -20,6 +20,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,13 +51,27 @@ public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDeta
         }else{
             holder.txtNamaDonatur.setText(results.getNama());
         }
-        holder.txtJumlahDonasi.setText(Integer.toString(results.getNominal()));
+        Double d = (double)results.getNominal();
+        holder.txtJumlahDonasi.setText(decimalFormat(d));
         holder.txtDonasiDate.setText(results.getTanggal());
         Glide.with(holder.foto_donatur.getContext())
                 .load(R.drawable.placeholder)
                 .circleCrop()
                 .placeholder(R.drawable.placeholder)
                 .into(holder.foto_donatur);
+    }
+
+    private String decimalFormat(Double total){
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+
+        return kursIndonesia.format(total);
     }
 
     @Override

@@ -56,6 +56,7 @@
                     android:src="@drawable/logo_white"/>
 
                 <ImageView
+                    android:id="@+id/notif"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="right"

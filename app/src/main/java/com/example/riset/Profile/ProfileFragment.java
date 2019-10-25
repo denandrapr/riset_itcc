@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.riset.Notifikasi.NotifikasiMainActivity;
 import com.example.riset.R;
 import com.example.riset.RegistSignIn.SignInActivity;
 import com.example.riset.RegistSignIn.WelcomeSignInActivity;
@@ -79,4 +80,11 @@ public class ProfileFragment  extends Fragment {
         Intent i = new Intent(getActivity(), WelcomeSignInActivity.class);
         startActivity(i);
     }
+
+    @OnClick(R.id.notif)
+    void notifikasi(){
+        Intent i = new Intent(getActivity(), NotifikasiMainActivity.class);
+        startActivity(i);
+    }
+
 }

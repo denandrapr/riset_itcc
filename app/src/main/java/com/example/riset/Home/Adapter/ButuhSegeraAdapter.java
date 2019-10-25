@@ -86,25 +86,27 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
 //        String getDate = result.getBatasWaktu();
         holder.textId.setText(result.getId());
         id = result.getId();
-        holder.textDuit.setText("0");
         holder.textSisa.setText(CurrentDateTimeExample1(result.getBatasWaktu()));
-        get_count_dana(result.getId());
-    }
 
-    private void get_count_dana(String ide){
         db.collection("Posting")
-                .document(ide)
+                .document(result.getId())
                 .collection("berdonasi")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        total = 0;
                         for (QueryDocumentSnapshot doc : task.getResult()){
                             total = total + doc.getDouble("nominal");
                         }
+                        holder.textDuit.setText(decimalFormat(total));
                     }
                 });
     }
+
+//    private int get_count_dana(String id){
+//
+//    }
 
     private String decimalFormat(Double total){
         DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
@@ -139,44 +141,13 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         return dayDifference;
     }
 
-    // total number of rows
+
     @Override
     public int getItemCount() {
         return butuhSegeraModels.size();
     }
 
-//    @Override
-//    public Filter getFilter() {
-//        return new Filter() {
-//            @Override
-//            protected FilterResults performFiltering(CharSequence charSequence) {
-//                String charString = charSequence.toString();
-//                if (charString.isEmpty()){
-//                    butuhSegeraFiltered = butuhSegeraModels;
-//                }else{
-//                    List<ButuhSegeraModel> filteredList = new ArrayList<>();
-//                    for (ButuhSegeraModel row : filteredList){
-//                        if (row.getJudulKegiatan().contains(charString.toLowerCase())){
-//                            filteredList.add(row);
-//                        }
-//                    }
-//                    butuhSegeraFiltered = butuhSegeraModels;
-//                }
-//                FilterResults filterResults = new FilterResults();
-//                filterResults.values = butuhSegeraFiltered;
-//                return filterResults;
-//            }
-//
-//            @Override
-//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-//                butuhSegeraFiltered = (ArrayList<ButuhSegeraModel>) filterResults.values;
-//                notifyDataSetChanged();
-//            }
-//        };
-//    }
 
-
-    // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.txtJudul)
