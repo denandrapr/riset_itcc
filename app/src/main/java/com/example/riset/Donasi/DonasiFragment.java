@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,8 +45,14 @@ public class DonasiFragment  extends Fragment {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-//    @BindView(R.id.fab_add)
-//    FloatingActionButton fab;
+    @BindView(R.id.relativeProgress)
+    RelativeLayout relativeLayout1;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.scroll)
+    ScrollView scrollView;
+    @BindView(R.id.btnFilter)
+    Button btnFilter;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -88,6 +98,10 @@ public class DonasiFragment  extends Fragment {
     }
 
     private void ambilTerdekatKamu(){
+        relativeLayout1.setVisibility(View.VISIBLE);
+        toolbar.setVisibility(View.GONE);
+        scrollView.setVisibility(View.GONE);
+        btnFilter.setVisibility(View.GONE);
         db.collection("Posting")
                 .limit(5)
                 .get()
@@ -102,6 +116,10 @@ public class DonasiFragment  extends Fragment {
                         }
                         listDonasiAdapter = new ListDonasiAdapter(getActivity(), listButuhSegera);
                         recyclerView.setAdapter(listDonasiAdapter);
+                        relativeLayout1.setVisibility(View.GONE);
+                        toolbar.setVisibility(View.VISIBLE);
+                        scrollView.setVisibility(View.VISIBLE);
+                        btnFilter.setVisibility(View.VISIBLE);
                     }
                 });
     }

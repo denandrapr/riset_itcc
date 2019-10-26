@@ -49,7 +49,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/colorPrimary"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/txtInfo"
@@ -58,7 +58,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/nunito"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
     </LinearLayout>
 

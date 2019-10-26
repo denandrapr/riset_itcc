@@ -2,6 +2,7 @@ package com.example.riset.Home.Adapter;
 
 import android.content.Context;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,23 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.riset.Home.Model.ButuhSegeraModel;
+import com.example.riset.Model.UserModel;
 import com.example.riset.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
 
+import org.w3c.dom.Text;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,6 +43,10 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
 
     private List<ButuhSegeraModel> butuhSegeraModels;
     private LayoutInflater mInflater;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    double total;
+    String dayDifference;
+    String namaPembuat;
 
     public TerdekatKamuAdapter(Context context, List<ButuhSegeraModel> butuhSegeraModels) {
         this.mInflater = LayoutInflater.from(context);
@@ -50,7 +70,75 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
             .placeholder(R.drawable.terdekat_kamu_temp1)
             .into(holder.myView);
         holder.judulKegiatan.setText(result.getJudulKegiatan());
-//        holder.myTextView.setText(result);
+        holder.sisaHari.setText(CurrentDate(result.getBatasWaktu()));
+        get_total_terkumpul(result.getId(), holder);
+        get_created_by(result.getCreated_by(), holder);
+    }
+
+    private void get_created_by(String email_created_by, ViewHolder holder){
+
+        db.collection("User")
+                .document(email_created_by)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        namaPembuat = "";
+                        UserModel user = null;
+                        user = documentSnapshot.toObject(UserModel.class);
+                        holder.pengepost.setText(user.getNama());
+                    }
+                });
+    }
+
+    private void get_total_terkumpul(String id, ViewHolder holder){
+        db.collection("Posting")
+                .document(id)
+                .collection("berdonasi")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        total = 0;
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+                            total = total + doc.getDouble("nominal");
+                        }
+                        holder.txtTotalTerkumpul.setText(decimalFormat(total));
+                    }
+                });
+    }
+
+    public String CurrentDate(String batasWaktu) {
+        try {
+            Date date1;
+            Date date = java.util.Calendar.getInstance().getTime();
+            SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+
+            date1 = dates.parse(batasWaktu);
+
+            long difference = Math.abs(date1.getTime() - date.getTime());
+            long differenceDate = difference / (24*60*60*1000) + 1;
+
+            dayDifference = Long.toString(differenceDate);
+
+//            Log.d("TAG", "Date => "+dayDifference);
+        }catch (Exception e){
+
+        }
+        return dayDifference;
+    }
+
+    private String decimalFormat(Double total){
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+
+        return kursIndonesia.format(total);
     }
 
     @Override
@@ -64,6 +152,12 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         ImageView myView;
         @BindView(R.id.txtJudulKegiatan)
         TextView judulKegiatan;
+        @BindView(R.id.txtTotalTerkumpul)
+        TextView txtTotalTerkumpul;
+        @BindView(R.id.txtSisaHari)
+        TextView sisaHari;
+        @BindView(R.id.pengepost)
+        TextView pengepost;
 
         ViewHolder(View itemView) {
             super(itemView);

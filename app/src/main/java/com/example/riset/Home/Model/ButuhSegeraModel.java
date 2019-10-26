@@ -13,6 +13,7 @@ public class ButuhSegeraModel {
     private String targetNominalDonasi;
     private String targetPenerima;
     private int tipe;
+    private String created_by;
 
     public ButuhSegeraModel(){
 
@@ -20,7 +21,7 @@ public class ButuhSegeraModel {
 
     public ButuhSegeraModel(String bankPilihan, String batasWaktu, String deskripsi, String judulKegiatan,
                             String linkFotoUtama, String namaPenerimaDonasi, String noRek, String targetNominalDonasi,
-                            String targetPenerima, int tipe, String id) {
+                            String targetPenerima, int tipe, String id, String created_by) {
         this.bankPilihan = bankPilihan;
         this.batasWaktu = batasWaktu;
         this.deskripsi = deskripsi;
@@ -32,6 +33,11 @@ public class ButuhSegeraModel {
         this.targetPenerima = targetPenerima;
         this.tipe = tipe;
         this.id = id;
+        this.created_by = created_by;
+    }
+
+    public String getCreated_by() {
+        return created_by;
     }
 
     public String getId() {

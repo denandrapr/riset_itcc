@@ -70,6 +70,9 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         total = 0;
 
         ButuhSegeraModel result = butuhSegeraModels.get(position);
+        String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
+        id = result.getId();
+        String infoTerkumpul = "Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal));
 
         Glide
             .with(holder.imageSegera.getContext())
@@ -78,18 +81,16 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
             .into(holder.imageSegera);
 
         holder.textJudul.setText(result.getJudulKegiatan());
-        String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
-        holder.textInfo.setText("Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal)));
-//        holder.textInfo.setText("Terkumpul dari Rp "+result.getTargetNominalDonasi());
+        holder.textInfo.setText(infoTerkumpul);
         holder.textSisa.setText(result.getBatasWaktu());
-
-//        String getDate = result.getBatasWaktu();
         holder.textId.setText(result.getId());
-        id = result.getId();
-        holder.textSisa.setText(CurrentDateTimeExample1(result.getBatasWaktu()));
+        holder.textSisa.setText(CurrentDate(result.getBatasWaktu()));
+        get_count_dana(id, holder);
+    }
 
+    private void get_count_dana(String id, ViewHolder holder){
         db.collection("Posting")
-                .document(result.getId())
+                .document(id)
                 .collection("berdonasi")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -104,10 +105,6 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
                 });
     }
 
-//    private int get_count_dana(String id){
-//
-//    }
-
     private String decimalFormat(Double total){
         DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
         DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
@@ -121,7 +118,7 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         return kursIndonesia.format(total);
     }
 
-    public String CurrentDateTimeExample1(String batasWaktu) {
+    public String CurrentDate(String batasWaktu) {
         try {
             Date date1;
             Date date = java.util.Calendar.getInstance().getTime();

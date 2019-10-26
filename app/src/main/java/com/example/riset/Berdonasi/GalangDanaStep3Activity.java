@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -44,9 +46,13 @@ import butterknife.OnClick;
 
 public class GalangDanaStep3Activity extends AppCompatActivity {
 
+    //initialized code gallery
     private static final int GALLERY_INTENT = 1;
+
+    //initialized firebase class
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     StorageReference mStoreRef = FirebaseStorage.getInstance().getReference();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     Uri photoURI;
     ProgressDialog progressDialog;
@@ -84,8 +90,8 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
         judulKegiatan = i.getStringExtra("judulKegiatan");
         bankPilihan = i.getStringExtra("bankPilihan");
 
-        Log.d("TAG", "Last activity result => "+targetNominalDonasi+" "+batasWaktu+" "+
-                noRek+" "+targetPenerima+" "+namaPenerimaDonasi+" "+judulKegiatan+" "+bankPilihan);
+//        Log.d("TAG", "Last activity result => "+targetNominalDonasi+" "+batasWaktu+" "+
+//                noRek+" "+targetPenerima+" "+namaPenerimaDonasi+" "+judulKegiatan+" "+bankPilihan);
     }
 
     @OnClick(R.id.pilihFoto)
@@ -151,12 +157,16 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
     }
 
     private void dataUpload() {
-        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
-
-        try{
-            date1 = dates.parse(batasWaktu);
-        }catch (Exception e){
-
+//        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+//
+//        try{
+//            date1 = dates.parse(batasWaktu);
+//        }catch (Exception e){
+//
+//        }
+        String get_email = "";
+        if (user != null){
+            get_email = user.getEmail();
         }
 
         String idGenerator = "u"+System.currentTimeMillis();
@@ -172,6 +182,7 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
         updates.put("linkFotoUtama", downloadUrl.toString());
         updates.put("created_date", FieldValue.serverTimestamp());
         updates.put("deskripsi", mdeskripsi.getText().toString());
+        updates.put("created_by", get_email);
         updates.put("tipe", 1);
 
         db.collection("Posting")
@@ -187,7 +198,7 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
                             startActivity(i);
                         }else{
                             progressDialog.dismiss();
-                            Toast.makeText(GalangDanaStep3Activity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GalangDanaStep3Activity.this, "Gagal!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
@@ -195,7 +206,7 @@ public class GalangDanaStep3Activity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(GalangDanaStep3Activity.this, "Gagal Cok", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GalangDanaStep3Activity.this, "Gagal!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
