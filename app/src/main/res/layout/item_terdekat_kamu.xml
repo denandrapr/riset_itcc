@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="24dp"
     android:paddingTop="14dp"
-    android:paddingRight="4dp"
+    android:paddingRight="24dp"
     android:paddingBottom="12dp">
 
     <androidx.cardview.widget.CardView
@@ -43,11 +43,13 @@
         android:text="akweoqkw"
         android:textSize="11sp"
         android:layout_toRightOf="@id/imgCard"
+        android:fontFamily="@font/nunito"
         android:layout_below="@id/txtJudulKegiatan"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"/>
 
     <LinearLayout
+        android:id="@+id/linearTerkumpul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -66,12 +68,48 @@
             android:textSize="11sp"/>
 
         <TextView
+            android:id="@+id/txtTotalTerkumpul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp 20.000.000"
             android:layout_toRightOf="@id/imgCard"
             android:layout_below="@id/textTerkumpul"
-            android:textSize="12sp"
+            android:textSize="11sp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="12dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/linearTerkumpul"
+        android:layout_below="@id/pengepost"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="bottom|end">
+
+        <TextView
+            android:id="@+id/textTerkumpul1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sisa hari"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/txtSisaHari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:layout_toRightOf="@id/imgCard"
+            android:layout_below="@id/textTerkumpul"
+            android:textSize="11sp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@android:color/black"
             android:layout_marginLeft="12dp"/>
 
     </LinearLayout>
