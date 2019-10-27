@@ -100,7 +100,7 @@ public class GalangDanaStep2Activity extends AppCompatActivity {
                 || no_rek1.getText().toString().equals("")){
             Toast.makeText(this, "Tidak boleh ada field kosong!", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, date1+"", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, date1+"", Toast.LENGTH_SHORT).show();
             i.putExtra("targetNominalDonasi", mTargetDonasi.getText().toString());
             i.putExtra("batasWaktu", mBtnBatasWaktu.getText().toString());
             i.putExtra("noRek", no_rek1.getText().toString());

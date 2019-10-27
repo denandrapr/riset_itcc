@@ -61,41 +61,43 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
     public void onBindViewHolder(@NonNull TerdekatKamuAdapter.ViewHolder holder, int position) {
         ButuhSegeraModel result = butuhSegeraModels.get(position);
 
-        Glide
-            .with(holder.myView.getContext())
-            .load(result.getLinkFotoUtama())
-            .placeholder(R.drawable.terdekat_kamu_temp1)
-            .into(holder.myView);
-        holder.judulKegiatan.setText(result.getJudulKegiatan());
-        holder.sisaHari.setText(CurrentDate(result.getBatasWaktu()));
-        get_total_terkumpul(result.getId(), holder);
-        get_created_by(result.getCreated_by(), holder);
+        if (result.getTipe() == 1){
+            Glide
+                    .with(holder.myView.getContext())
+                    .load(result.getLinkFotoUtama())
+                    .placeholder(R.drawable.terdekat_kamu_temp1)
+                    .into(holder.myView);
+            holder.judulKegiatan.setText(result.getJudulKegiatan());
+            holder.sisaHari.setText(CurrentDate(result.getBatasWaktu()));
+            get_total_terkumpul(result.getId(), holder);
+            get_created_by(result.getCreated_by(), holder);
 
-        //setting progressbar
-        db.collection("Posting")
-                .document(result.getId())
-                .collection("berdonasi")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        total = 0;
-                        nominalDonasi = 0.0;
-                        sisa = 0;
-                        for (QueryDocumentSnapshot doc : task.getResult()){
-                            total = total + doc.getDouble("nominal");
+            //setting progressbar
+            db.collection("Posting")
+                    .document(result.getId())
+                    .collection("berdonasi")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            total = 0;
+                            nominalDonasi = 0.0;
+                            sisa = 0;
+                            for (QueryDocumentSnapshot doc : task.getResult()){
+                                total = total + doc.getDouble("nominal");
+                            }
+                            nominalDonasi = Double.parseDouble(result.getTargetNominalDonasi().replace(",",""));
+
+                            LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) holder.barNominalTerkumpul.getLayoutParams();
+                            LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) holder.barNominalTersisa.getLayoutParams();
+
+                            sisa = (float)(total/nominalDonasi);
+
+                            params1.weight = sisa;
+                            holder.barNominalTerkumpul.setLayoutParams(params1);
                         }
-                        nominalDonasi = Double.parseDouble(result.getTargetNominalDonasi().replace(",",""));
-
-                        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) holder.barNominalTerkumpul.getLayoutParams();
-                        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) holder.barNominalTersisa.getLayoutParams();
-
-                        sisa = (float)(total/nominalDonasi);
-
-                        params1.weight = sisa;
-                        holder.barNominalTerkumpul.setLayoutParams(params1);
-                    }
-                });
+                    });
+        }
     }
 
     private void get_created_by(String email_created_by, ViewHolder holder){

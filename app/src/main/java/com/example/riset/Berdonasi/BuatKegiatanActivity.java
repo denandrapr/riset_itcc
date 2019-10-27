@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.riset.Profile.ProfileEditActivity;
@@ -43,10 +45,23 @@ public class BuatKegiatanActivity extends Fragment {
     Button lengkapiData;
     int diKlik = 0;
 
+    @BindView(R.id.relative2)
+    RelativeLayout relativeLayout;
+    @BindView(R.id.linearUtama)
+    LinearLayout linearLayout;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_buat_kegiatan, container, false);
         ButterKnife.bind(this, view);
+
+        if (user != null){
+            relativeLayout.setVisibility(View.GONE);
+            linearLayout.setVisibility(View.VISIBLE);
+        }else{
+            relativeLayout.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.GONE);
+        }
 
         return view;
     }
