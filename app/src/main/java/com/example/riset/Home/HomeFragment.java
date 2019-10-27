@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,16 +26,20 @@ import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.Home.Model.ButuhSegeraModel;
 import com.example.riset.MainActivity;
+import com.example.riset.Model.UserModel;
 import com.example.riset.Notifikasi.NotifikasiMainActivity;
 import com.example.riset.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
@@ -60,6 +65,8 @@ public class HomeFragment extends Fragment{
     ScrollView scrollView1;
     @BindView(R.id.relativeProgress)
     RelativeLayout relativeLayout1;
+    @BindView(R.id.textView)
+    TextView textHelo;
 
     ButuhSegeraAdapter adapterButuhSegera;
     JadiTutorMerekaAdapter jadiTutorMerekaAdapter;
@@ -67,6 +74,7 @@ public class HomeFragment extends Fragment{
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
+    FirebaseUser user = mAuth.getInstance().getCurrentUser();
 
     private List<ButuhSegeraModel> listButuhSegera = new ArrayList<>();
     private List<ButuhSegeraModel> listTerdekat = new ArrayList<>();
@@ -80,11 +88,6 @@ public class HomeFragment extends Fragment{
         ButterKnife.bind(this, view);
 
         mAuth = FirebaseAuth.getInstance();
-
-//        FirebaseUser user = mAuth.getInstance().getCurrentUser();
-//        if (user != null){
-//            String uid = user.getEmail();
-//        }
 
         ArrayList<String> animalNames = new ArrayList<>();
         animalNames.add("Bantu Bella agar dapat bersekolah lagi");
@@ -140,6 +143,23 @@ public class HomeFragment extends Fragment{
     private void ambilButuhKamuSegera() {
         relativeLayout1.setVisibility(View.VISIBLE);
         scrollView1.setVisibility(View.GONE);
+        if (user != null){
+            db.collection("User")
+                    .document(user.getEmail())
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()){
+                                UserModel userModel = null;
+                                userModel = documentSnapshot.toObject(UserModel.class);
+                                textHelo.setText("Halo, "+userModel.getNama());
+                            }else{
+                                textHelo.setText("Halo");
+                            }
+                        }
+                    });
+        }
         db.collection("Posting")
                 .limit(5)
                 .get()
