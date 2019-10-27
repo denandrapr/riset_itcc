@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,8 +58,11 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
 //    ImageView alfa_logo;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.checkAnonim)
+    CheckBox checkAnonim;
 
     String deskripsi = "";
+    String check = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +72,21 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         mSettings = BerdonasiStep1Activity.this.getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         txtNominal.addTextChangedListener(onTextChangedListener());
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        checkAnonim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkAnonim.isChecked()){
+                    check = "true";
+                }else{
+                    check = "false";
+                }
+            }
+        });
     }
 
     @Override
@@ -151,10 +166,18 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
 
     @OnClick(R.id.lanjutkan_pembayaran)
     void lanjut_pembayaran(){
+        int nominal = 0;
+
         if (txtKeterangan.getText().toString().equals("")){
             deskripsi = " ";
         }
-        int nominal = Integer.parseInt(txtNominal.getText().toString().replace(",",""));
+
+        if (txtNominal.getText().toString().equals("")){
+            nominal = 0;
+        }else{
+            nominal = Integer.parseInt(txtNominal.getText().toString().replace(",",""));
+        }
+
         if (txtNominal.getText().toString().equals("")){
             Toast.makeText(this, "Silahkan mengisi nominal", Toast.LENGTH_SHORT).show();
         }else if(nominal < 10000){
@@ -163,6 +186,7 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
             SharedPreferences.Editor editor = mSettings.edit();
             editor.putString("nominal_donasi", txtNominal.getText().toString());
             editor.putString("keterangan", txtKeterangan.getText().toString());
+            editor.putString("anonim", check);
             editor.apply();
 
             Intent i = new Intent(BerdonasiStep1Activity.this, BerdonasiStep2Activity.class);

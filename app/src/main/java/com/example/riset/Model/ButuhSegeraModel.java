@@ -1,4 +1,4 @@
-package com.example.riset.Home.Model;
+package com.example.riset.Model;
 
 public class ButuhSegeraModel {
 

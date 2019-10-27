@@ -1,16 +1,13 @@
 package com.example.riset.Home;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,13 +16,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.Home.Adapter.ButuhSegeraAdapter;
-import com.example.riset.Home.Adapter.DonaturDetailDonasiAdapter;
 import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
-import com.example.riset.Home.Model.ButuhSegeraModel;
-import com.example.riset.MainActivity;
+import com.example.riset.Model.ButuhSegeraModel;
 import com.example.riset.Model.UserModel;
 import com.example.riset.Notifikasi.NotifikasiMainActivity;
 import com.example.riset.R;
@@ -36,15 +30,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
