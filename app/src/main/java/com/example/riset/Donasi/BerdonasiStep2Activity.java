@@ -21,18 +21,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.riset.Berdonasi.GalangDanaStep3Activity;
-import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
 import com.example.riset.R;
-import com.github.florent37.expansionpanel.ExpansionLayout;
 import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,6 +54,7 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
     private SharedPreferences mSettings;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     StorageReference mStoreRef = FirebaseStorage.getInstance().getReference();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     Uri photoURI;
     Uri downloadUrl;
     ProgressDialog progressDialog;
@@ -97,6 +96,8 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
     String metode = "qweqweqwe";
     int nominal = 0;
     String idDonasi = "";
+    String check = "";
+    String email = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +115,7 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
         get_nominal_donasi = mSettings.getString("nominal_donasi", "missing");
         get_keterangan = mSettings.getString("keterangan", "missing");
         idDonasi = mSettings.getString("idDetailDonasi", "missing");
+        check = mSettings.getString("anonim", "missing");
 
         nominal = Integer.parseInt(get_nominal_donasi.replace(",", ""));
         get_bank_data();
@@ -292,19 +294,25 @@ public class BerdonasiStep2Activity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy HH:mm");
         String strDate = formatter.format(date);
 
+        Boolean checkAnonim = Boolean.valueOf(check);
+        if (user != null){
+            email = user.getEmail();
+        }
+
         Map<String, Object> updates = new HashMap<>();
         updates.put("keterangan", get_keterangan);
         updates.put("nominal", nominal);
-        updates.put("anonim", true);
+        updates.put("anonim", checkAnonim);
         updates.put("tanggal", strDate);
+        updates.put("email_donatur", email);
         updates.put("buktiTransfer", downloadUrl.toString());
-        updates.put("nama", "bob");
         updates.put("created_date", FieldValue.serverTimestamp());
+        updates.put("id_donasi", "d"+System.currentTimeMillis());
 
         db.collection("Posting")
                 .document(idDonasi)
                 .collection("berdonasi")
-                .document()
+                .document("d"+System.currentTimeMillis())
                 .set(updates)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

@@ -1,12 +1,9 @@
 package com.example.riset.Home.Adapter;
 
 import android.content.Context;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.example.riset.Home.Model.ButuhSegeraModel;
+import com.example.riset.Model.ButuhSegeraModel;
 import com.example.riset.Model.UserModel;
 import com.example.riset.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,9 +22,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
-
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

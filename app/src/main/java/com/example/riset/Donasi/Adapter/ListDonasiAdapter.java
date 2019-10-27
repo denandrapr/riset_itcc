@@ -1,7 +1,6 @@
 package com.example.riset.Donasi.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.riset.Home.Model.ButuhSegeraModel;
+import com.example.riset.Model.ButuhSegeraModel;
 import com.example.riset.R;
 
 import java.util.List;

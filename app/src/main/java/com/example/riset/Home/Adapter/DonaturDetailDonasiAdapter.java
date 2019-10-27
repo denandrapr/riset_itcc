@@ -1,24 +1,21 @@
 package com.example.riset.Home.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.riset.Berdonasi.Model.BerdonasiUangModel;
+import com.example.riset.Model.BerdonasiUangModel;
+import com.example.riset.Model.UserModel;
 import com.example.riset.R;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -30,6 +27,7 @@ import butterknife.ButterKnife;
 public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDetailDonasiAdapter.ViewHolder>{
     private Context context;
     private List<BerdonasiUangModel> data;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public DonaturDetailDonasiAdapter(Context context, List<BerdonasiUangModel> data) {
         this.context = context;
@@ -46,19 +44,37 @@ public class DonaturDetailDonasiAdapter extends RecyclerView.Adapter<DonaturDeta
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         BerdonasiUangModel results = data.get(position);
+
         if (results.isAnonim()){
             holder.txtNamaDonatur.setText("Anonim");
+            Glide.with(holder.foto_donatur.getContext())
+                    .load(R.drawable.placeholder)
+                    .circleCrop()
+                    .placeholder(R.drawable.placeholder)
+                    .into(holder.foto_donatur);
         }else{
-            holder.txtNamaDonatur.setText(results.getNama());
+            db.collection("User")
+                    .document(results.getEmail_donatur())
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            UserModel userModel = null;
+                            userModel = documentSnapshot.toObject(UserModel.class);
+                            holder.txtNamaDonatur.setText(userModel.getNama());
+                            Glide
+                                    .with(holder.foto_donatur.getContext())
+                                    .load(userModel.getUrlProfileImage())
+                                    .placeholder(R.drawable.dokumentasi_foto_temp)
+                                    .circleCrop()
+                                    .into(holder.foto_donatur);
+                        }
+                    });
         }
+
         Double d = (double)results.getNominal();
         holder.txtJumlahDonasi.setText(decimalFormat(d));
         holder.txtDonasiDate.setText(results.getTanggal());
-        Glide.with(holder.foto_donatur.getContext())
-                .load(R.drawable.placeholder)
-                .circleCrop()
-                .placeholder(R.drawable.placeholder)
-                .into(holder.foto_donatur);
     }
 
     private String decimalFormat(Double total){
