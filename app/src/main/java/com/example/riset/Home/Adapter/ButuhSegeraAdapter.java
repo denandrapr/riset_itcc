@@ -57,22 +57,25 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         total = 0;
 
         ButuhSegeraModel result = butuhSegeraModels.get(position);
-        String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
-        id = result.getId();
-        String infoTerkumpul = "Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal));
 
-        Glide
-            .with(holder.imageSegera.getContext())
-            .load(result.getLinkFotoUtama())
-            .placeholder(R.drawable.dokumentasi_foto_temp)
-            .into(holder.imageSegera);
+        if (result.getTipe() == 1){
+            String sTargetNominal = result.getTargetNominalDonasi().replace(",","");
+            id = result.getId();
+            String infoTerkumpul = "Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal));
 
-        holder.textJudul.setText(result.getJudulKegiatan());
-        holder.textInfo.setText(infoTerkumpul);
-        holder.textSisa.setText(result.getBatasWaktu());
-        holder.textId.setText(result.getId());
-        holder.textSisa.setText(CurrentDate(result.getBatasWaktu()));
-        get_count_dana(id, holder);
+            Glide
+                    .with(holder.imageSegera.getContext())
+                    .load(result.getLinkFotoUtama())
+                    .placeholder(R.drawable.dokumentasi_foto_temp)
+                    .into(holder.imageSegera);
+
+            holder.textJudul.setText(result.getJudulKegiatan());
+            holder.textInfo.setText(infoTerkumpul);
+            holder.textSisa.setText(result.getBatasWaktu());
+            holder.textId.setText(result.getId());
+            holder.textSisa.setText(CurrentDate(result.getBatasWaktu()));
+            get_count_dana(id, holder);
+        }
     }
 
     private void get_count_dana(String id, ViewHolder holder){

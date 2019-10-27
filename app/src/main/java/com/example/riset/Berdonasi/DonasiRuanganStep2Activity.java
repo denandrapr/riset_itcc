@@ -41,6 +41,7 @@ public class DonasiRuanganStep2Activity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     Uri photoURI;
+    Uri downloadURI;
     String judulKegiatan;
     String batasWaktu;
     String jadwalKegiatan;
@@ -114,7 +115,7 @@ public class DonasiRuanganStep2Activity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()){
-                        photoURI = task.getResult();
+                        downloadURI = task.getResult();
                         uploadData();
                     }else{
                         progressDialog.dismiss();
@@ -141,7 +142,7 @@ public class DonasiRuanganStep2Activity extends AppCompatActivity {
         updates.put("lokasiRuangan", lokasiRuangan);
         updates.put("kapasitasRuangan", kapasitasRuangan);
         updates.put("deskripsi", dekripsi);
-        updates.put("linkFotoUtama", photoURI.toString());
+        updates.put("linkFotoUtama", downloadURI.toString());
         updates.put("created_date", FieldValue.serverTimestamp());
         updates.put("tipe", 2);
 
