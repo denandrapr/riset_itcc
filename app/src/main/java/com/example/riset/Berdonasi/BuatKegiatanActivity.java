@@ -41,6 +41,7 @@ public class BuatKegiatanActivity extends Fragment {
     LayoutInflater inflater;
     View dialogView;
     Button lengkapiData;
+    int diKlik = 0;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,18 +53,23 @@ public class BuatKegiatanActivity extends Fragment {
 
     @OnClick(R.id.donasiRuangan)
     void donasiRuangan(){
-        Intent i = new Intent(getActivity(), DonasiRuanganStep0Activity.class);
-        startActivity(i);
+        diKlik = 2;
+        if (user != null){
+            checkUser();
+        }
     }
 
     @OnClick(R.id.donasi_barang)
     void donasiBarang(){
-        Intent i = new Intent(getActivity(), DonasiBarangStep0Activity.class);
-        startActivity(i);
+        diKlik = 3;
+        if (user != null){
+            checkUser();
+        }
     }
 
     @OnClick(R.id.galang_dana)
     void galangDana(){
+        diKlik = 1;
         if (user != null){
             checkUser();
         }
@@ -79,8 +85,16 @@ public class BuatKegiatanActivity extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
-                            Intent i = new Intent(getActivity(), GalangDanaStep0Activity.class);
-                            startActivity(i);
+                            if (diKlik == 1){
+                                Intent i = new Intent(getActivity(), GalangDanaStep0Activity.class);
+                                startActivity(i);
+                            }else if(diKlik == 2){
+                                Intent i = new Intent(getActivity(), DonasiRuanganStep0Activity.class);
+                                startActivity(i);
+                            }else if(diKlik == 3){
+                                Intent i = new Intent(getActivity(), DonasiBarangStep0Activity.class);
+                                startActivity(i);
+                            }
                         }else{
                             dialogForm();
                         }

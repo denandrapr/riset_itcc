@@ -96,7 +96,6 @@
                 android:id="@+id/photo_profile"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/foto_temp"
                 android:layout_marginRight="14dp"/>
 
             <TextView
@@ -105,9 +104,8 @@
                 android:layout_toRightOf="@id/photo_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Denandra Prasetya"
                 android:fontFamily="@font/nunito_bold"
-                android:textSize="18sp"/>
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/txtEmail"
@@ -115,7 +113,6 @@
                 android:layout_below="@id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="prasetya.denandra@gmail.com"
                 android:fontFamily="@font/nunito"
                 android:textColor="#929292"
                 android:textSize="14sp"/>
@@ -189,6 +186,7 @@
             android:src="@drawable/profile_line"/>
 
         <RelativeLayout
+            android:id="@+id/relativeTentangKami"
             android:layout_width="match_parent"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content">
@@ -201,7 +199,7 @@
                 android:layout_marginRight="22dp"/>
 
             <TextView
-                android:text="Tentang Kami"
+                android:text="Tentang EduCare"
                 android:layout_marginTop="2dp"
                 android:layout_toRightOf="@id/aboutImg"
                 android:layout_width="wrap_content"

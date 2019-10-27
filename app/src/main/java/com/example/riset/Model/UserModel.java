@@ -7,18 +7,24 @@ public class UserModel {
     String nomorTelepon;
     String pekerjaan;
     String tanggalLahir;
+    String urlProfileImage;
 
     public UserModel(){
 
     }
 
-    public UserModel(String alamat, String email, String nama, String nomorTelepon, String pekerjaan, String tanggalLahir) {
+    public UserModel(String alamat, String email, String nama, String nomorTelepon, String pekerjaan, String tanggalLahir, String urlProfileImage) {
         this.alamat = alamat;
         this.email = email;
         this.nama = nama;
         this.nomorTelepon = nomorTelepon;
         this.pekerjaan = pekerjaan;
         this.tanggalLahir = tanggalLahir;
+        this.urlProfileImage = urlProfileImage;
+    }
+
+    public String getUrlProfileImage() {
+        return urlProfileImage;
     }
 
     public String getAlamat() {

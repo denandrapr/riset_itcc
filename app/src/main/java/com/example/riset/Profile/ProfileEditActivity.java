@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.riset.Berdonasi.GalangDanaStep3Activity;
 import com.example.riset.Model.UserModel;
 import com.example.riset.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +27,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,10 +42,12 @@ public class ProfileEditActivity extends AppCompatActivity {
 
     private static final int GALLERY_INTENT = 1;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    StorageReference mStoreRef = FirebaseStorage.getInstance().getReference();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     ProgressDialog progressDialog;
 
     Uri photoURI;
+    Uri downloadUrl;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -107,10 +114,20 @@ public class ProfileEditActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         progressDialog.dismiss();
-                        UserModel userModel = null;
-                        userModel = documentSnapshot.toObject(UserModel.class);
-                        textNamaLengkap.setText(userModel.getNama());
-                        textNomorTelepon.setText(userModel.getNomorTelepon());
+                        if (documentSnapshot.exists()){
+                            UserModel userModel = null;
+                            userModel = documentSnapshot.toObject(UserModel.class);
+                            textNamaLengkap.setText(userModel.getNama());
+                            textNomorTelepon.setText(userModel.getNomorTelepon());
+                            Glide.with(ProfileEditActivity.this)
+                                    .load(userModel.getUrlProfileImage())
+                                    .centerCrop()
+                                    .circleCrop()
+                                    .into(imageUpload);
+                        }else{
+                            textNamaLengkap.setText("");
+                            textNomorTelepon.setText("");
+                        }
                     }
                 });
     }
@@ -122,6 +139,33 @@ public class ProfileEditActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
+        if (photoURI != null){
+            StorageReference ref = mStoreRef.child("foto_profile/"+System.currentTimeMillis());
+            UploadTask uploadTask = ref.putFile(photoURI);
+            Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()){
+                        throw task.getException();
+                    }
+                    return ref.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()){
+                        downloadUrl = task.getResult();
+                        dataUpload();
+                    }else{
+                        progressDialog.dismiss();
+                        Toast.makeText(ProfileEditActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void dataUpload(){
         String nama_lengkap = textNamaLengkap.getText().toString();
         String nomor_telepon = textNomorTelepon.getText().toString();
         String email = textEmail.getText().toString();
@@ -131,6 +175,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         updates.put("nama", nama_lengkap);
         updates.put("nomorTelepon", nomor_telepon);
         updates.put("registered_date", FieldValue.serverTimestamp());
+        updates.put("urlProfileImage", downloadUrl.toString());
 
         db.collection("User")
                 .document(email)
