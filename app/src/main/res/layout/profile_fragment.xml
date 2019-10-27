@@ -130,6 +130,7 @@
             android:src="@drawable/profile_line"/>
 
         <RelativeLayout
+            android:id="@+id/editProfile"
             android:layout_width="match_parent"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content">

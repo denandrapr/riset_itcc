@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,8 +46,11 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
     private LayoutInflater mInflater;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     double total;
+    float total2;
     String dayDifference;
     String namaPembuat;
+    Double nominalDonasi;
+    float sisa;
 
     public TerdekatKamuAdapter(Context context, List<ButuhSegeraModel> butuhSegeraModels) {
         this.mInflater = LayoutInflater.from(context);
@@ -64,6 +68,7 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
     @Override
     public void onBindViewHolder(@NonNull TerdekatKamuAdapter.ViewHolder holder, int position) {
         ButuhSegeraModel result = butuhSegeraModels.get(position);
+
         Glide
             .with(holder.myView.getContext())
             .load(result.getLinkFotoUtama())
@@ -73,10 +78,35 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         holder.sisaHari.setText(CurrentDate(result.getBatasWaktu()));
         get_total_terkumpul(result.getId(), holder);
         get_created_by(result.getCreated_by(), holder);
+
+        //setting progressbar
+        db.collection("Posting")
+                .document(result.getId())
+                .collection("berdonasi")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        total = 0;
+                        nominalDonasi = 0.0;
+                        sisa = 0;
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+                            total = total + doc.getDouble("nominal");
+                        }
+                        nominalDonasi = Double.parseDouble(result.getTargetNominalDonasi().replace(",",""));
+
+                        LinearLayout.LayoutParams params1 = (LinearLayout.LayoutParams) holder.barNominalTerkumpul.getLayoutParams();
+                        LinearLayout.LayoutParams params2 = (LinearLayout.LayoutParams) holder.barNominalTersisa.getLayoutParams();
+
+                        sisa = (float)(total/nominalDonasi);
+
+                        params1.weight = sisa;
+                        holder.barNominalTerkumpul.setLayoutParams(params1);
+                    }
+                });
     }
 
     private void get_created_by(String email_created_by, ViewHolder holder){
-
         db.collection("User")
                 .document(email_created_by)
                 .get()
@@ -158,6 +188,10 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         TextView sisaHari;
         @BindView(R.id.pengepost)
         TextView pengepost;
+        @BindView(R.id.barNominalTerkumpul)
+        LinearLayout barNominalTerkumpul;
+        @BindView(R.id.barNominalTersisa)
+        LinearLayout barNominalTersisa;
 
         ViewHolder(View itemView) {
             super(itemView);

@@ -13,7 +13,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Notifikasi.NotifikasiMainActivity"></activity>
+        <activity android:name=".Profile.ProfileTentangEducare"></activity>
+        <activity android:name=".Profile.ProfileEditActivity" />
+        <activity android:name=".Notifikasi.NotifikasiMainActivity" />
         <activity android:name=".Berdonasi.DonasiBarangStep0Activity" />
         <activity android:name=".Berdonasi.DonasiRuanganStep0Activity" />
         <activity android:name=".Berdonasi.GalangDanaStep0Activity" />
@@ -53,7 +55,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
 
         <meta-data
             android:name="preloaded_fonts"

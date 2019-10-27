@@ -121,16 +121,16 @@ public class BerdonasiStep1Activity extends AppCompatActivity {
         super.onStop();
     }
 
-    private void initViews(){
-        initCustomDialog();
-        initViewsComponent();
-    }
+//    private void initViews(){
+//        initCustomDialog();
+//        initViewsComponent();
+//    }
 
     private void initCustomDialog(){
-        customDialog = new Dialog(BerdonasiStep1Activity.this);
-        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        customDialog.setContentView(R.layout.dialog_custom);
-        customDialog.setCancelable(true);
+//        customDialog = new Dialog(BerdonasiStep1Activity.this);
+//        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        customDialog.setContentView(R.layout.dialog_custom);
+//        customDialog.setCancelable(true);
 
 //        pilihMetodeBayar.setOnClickListener(new View.OnClickListener() {
 //            @Override
