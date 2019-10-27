@@ -87,4 +87,10 @@ public class ProfileFragment  extends Fragment {
         startActivity(i);
     }
 
+    @OnClick(R.id.editProfile)
+    void editProfile(){
+        Intent i = new Intent(getActivity(), ProfileEditActivity.class);
+        startActivity(i);
+    }
+
 }

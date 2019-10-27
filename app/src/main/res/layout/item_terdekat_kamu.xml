@@ -49,12 +49,44 @@
         android:layout_marginTop="8dp"/>
 
     <LinearLayout
+        android:id="@+id/linearProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/pengepost"
+        android:layout_toRightOf="@id/imgCard">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/barNominalTerkumpul"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:text="Terkumpul"
+            android:layout_marginLeft="12dp"
+            android:textSize="11sp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/barNominalTersisa"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:text="Terkumpul"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:background="#979797"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearTerkumpul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_toRightOf="@id/imgCard"
-        android:layout_below="@id/pengepost"
+        android:layout_below="@id/linearProgress"
         android:layout_alignParentBottom="true"
         android:gravity="bottom">
 
@@ -64,7 +96,8 @@
             android:layout_height="wrap_content"
             android:text="Terkumpul"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nunito"
+            android:layout_marginTop="4dp"
             android:textSize="11sp"/>
 
         <TextView
@@ -97,6 +130,7 @@
             android:layout_height="wrap_content"
             android:text="Sisa hari"
             android:layout_marginLeft="12dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="8dp"
             android:textSize="11sp"/>
 

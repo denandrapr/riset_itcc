@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile.ProfileEditActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Edit Profile"
+            android:textSize="16sp"
+            android:textColor="@android:color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/toolbar">
+
+        <ImageView
+            android:id="@+id/imgUpload"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/upload_img_daftar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/txtNamaLengkap"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:paddingLeft="16dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito"
+            android:background="@drawable/edit_text_outline_grey"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:paddingLeft="16dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito"
+            android:background="@drawable/edit_text_outline_grey"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/txtNomorTelepon"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:paddingLeft="16dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/nunito"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/edit_text_outline_grey"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_filled_orange_radius0"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>
