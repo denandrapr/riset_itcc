@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.riset.Profile.ProfileEditActivity;
 import com.example.riset.R;
+import com.example.riset.RegistSignIn.WelcomeSignInActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -88,6 +89,12 @@ public class BuatKegiatanActivity extends Fragment {
         if (user != null){
             checkUser();
         }
+    }
+
+    @OnClick(R.id.signin_btn)
+    void signIn(){
+        Intent i = new Intent(getActivity(), WelcomeSignInActivity.class);
+        startActivity(i);
     }
 
     private void checkUser(){
