@@ -13,20 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.riset.Home.RelawanDetail;
+import com.example.riset.Model.ButuhSegeraModel;
+import com.example.riset.Model.RuanganModel;
 import com.example.riset.R;
 
 import java.util.List;
 
 public class JadiTutorMerekaAdapter extends RecyclerView.Adapter<JadiTutorMerekaAdapter.ViewHolder> {
 
-    private List<String> mAnimals;
+    private List<RuanganModel> ruanganModels;
     private LayoutInflater mInflater;
     Context context;
 
     // data is passed into the constructor
-    public JadiTutorMerekaAdapter(Context context, List<String> animals) {
+    public JadiTutorMerekaAdapter(Context context, List<RuanganModel> ruanganModels) {
         this.mInflater = LayoutInflater.from(context);
-        this.mAnimals = animals;
+        this.ruanganModels = ruanganModels;
     }
 
     // inflates the row layout from xml when needed
@@ -40,56 +42,31 @@ public class JadiTutorMerekaAdapter extends RecyclerView.Adapter<JadiTutorMereka
     // binds the data to the view and textview in each row
     @Override
     public void onBindViewHolder(@NonNull JadiTutorMerekaAdapter.ViewHolder holder, int position) {
-        String animal = mAnimals.get(position);
-        if (position == 0){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.foto_tutor_1)
-                .placeholder(R.drawable.dokumentasi_foto_temp)
-                .into(holder.myView);
-        }else if(position == 1){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.foto_tutor_2)
-                .placeholder(R.drawable.dokumentasi_foto_temp1)
-                .into(holder.myView);
-        }else if(position == 2){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.foto_tutor_1)
-                .placeholder(R.drawable.dokumentasi_foto_temp3)
-                .into(holder.myView);
-        }else if(position == 3){
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.foto_tutor_2)
-                .placeholder(R.drawable.dokumentasi_foto_temp)
-                .into(holder.myView);
-        }else{
-            Glide
-                .with(holder.myView.getContext())
-                .load(R.drawable.foto_tutor_1)
-                .placeholder(R.drawable.dokumentasi_foto_temp)
-                .into(holder.myView);
-        }
-        holder.myTextView.setText(animal);
+        RuanganModel result = ruanganModels.get(position);
+
+        Glide
+            .with(holder.myView.getContext())
+            .load(result.getLinkFotoUtama())
+            .placeholder(R.drawable.dokumentasi_foto_temp)
+            .into(holder.myView);
+        holder.txtJudul.setText(result.getJudulKegiatan());
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return mAnimals.size();
+        return ruanganModels.size();
     }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView myView;
-        TextView myTextView;
+        TextView txtJudul;
 
         ViewHolder(View itemView) {
             super(itemView);
             myView = itemView.findViewById(R.id.imgTutor);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
+            txtJudul = itemView.findViewById(R.id.textJudul);
             itemView.setOnClickListener(this);
         }
 

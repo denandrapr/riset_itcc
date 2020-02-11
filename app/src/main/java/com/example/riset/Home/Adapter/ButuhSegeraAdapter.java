@@ -64,17 +64,31 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
             String infoTerkumpul = "Terkumpul dari Rp "+decimalFormat(Double.parseDouble(sTargetNominal));
 
             Glide
-                    .with(holder.imageSegera.getContext())
-                    .load(result.getLinkFotoUtama())
-                    .placeholder(R.drawable.dokumentasi_foto_temp)
-                    .into(holder.imageSegera);
+                .with(holder.imageSegera.getContext())
+                .load(result.getLinkFotoUtama())
+                .placeholder(R.drawable.dokumentasi_foto_temp)
+                .into(holder.imageSegera);
 
             holder.textJudul.setText(result.getJudulKegiatan());
             holder.textInfo.setText(infoTerkumpul);
             holder.textSisa.setText(result.getBatasWaktu());
             holder.textId.setText(result.getId());
             holder.textSisa.setText(CurrentDate(result.getBatasWaktu()));
+            holder.textInfoSisa.setText("hari tersisa");
             get_count_dana(id, holder);
+        }else if(result.getTipe() == 2){
+            Glide
+                .with(holder.imageSegera.getContext())
+                .load(result.getLinkFotoUtama())
+                .placeholder(R.drawable.dokumentasi_foto_temp)
+                .into(holder.imageSegera);
+
+            holder.textJudul.setText(result.getJudulKegiatan());
+            holder.textDuit.setText("5");
+            holder.textInfo.setText("dari 10 orang telah berpartisipasi");
+            holder.textSisa.setText(CurrentDate(result.getBatasWaktu()));
+            holder.textId.setText(result.getId());
+            holder.textInfoSisa.setText("hari tersisa");
         }
     }
 
@@ -147,6 +161,8 @@ public class ButuhSegeraAdapter extends RecyclerView.Adapter<ButuhSegeraAdapter.
         TextView textInfo;
         @BindView(R.id.txtSisa)
         TextView textSisa;
+        @BindView(R.id.txtInfoSisa)
+        TextView textInfoSisa;
         @BindView(R.id.txtId)
         TextView textId;
 

@@ -1,6 +1,7 @@
 package com.example.riset.Home.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.riset.Home.DonasiDetailActivity;
 import com.example.riset.Model.ButuhSegeraModel;
 import com.example.riset.Model.UserModel;
 import com.example.riset.R;
@@ -62,6 +64,7 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         ButuhSegeraModel result = butuhSegeraModels.get(position);
 
         if (result.getTipe() == 1){
+            holder.textId.setText(result.getId());
             Glide
                     .with(holder.myView.getContext())
                     .load(result.getLinkFotoUtama())
@@ -170,7 +173,7 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         return butuhSegeraModels.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.imgTerdekat)
         ImageView myView;
@@ -186,10 +189,21 @@ public class TerdekatKamuAdapter extends RecyclerView.Adapter<TerdekatKamuAdapte
         LinearLayout barNominalTerkumpul;
         @BindView(R.id.barNominalTersisa)
         LinearLayout barNominalTersisa;
+        @BindView(R.id.txtId)
+        TextView textId;
 
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(view.getContext(), DonasiDetailActivity.class);
+            String idnya = textId.getText().toString();
+            i.putExtra("id", idnya);
+            view.getContext().startActivity(i);
         }
     }
 }

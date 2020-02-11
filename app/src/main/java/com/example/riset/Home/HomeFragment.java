@@ -20,6 +20,7 @@ import com.example.riset.Home.Adapter.ButuhSegeraAdapter;
 import com.example.riset.Home.Adapter.JadiTutorMerekaAdapter;
 import com.example.riset.Home.Adapter.TerdekatKamuAdapter;
 import com.example.riset.Model.ButuhSegeraModel;
+import com.example.riset.Model.RuanganModel;
 import com.example.riset.Model.UserModel;
 import com.example.riset.Notifikasi.NotifikasiMainActivity;
 import com.example.riset.R;
@@ -30,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
@@ -68,6 +70,7 @@ public class HomeFragment extends Fragment{
 
     private List<ButuhSegeraModel> listButuhSegera = new ArrayList<>();
     private List<ButuhSegeraModel> listTerdekat = new ArrayList<>();
+    private List<RuanganModel> ruanganModels = new ArrayList<>();
     ButuhSegeraModel butuhSegeraModel;
 
     @Nullable
@@ -115,7 +118,7 @@ public class HomeFragment extends Fragment{
 
         LinearLayoutManager horizontalLayout2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(horizontalLayout2);
-        jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), tutorMereka);
+        jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), ruanganModels);
         recyclerView2.setAdapter(jadiTutorMerekaAdapter);
 
         terdekatKamuAdapter = new TerdekatKamuAdapter(getActivity(), listTerdekat);
@@ -126,6 +129,7 @@ public class HomeFragment extends Fragment{
         recyclerView3.setAdapter(terdekatKamuAdapter);
 
         ambilButuhKamuSegera();
+        ambilTutorMereka();
         ambilTerdekatKamu();
         return view;
     }
@@ -152,6 +156,28 @@ public class HomeFragment extends Fragment{
         }
         db.collection("Posting")
                 .limit(5)
+                .orderBy("created_date", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot doc : task.getResult()){
+                            Gson gson = new Gson();
+                            JsonElement jsonElement = gson.toJsonTree(doc.getData());
+                            listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
+                        }
+                        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), listButuhSegera);
+                        recyclerView.setAdapter(adapterButuhSegera);
+                        relativeLayout1.setVisibility(View.GONE);
+                        scrollView1.setVisibility(View.VISIBLE);
+                    }
+                });
+    }
+
+    private void ambilTutorMereka(){
+        db.collection("Posting")
+                .limit(5)
+                .whereEqualTo("tipe", 2)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -159,12 +185,10 @@ public class HomeFragment extends Fragment{
                         for (QueryDocumentSnapshot doc : task.getResult()){
                             Gson gson = new Gson();
                             JsonElement jsonElement =gson.toJsonTree(doc.getData());
-                            listButuhSegera.add(gson.fromJson(jsonElement, ButuhSegeraModel.class));
+                            ruanganModels.add(gson.fromJson(jsonElement, RuanganModel.class));
                         }
-                        adapterButuhSegera = new ButuhSegeraAdapter(getActivity(), listButuhSegera);
-                        recyclerView.setAdapter(adapterButuhSegera);
-                        relativeLayout1.setVisibility(View.GONE);
-                        scrollView1.setVisibility(View.VISIBLE);
+                        jadiTutorMerekaAdapter = new JadiTutorMerekaAdapter(getActivity(), ruanganModels);
+                        recyclerView2.setAdapter(jadiTutorMerekaAdapter);
                     }
                 });
     }
